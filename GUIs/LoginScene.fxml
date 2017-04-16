@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="368.0" style="-fx-background-color: #374E65;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="58.0" layoutY="288.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="253.0" style="-fx-background-color: E9594B;" text="Sign In" textAlignment="CENTER" textFill="#fdd9d4">
+      <Button layoutX="58.0" layoutY="288.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" style="-fx-background-color: E9594B;" text="Sign In" textAlignment="CENTER" textFill="#fdd9d4">
          <font>
             <Font name="Apple Braille" size="17.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Button layoutX="59.0" layoutY="333.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="253.0" style="-fx-background-color: #6B545E;" text="Forget Password?" textAlignment="CENTER" textFill="#fdd9d4">
+      <Button layoutX="59.0" layoutY="333.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" style="-fx-background-color: #6B545E;" text="Forget Password?" textAlignment="CENTER" textFill="#fdd9d4">
          <font>
             <Font name="Apple Braille" size="17.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font name="Apple Braille" size="15.0" />
          </font>
       </Text>
-      <Button layoutX="47.0" layoutY="442.0" mnemonicParsing="false"  prefHeight="59.0" prefWidth="274.0" style="-fx-background-color: #374E65; -fx-border-color: #744850;" text="Create Account Now" textAlignment="CENTER" textFill="#fcfcfe">
+      <Button layoutX="47.0" layoutY="442.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="274.0" style="-fx-background-color: #374E65; -fx-border-color: #744850;" text="Create Account Now" textAlignment="CENTER" textFill="#fcfcfe">
          <font>
             <Font name="Apple Braille" size="20.0" />
          </font>
