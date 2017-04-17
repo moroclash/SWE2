@@ -1,0 +1,150 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 15, 2017, 2:34:23 AM
+    Author     : moroclash
+*/
+
+
+
+#mainstage
+{
+  -fx-background-color: #070719;  
+  
+}
+
+#header
+{
+    -fx-background-color: #F2F2F2;
+}
+
+#footer
+{
+   -fx-background-color: #070719;  
+
+}
+
+
+
+#test
+{
+    -fx-background-color: green;
+}
+
+#profileimage
+{
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-background-image: url('../Images/Google_Mail.png');
+    -fx-background-size: stretch;
+}
+
+#profileimage:hover{
+    -fx-effect: innershadow( three-pass-box, #CFD4D5 , 5, 0.6 , 0 ,0);
+}
+
+#myname
+{
+    -fx-alignment: center;
+}
+
+#list
+{
+   -fx-background-color: #070719;  
+
+}
+
+#listbutton
+{
+    -fx-background-color: #070719;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-text-fill: #dddddd;
+    -fx-fill-width: 250px;
+    -fx-fill-height: 44px;
+    -fx-font-size: 18px;
+    -fx-font-color: #ffff; 
+    -fx-font-weight:Regular;
+    -fx-min-height: 44px;
+    -fx-min-width: 250px;
+    
+}
+
+
+#listbutton:hover{
+    -fx-border-color: #2E64FE; 
+    -fx-border-width: 0px 0px 0px 4px;
+    -fx-background-color: #11113C;
+
+}
+
+#notification
+{
+  -fx-background-image: url('../Images/notification.png');
+  -fx-background-size: stretch;
+  -fx-background-repeat: no-repeat;
+  -fx-background-radius: 100;
+}
+
+
+#massage
+{
+  -fx-background-image: url('../Images/pink-message-icon-12054.png');
+  -fx-background-size: stretch;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-background-radius: 100;
+
+}
+
+#massage:hover{
+    -fx-effect: dropshadow( three-pass-box, #52D2FD , 5, 0.6 , 0 ,0);
+}
+
+#notification:hover{
+    -fx-effect: dropshadow( three-pass-box, #52D2FD , 5, 0.6 , 0 ,0);
+}
+
+#logout
+{
+    -fx-background-color: orange;
+}
+
+#logout:hover{
+    -fx-effect: dropshadow( three-pass-box, #52D2FD , 5, 0.6 , 0 ,0);
+}
+
+#ShowAllTasks
+{
+    -fx-background-color: #000000;
+}
+
+#filterBar
+{
+    -fx-background-color: orange;
+    -fx-padding: 10px;
+}
+
+
+#labletask
+{
+    -fx-background-color: #D8D8D8;
+    -fx-min-height: 126px;
+    -fx-min-width: 1042px;
+    -fx-padding: 10px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-background-radius: 10px;
+}
+
+#labletask:hover
+{
+    -fx-background-color: #F5F6CE;
+    -fx-effect: dropshadow( three-pass-box, #52D2FD , 5, 0.6 , 0 ,0);
+    -fx-padding: 5px;
+    -fx-border-insets: 4px;
+    -fx-background-insets: 4px;
+}
+
