@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author moroclash
  */
-public class testActions implements buttonableInter{
+public class TestActions implements buttonableInter{
     
 
     
@@ -33,9 +33,9 @@ public class testActions implements buttonableInter{
     public void buttonAction(ActionEvent event) {
         try {
             AnchorPane pp = FXMLLoader.load(getClass().getResource("/swgui/pan.fxml"));
-            statics.changePane.getChildren().setAll(pp);
+            Statics.changePane.getChildren().setAll(pp);
         } catch (IOException ex) {
-            Logger.getLogger(testActions.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestActions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

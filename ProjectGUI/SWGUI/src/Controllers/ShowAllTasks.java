@@ -22,9 +22,9 @@ public class ShowAllTasks implements buttonableInter{
     public void buttonAction(ActionEvent event) {
          try {
             AnchorPane pp = FXMLLoader.load(getClass().getResource("/swgui/ShowAllTasks.fxml"));
-            statics.changePane.getChildren().setAll(pp);
+            Statics.changePane.getChildren().setAll(pp);
         } catch (IOException ex) {
-            Logger.getLogger(testActions.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestActions.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

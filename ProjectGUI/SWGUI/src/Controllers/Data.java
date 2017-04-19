@@ -70,7 +70,7 @@ public class Data {
         }
     }
     
-    public Boolean AddMenuButton(File file)
+    public Boolean addMenuButton(File file)
     {
       return true;
     }

@@ -30,7 +30,7 @@ import javafx.scene.layout.VBox;
  *
  * @author moroclash
  */
-public class mainStageController implements Initializable{
+public class MainStageController implements Initializable{
     
     @FXML
     private VBox list;
@@ -51,7 +51,7 @@ public class mainStageController implements Initializable{
         Data myData = new Data();
         //load button
         myData.loadButton(1);
-        statics.changePane=changePane;
+        Statics.changePane=changePane;
         //get button name and his OnAcction in hashmap
         Hashtable<String,String> buttons = myData.getDataButton();       
         for(Map.Entry<String ,String> buttonInfo : buttons.entrySet())

@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author moroclash
  */
-public class statics {
+public class Statics {
     
     public static AnchorPane changePane;
 }

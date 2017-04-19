@@ -105,9 +105,9 @@ public class ShowAllNotification implements Initializable, buttonableInter {
 
 	try {
             AnchorPane pp = FXMLLoader.load(getClass().getResource("/swgui/ShowAllNotification.fxml"));
-            statics.changePane.getChildren().setAll(pp);
+            Statics.changePane.getChildren().setAll(pp);
         } catch (IOException ex) {
-            Logger.getLogger(testActions.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestActions.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 		
