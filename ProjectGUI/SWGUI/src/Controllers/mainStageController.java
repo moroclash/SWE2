@@ -47,10 +47,6 @@ public class mainStageController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        Button b = new Button("Taha");
-        b.setId("listbutton");
-        list.getChildren().add(b);
-        
         //to get buttons
         Data myData = new Data();
         //load button

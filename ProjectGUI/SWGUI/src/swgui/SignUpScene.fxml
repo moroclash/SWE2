@@ -4,20 +4,21 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="368.0" style="-fx-background-color: #374E65;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="368.0" style="-fx-background-color: #374E65;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginSceneController">
    <children>
       <Button layoutX="46.0" layoutY="427.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="277.0" style="-fx-background-color: #41A148;" text="Sign Up!" textAlignment="CENTER" textFill="#fcefd4">
          <font>
             <Font name="Apple Braille" size="25.0" />
          </font>
       </Button>
-      <TextField layoutX="61.0" layoutY="119.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Your Name">
+      <TextField fx:id="name" layoutX="61.0" layoutY="119.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Your Name">
          <font>
             <Font name="Apple Braille" size="14.0" />
          </font>
@@ -27,17 +28,17 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Text>
-      <PasswordField layoutX="62.0" layoutY="233.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Password">
+      <PasswordField fx:id="Passwd" layoutX="62.0" layoutY="233.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Password">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <PasswordField layoutX="61.0" layoutY="289.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Password">
+      <PasswordField fx:id="confirmationPasswd" layoutX="61.0" layoutY="289.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Password">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <TextField layoutX="61.0" layoutY="177.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Username">
+      <TextField fx:id="username" layoutX="61.0" layoutY="177.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Username">
          <font>
             <Font name="Apple Braille" size="14.0" />
          </font>
@@ -60,7 +61,10 @@
             </LinearGradient>
          </fill>
       </Text>
-      <RadioButton layoutX="220.0" layoutY="349.0" mnemonicParsing="false" selected="true" text="Work" textFill="#fcfcfe" />
-      <RadioButton layoutX="220.0" layoutY="385.0" mnemonicParsing="false" text="Hire" textFill="#fcfcfe" />
+      <RadioButton fx:id="workRadioButton" layoutX="220.0" layoutY="349.0" mnemonicParsing="false" selected="true" text="Work" textFill="#fcfcfe">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="hireRadioButton" layoutX="220.0" layoutY="385.0" mnemonicParsing="false" text="Hire" textFill="#fcfcfe" toggleGroup="$group" />
    </children>
 </AnchorPane>

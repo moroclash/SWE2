@@ -8,7 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="SWGUI.jar" size="86502" download="eager" />
+||||||| merged common ancestors
+    <jar href="SWGUI.jar" size="83276" download="eager" />
+=======
+    <jar href="SWGUI.jar" size="96730" download="eager" />
+>>>>>>> d5f0c5d11de85ca37ff2ae38dad24bbc5fbbe85c
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SWGUI" >
     <param name="requiredFXVersion" value="8.0+"/>

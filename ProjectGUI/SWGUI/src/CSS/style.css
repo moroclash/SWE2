@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 17, 2017, 5:33:24 PM
+    Author     : taha
+*/
+
+
+#notificationPane
+{
+}
+
+#notificationFromName
+{
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+}
+
+#notification_Message_Time
+{
+	-fx-text-fill: #8A8A8A;
+}
+
+
+
+#notific:hover 
+{
+    -fx-background-color: #0087F9;
+    -fx-padding: 5px;
+    -fx-border-insets: 4px;
+    -fx-background-insets: 4px;
+}
+
+#notific:hover  #notificationFromName {
+	-fx-text-fill: #FFFFFF;
+}
+
+#notific:hover  #notification_Message_Time {
+	-fx-text-fill: #FFFFFF;
+}
+
+#notific:hover  #notification_Message_Time {
+	-fx-text-fill: #FFFFFF;
+}
