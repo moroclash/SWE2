@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -24,15 +25,41 @@ public class LoginSceneController {
 // * 	I think we should a Helper Class, to implement any
 //	helper function inside it
 
+
+	private Boolean validatingEmptyFields () {
+
+		if (	usernameTextField.getText().isEmpty() ||
+			usernameTextField.getText().equals("Username or Phone Number") ||
+			passwd.getText().isEmpty() ||
+			passwd.getText().equals("Password")
+		   )
+		{
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Empty Fields");
+			alert.setContentText("Do not leave Username or Password empty");
+			alert.showAndWait();
+			return false;
+		} // endif
+
+		
+	return true;
+	} // end validatingEmptyFields
+
+	
+
     	@FXML
 	private void login (ActionEvent event) throws IOException {
+
+	if ( validatingEmptyFields() ) {
+	
         Stage stage = new Stage();
         ((Stage)(((Button)(event.getSource())).getScene().getWindow())).close();
         Parent root = FXMLLoader.load(getClass().getResource("/swgui/mainStage.fxml")); 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
+	}
+    } // end login
 
 
 	@FXML
