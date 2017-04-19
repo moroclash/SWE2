@@ -43,25 +43,27 @@ public class Data {
             case 1:
                 addButtonName("Home", "Controllers.testActions");
                 addButtonName("ShowAllTasks", "Controllers.ShowAllTasks");
+                addButtonName("Notifications", "Controllers.ShowAllNotification");
                 addButtonName("logs", "Controllers.testActions");
-                addButtonName("Booda", "Controllers.testActions");
-                addButtonName("yasser", "Controllers.testActions");
                 break;
             //admin
             case 2:
                 addButtonName("Home", "Controllers.testActions");
+                addButtonName("Notifications", "Controllers.ShowAllNotification");
                 addButtonName("myFiles", "Controllers.testActions");
                 addButtonName("logs", "Controllers.testActions");                
                 break;
             //freelancer
             case 3:
                 addButtonName("Home", "Controllers.testActions");
+                addButtonName("Notifications", "Controllers.ShowAllNotification");
                 addButtonName("myFiles", "Controllers.testActions");
                 addButtonName("logs", "Controllers.testActions");                
                 break;
             //employeer
             case 4:
                 addButtonName("Home", "Controllers.testActions");
+                addButtonName("Notifications", "Controllers.ShowAllNotification");
                 addButtonName("myFiles", "Controllers.testActions");
                 addButtonName("logs", "Controllers.testActions");                
                 break;

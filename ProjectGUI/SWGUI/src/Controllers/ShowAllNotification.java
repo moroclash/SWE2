@@ -6,9 +6,14 @@
 package Controllers;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,7 +25,7 @@ import javafx.scene.layout.VBox;
  *
  * @author taha
  */
-public class ShowAllNotification implements Initializable {
+public class ShowAllNotification implements Initializable, buttonableInter {
 	
 	@FXML
 	private VBox listVBox = new VBox();
@@ -93,5 +98,24 @@ public class ShowAllNotification implements Initializable {
 	} // end 
 		
 	}	
+
+	@Override
+	public void buttonAction(ActionEvent event) {
+
+	try {
+            AnchorPane pp = FXMLLoader.load(getClass().getResource("/swgui/ShowAllNotification.fxml"));
+            statics.changePane.getChildren().setAll(pp);
+        } catch (IOException ex) {
+            Logger.getLogger(testActions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+		
+	} // end buttonAction
+
+
+
 	
-}
+	
+////////
+} // end ShowAllNotification Class
+////////
