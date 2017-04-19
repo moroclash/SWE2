@@ -15,21 +15,7 @@
                <content>
                   <Pane fx:id="labletask" prefHeight="126.0" prefWidth="1042.0">
                      <children>
-                        <Button fx:id="labletaskShowButton" layoutX="895.0" layoutY="72.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Show" />
-                        <Label layoutX="895.0" layoutY="24.0" prefHeight="28.0" prefWidth="30.0" text="ID :" />
-                        <Label layoutX="937.0" layoutY="22.0" prefHeight="32.0" prefWidth="82.0" text="Label" />
-                        <Label layoutX="27.0" layoutY="16.0" text="Task name :" />
-                        <Label layoutX="116.0" layoutY="16.0" text="name" />
-                        <Label layoutX="27.0" layoutY="44.0" text="Employeer :" />
-                        <Label layoutX="117.0" layoutY="46.0" text="Employeer name" />
-                        <Label layoutX="27.0" layoutY="80.0" text="Category :" />
-                        <Label layoutX="116.0" layoutY="80.0" text="Category type" />
-                        <Label layoutX="521.0" layoutY="46.0" text="Require Time :" />
-                        <Label layoutX="638.0" layoutY="46.0" text="Time" />
-                        <Label layoutX="521.0" layoutY="80.0" text="Date :" />
-                        <Label layoutX="591.0" layoutY="80.0" text="Date ......." />
-                        <Label layoutX="523.0" layoutY="16.0" text="State :" />
-                        <Label layoutX="599.0" layoutY="16.0" text="State" />
+                       
                      </children>
                   </Pane>
                </content>
