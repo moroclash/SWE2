@@ -16,7 +16,7 @@
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=128mm]{SystemSequanceDiagram_Root.jpg}
+\includegraphics[width=128mm]{SequanceDiagram_Root.jpg}
 \caption{System Sequence Diagram of the \textit{Root}}
 \end{figure}
 
@@ -89,6 +89,13 @@ and sure the freelancer is paid.
 
 
 \section {Diagrams}
+
+\section{Use Case -- \textit{The Big picture}}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=128mm]{UseCaseDiagram_Version1}
+\end{figure}
+
 
 \section{Use Case -- \textit{in detail}}
 \subsection{Access Root}
@@ -356,7 +363,166 @@ and sure the freelancer is paid.
 \includegraphics[width=128mm]{Accept_Offert_submition_usecase.png}
 \end{figure}
 
+
+\subsection{Reply Complaints}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Reply Complaints}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+      \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. Select Show All Complaints from the sidebar}\\
+                                & \textit{3. Select the complaint and click to reply}\\
+                                & \textit{4. Write your reply and submit}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{A notification has sent to the sender of the commitment}\\
+    \toprule
+    \end{tabular}
+
+
+\subsection{View Statistics}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{View Statistics}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+                                  \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. Select View Statistics from the sidebar}\\
+                                & \textit{3. Now, You can select one of the statistics perspective}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{A graph is appeared}\\
+    \toprule
+    \end{tabular}
+
+
+
+
+\subsection{Remove Account}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Remove Account}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+                                  \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. Select Show All Freelancer/Employer from the sidebar}\\
+                                & \textit{3. Select the one you want to removed}\\
+                                & \textit{4. Select Remove Account}\\
+                                & \textit{5. Confirm!}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{An Account it removed}\\
+    \toprule
+    \end{tabular}
+
+
+
+
+\subsection{Receive Complaint}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Receive Complaint}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+                                  \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. You will find a new notification}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{You've been notified}\\
+    \toprule
+    \end{tabular}
+
+
+
+
+\subsection{View Reports}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{View Reports}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+                                  \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. Select View Reports}\\
+                                & \textit{3. Select the Subject of the Report}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{You have an up-to-date report, you can get the PDF version}\\
+    \toprule
+    \end{tabular}
+
+
+
+
+
+\subsection{Ban Account}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Ban Account}\\
+      \textbf{Actors}           & \textit{Admin}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1. Admin Access}\\
+                                  \rowcolor{LightCyan}
+                                & \textit{2. Freelancer/Employer has sent a Complaint}\\
+      \textbf{Basic Flow}       & \textit{1. Open the system with the Admin Access}\\
+                                & \textit{2. Select Show All Freelancer/Employer from the sidebar}\\
+                                & \textit{3. Select the one you want to Ban}\\
+                                & \textit{4. Select Ban Account}\\
+                                & \textit{4. Confirm!}\\
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{An Account is Banned}\\
+    \toprule
+    \end{tabular}
+
+
+
+
+
+
 \newpage
+
+
+\section{Design Patterns}
+
+\subsection{Singleton Design Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & \textit{}\\
+      \textbf{Problem}            & \textit{}\\
+                                  & \textit{}\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{}\\
+      \textbf{Post--condition}    & \textit{}\\
+                                  & \textit{}\\
+                                  & \textit{}\\
+    \toprule
+    \end{tabular}
+
+\begin{figure}[ht!]
+\centering
+%\includegraphics[width=128mm]{Accept_Offert_submition_usecase.png}
+\end{figure}
+
+
+
+
 
 
 \section{Call Us}
