@@ -19,6 +19,10 @@ public class LoginSceneController {
 	private PasswordField passwd;
 
 
+// *	Need to make a function to abstract the operation of
+// 	hiding current scene and show the other.
+// * 	I think we should a Helper Class, to implement any
+//	helper function inside it
 
     	@FXML
 	private void login (ActionEvent event) throws IOException {
@@ -37,8 +41,13 @@ public class LoginSceneController {
 	} // end forgetPasswd
 
     	@FXML
-	public void register() {
-
+	public void register(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        ((Stage)(((Button)(event.getSource())).getScene().getWindow())).close();
+        Parent root = FXMLLoader.load(getClass().getResource("/swgui/SignUpScene.fxml")); 
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	} // end register
 
 ////////
