@@ -2,6 +2,8 @@
 
 * **Class Name** starts with *uppercase* and every new word is *capitalized*
   i.e *`Vertex, NewClass, ...`*.
+* **InterFace Name** starts with *Lowercase* and every new word is *capitalized*
+  i.e *`vertexable, buttonable, ...`*.
 * **Function Name** starts with *lowercase* and every new word is *capitalized*
   i.e *`foo, fooName, ...`*.
 * **Comments:** You must write a **description** before defining a *Class* or
