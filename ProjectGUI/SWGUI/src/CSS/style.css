@@ -26,11 +26,22 @@ and open the template in the editor.
 
 
 
-#notific:hover
+#notific:hover 
 {
     -fx-background-color: #0087F9;
     -fx-padding: 5px;
     -fx-border-insets: 4px;
     -fx-background-insets: 4px;
-    -fx-text-fill: #FFFFFF;
+}
+
+#notific:hover  #notificationFromName {
+	-fx-text-fill: #FFFFFF;
+}
+
+#notific:hover  #notification_Message_Time {
+	-fx-text-fill: #FFFFFF;
+}
+
+#notific:hover  #notification_Message_Time {
+	-fx-text-fill: #FFFFFF;
 }

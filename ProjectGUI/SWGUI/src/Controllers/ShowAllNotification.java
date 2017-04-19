@@ -52,14 +52,14 @@ public class ShowAllNotification implements Initializable, buttonableInter {
 		pane.setId("notific");
 		
 
-		Label notificationFromName1 = new Label("notificationFromName1");
+		Label notificationFromName1 = new Label("Notification From");
 		notificationFromName1.setId("notificationFromName");
 		notificationFromName1.setLayoutX(116);
 		notificationFromName1.setLayoutY(25);
 		notificationFromName1.prefWidth(93);
 		notificationFromName1.prefHeight(26);
 		
-		Label notificationMessage1 = new Label("notificationMessage1");
+		Label notificationMessage1 = new Label("Notification Body");
 		notificationMessage1.setId("notification_Message_Time");
 		notificationMessage1.setLayoutX(116);
 		notificationMessage1.setLayoutY(44);
