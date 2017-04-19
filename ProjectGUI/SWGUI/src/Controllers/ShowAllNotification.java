@@ -49,6 +49,7 @@ public class ShowAllNotification implements Initializable, buttonableInter {
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefHeight(80);
 		pane.setId("notificationPane");
+		pane.setId("notific");
 		
 
 		Label notificationFromName1 = new Label("notificationFromName1");
