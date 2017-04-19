@@ -35,6 +35,11 @@ public class ShowAllNotification implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 
 
+
+		// NEED some Abstruction in here,
+		// Some helper functions.
+		// To clean this duplication
+
 	for (int i = 0; i < 5; i++){
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefHeight(80);
