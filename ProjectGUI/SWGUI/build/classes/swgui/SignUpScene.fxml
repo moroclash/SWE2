@@ -4,6 +4,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -60,7 +61,10 @@
             </LinearGradient>
          </fill>
       </Text>
-      <RadioButton layoutX="220.0" layoutY="349.0" mnemonicParsing="false" selected="true" text="Work" textFill="#fcfcfe" />
-      <RadioButton layoutX="220.0" layoutY="385.0" mnemonicParsing="false" text="Hire" textFill="#fcfcfe" />
+      <RadioButton fx:id="workRadioButton" layoutX="220.0" layoutY="349.0" mnemonicParsing="false" selected="true" text="Work" textFill="#fcfcfe">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="hireRadioButton" layoutX="220.0" layoutY="385.0" mnemonicParsing="false" text="Hire" textFill="#fcfcfe" toggleGroup="$group" />
    </children>
 </AnchorPane>

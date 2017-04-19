@@ -5,14 +5,20 @@
         <group>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/LoginSceneController.java</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/mainStage.fxml</file>
-            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/SWGUI.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/mainStage1.fxml</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/SignUpSceneController.java</file>
-            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/ShowAllNotification.fxml</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/testActions.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/buttonableInter.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/ShowAllTasks.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/Data.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/SWGUI.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/ShowAllNotification.fxml</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/SignUpScene.fxml</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/mainStageController.java</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/CSS/mainStage.css</file>
-            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/Data.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/statics.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/swgui/FXMLDocumentController.java</file>
+            <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/ShowAllTaskController.java</file>
             <file>file:/Users/taha/TOTO/SWE2/ProjectGUI/SWGUI/src/Controllers/ShowAllNotification.java</file>
         </group>
     </open-files>
