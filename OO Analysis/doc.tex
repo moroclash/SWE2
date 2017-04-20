@@ -541,7 +541,361 @@ and sure the freelancer is paid.
     \end{tabular}
 
 
+\subsection{Login}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Login}\\
+      \textbf{Actors}           & \textit{Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{1.  Enter Username  , Password.} \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1. Open the System}\\
+                                & \textit{2.Enter  Username and Password}\\
+                                & \textit{3.Click on Login Button}\\
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{ If The Username or Password is incorrect:
+											should re-enter Information again }\\
+											
+                                & \textit{ If The User Don't Have Account :
+											The User is prompted to Register}\\
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ Users can access}\\
+    \toprule
+    \end{tabular}
+	
+	
+	\subsection{Review Profile}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{Review Profile}\\
+      \textbf{Actors}           & \textit{ Admin , Freelancer  , Emplyer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{User  login successfuly} \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1.Open Profile Page}\\
+                                & \textit{2.Edit and Upload Profile}\\
+                                & \textit{3.Click on Save Button}\\
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{  If The User Hasn't login yet:
+											 The User is prompted to Login  }\\
+											
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{  If The case completed Successfully, Users can see his profile and edit it 
+}\\
+    \toprule
+    \end{tabular}
+			
+			
+	\subsection{ Create Profile }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{ Create Profile }\\
+      \textbf{Actors}           & \textit{ Freelancer  , Emplyer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{Open Register page} \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Fill all basic information about him “First name ,Last name ,Job Title...etc}\\
+                                & \textit{2.Click on Submit Button}\\
+                             
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{ If  missed any information:
+											 The User is prompted to enter it  }\\
+											
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{  If The case completed Successfully, Users allow  to enter Home Page}\\
+    \toprule
+    \end{tabular}
+			
+			
+	\subsection{ Review History}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  Review History }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit{User is logged Successfully ,has a Profile } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open Profile Page}\\
+                                & \textit{2.Click on View History Button}\\
+                             
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{  If The User Hasn't login yet :
 
+									should be login   }\\
+											
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{  If The case completed Successfully, User can see his History}\\
+    \toprule
+    \end{tabular}
+			
+			
+					
+	\subsection{ WithDraw Money }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  WithDraw Money}\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully ,has a Profile } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open Profile Page}\\
+                                & \textit{2-Click on WithDraw Money Button }\\
+                             & \textit{3- System Show it his Balance }\\
+							& \textit{ 4-  System Connect to Visa Card And add his Balance}\\	
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{  If The User Hasn't login yet :
+
+									should be login   }\\
+							
+					
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ User can see his Balance And Deliver It To His Visa Card}\\
+    \toprule
+    \end{tabular}
+	
+	
+		\subsection{ 	List Tasks 
+ }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  	List Tasks }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully  } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open Profile Page}\\
+                                & \textit{2-Click on List Tasks Button  }\\
+	
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{If Hasn't login yet :
+			
+										should be login }\\							
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{See All Tasks }\\
+    \toprule
+    \end{tabular}
+	
+	
+			\subsection{ 	Apply Task 
+  }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  	Apply Task }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open Profile Page}\\
+                                & \textit{2-Open Tasks Page }\\
+								& \textit{3- Choose Task , Specify hour cost and the number of hours and all info}\\
+								& \textit{4- Click on Apoly Task Button  }\\
+								
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{If Hasn't login yet :
+			
+										shoul be Login }\\
+							
+								& \textit{  If There aren't Any Tasks :  Refresh Page  }\\		
+
+								& \textit{If user enter number of hours greater than specified in task :}\\
+			
+								& \textit{	should be enter number of hours less than specified hours.   }\\										
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ If The case completed Successfully, User send reguest to do this task  }\\
+    \toprule
+    \end{tabular}
+	
+	
+	
+	
+			\subsection{ 	Cancel App  }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  	Cancel App  }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open Profile Page}\\
+                                & \textit{2-Open Tasks Page }\\
+								& \textit{3- Choose Task }\\
+								& \textit{4-  Click on Cancel Task  Button  }\\
+								
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{If  Hasn't login yet :
+			
+											should be Login }\\
+							
+								& \textit{ 	If Emplyer Accept reguest:}\\
+			                
+							    & \textit{	 to finish the task  or Cancel then System will penalty cut of 4\% }\\		
+
+									
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ If The case completed Successfully, User Cancel reguest to do this task   }\\
+    \toprule
+    \end{tabular}
+	
+	
+	
+				\subsection{ 	Overtime Reguest }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  			Overtime Reguest }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully , Task's Reguest is accepted  } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{ 1-Open Offer  Page }\\
+                                & \textit{2-Enter overtime hours}\\
+								& \textit{3- Click on overtime reguest Button }\\
+								
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{			 If The Task's time finished :
+			                    
+													The penalty cut of 7\%  }\\
+							
+								& \textit{ 						If Emplyer reject  reguest:
+			
+												The penalty cut of 7\% 	 }\\		
+
+									
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ 		If The case completed Successfully,}\\& \textit{ Overtime add to counter , will not take money for them -}\\ &\textit{ and  2\% will be cut from his rate   }\\
+    \toprule
+    \end{tabular}
+	
+	
+	
+	
+	
+	
+				\subsection{ 	Submit Task }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  Submit Task }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully , Task is finished   } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{ 1-Open Offer  Page }\\
+                                & \textit{ 2-Upload Task's files}\\
+								& \textit{3- Click on submit  Button }\\
+								
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{		If Task's Time finished : }\\
+		
+								& \textit{penalty cut of 7\% ,User Can't submit task and.  }\\
+							
+								& \textit{ 	If user upload wrong files  :}\\
+		
+							   & \textit{	The User is prompted to upload correct files  	 }\\		
+
+									
+ 
+								
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ 		If The case completed Successfully,}\\ &\textit{ Task is submited  , User will get nofication and Earn Money .}\\
+    \toprule
+    \end{tabular}
+	
+	
+	
+				\subsection{ Cancel Submit	 }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{  Cancel Submit	 }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully , Task is submited  } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{ 1-Open Offer  Page }\\
+                                & \textit{2- Click on  Cancel Submit  Button}\\
+								
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{		If Task's Time finished : 
+									System will make panlty  }\\
+	
+
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{ cancel Task'submition  , System will make panlty  }\\
+    \toprule
+    \end{tabular}
+	
+	
+	
+					\subsection{ 	 Rate the employer }
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Use Case Name}    & \textit{ 	 Rate the employer	 }\\
+      \textbf{Actors}           & \textit{ Freelancer --- Exclusively}\\
+      \rowcolor{LightCyan}
+      \textbf{Pre--condition}   & \textit {User is logged Successfully  } \\
+      \rowcolor{LightCyan}
+      \textbf{Basic Flow}       & \textit{1-Open emplyer profile }\\
+                                & \textit{2- make rate}\\
+								 & \textit{3- Click on  rate  Button}\\
+								
+	  \rowcolor{LightCyan}
+      \textbf{	Alternative Flow}     
+								& \textit{		If The User Hasn't login yet :
+									The User is prompted to Login}\\
+									
+	
+
+      \rowcolor{LightCyan}
+      \textbf{Post--condition}  & \textit{User make rate  }\\
+    \toprule
+    \end{tabular}
 
 
 
@@ -554,21 +908,97 @@ and sure the freelancer is paid.
     \begin{tabular}{ l | l }
     \toprule
       \rowcolor{LightCyan}
-      \textbf{Context}            & \textit{}\\
-      \textbf{Problem}            & \textit{}\\
-                                  & \textit{}\\
+      \textbf{Context}            & We need to get only one instance (Statistics/Database Class...)\\
+      \textbf{Problem}            & How can we insure that it is not possible to get more than one instance of a Class\\
       \rowcolor{LightCyan}
-      \textbf{Solution}           & \textit{}\\
-      \textbf{Post--condition}    & \textit{}\\
-                                  & \textit{}\\
-                                  & \textit{}\\
+      \textbf{Solution}           & \textit{1. Make a the constructor private.}\\
+                                  & \textit{2. Make public static method, It creates single object.}\\
     \toprule
     \end{tabular}
-
 \begin{figure}[ht!]
 \centering
-%\includegraphics[width=128mm]{}
+\includegraphics[width=128mm]{Singleton Design Pattern.jpg}
 \end{figure}
+
+
+
+\subsection{ReadOnly Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need an object to be read-only (We cannot edit it) [Statistics].\\
+      \textbf{Problem}            & How do you create a class whose instances are immutable.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{1. Make an Interface `Read-Only` with getters methods.}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{ReadOnly Design Pattern.png}
+\end{figure}
+
+
+\newpage
+\subsection{Factory Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need to generate objects as a template (automatically).\\
+      \textbf{Problem}            & How to generate obejcts using a generating method (Factory).\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{Make a class (Factory), that contains a method which returns,}\\
+                                  & \textit{an object of the wanted class}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Factory Design Pattern.png}
+\end{figure}
+
+
+
+
+\newpage
+\subsection{Composition Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & Recursive composition, Something that can contain it self.\\
+      \textbf{Problem}            & How can we Enable the complaint to contain a reply \textit{(Which is a complain)}.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{It can be done by self-composition}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Composition Design Pattern.png}
+\end{figure}
+
+
+
+
+
+\newpage
+\subsection{Bridge Design Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need abstraction, and it can be implemented in different ways.\\
+      \textbf{Problem}            & We have \textit{Report class}, it has an abstraction, but there are different subjects of a Report.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{Make a Report Class, that implements an interface (abstraction)}\\
+                                  & \textit{All different types of the report are children of the Report}\\
+                                  & \textit{Each of them implement the abstraction in its own way}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Bridge Design Pattern.png}
+\end{figure}
+
+
+
+
 
 
 
