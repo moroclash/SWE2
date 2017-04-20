@@ -1,0 +1,37 @@
+\contentsline {section}{\numberline {1}System Description}{3}
+\contentsline {section}{\numberline {2}System Actors}{3}
+\contentsline {subsection}{\numberline {2.1}Root}{3}
+\contentsline {subsection}{\numberline {2.2}Admin}{3}
+\contentsline {subsection}{\numberline {2.3}Freelancer}{3}
+\contentsline {subsection}{\numberline {2.4}Employer}{3}
+\contentsline {section}{\numberline {3}Diagrams}{4}
+\contentsline {subsection}{\numberline {3.1}ERD}{4}
+\contentsline {subsection}{\numberline {3.2}Use Case}{5}
+\contentsline {subsection}{\numberline {3.3}Class Diagram}{6}
+\contentsline {subsection}{\numberline {3.4}System Sequence Diagrams}{7}
+\contentsline {section}{\numberline {4}Use Case -- \textit {in detail}}{8}
+\contentsline {subsection}{\numberline {4.1}Access Root}{8}
+\contentsline {subsection}{\numberline {4.2}Specify Penalties}{9}
+\contentsline {subsection}{\numberline {4.3}Add Admin}{9}
+\contentsline {subsection}{\numberline {4.4}Remove Admin}{10}
+\contentsline {subsection}{\numberline {4.5}Block Admin}{10}
+\contentsline {subsection}{\numberline {4.6}Unblock Admin}{10}
+\contentsline {subsection}{\numberline {4.7}Search Freelancers}{10}
+\contentsline {subsection}{\numberline {4.8}Search about Freelancer}{11}
+\contentsline {subsection}{\numberline {4.9}Review Employer history}{12}
+\contentsline {subsection}{\numberline {4.10}Reject offer submitting }{13}
+\contentsline {subsection}{\numberline {4.11}Accept Offer}{14}
+\contentsline {subsection}{\numberline {4.12}Accept Submitting Offer}{15}
+\contentsline {subsection}{\numberline {4.13}Reply Complaints}{16}
+\contentsline {subsection}{\numberline {4.14}View Statistics}{17}
+\contentsline {subsection}{\numberline {4.15}Remove Account}{17}
+\contentsline {subsection}{\numberline {4.16}Receive Complaint}{17}
+\contentsline {subsection}{\numberline {4.17}View Reports}{17}
+\contentsline {subsection}{\numberline {4.18}Ban Account}{18}
+\contentsline {section}{\numberline {5}Design Patterns}{19}
+\contentsline {subsection}{\numberline {5.1}Singleton Design Pattern}{19}
+\contentsline {subsection}{\numberline {5.2}ReadOnly Pattern}{20}
+\contentsline {subsection}{\numberline {5.3}Factory Pattern}{21}
+\contentsline {subsection}{\numberline {5.4}Composition Pattern}{22}
+\contentsline {subsection}{\numberline {5.5}Bridge Design Pattern}{23}
+\contentsline {section}{\numberline {6}Call Us}{23}

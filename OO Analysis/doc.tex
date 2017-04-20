@@ -554,21 +554,97 @@ and sure the freelancer is paid.
     \begin{tabular}{ l | l }
     \toprule
       \rowcolor{LightCyan}
-      \textbf{Context}            & \textit{}\\
-      \textbf{Problem}            & \textit{}\\
-                                  & \textit{}\\
+      \textbf{Context}            & We need to get only one instance (Statistics/Database Class...)\\
+      \textbf{Problem}            & How can we insure that it is not possible to get more than one instance of a Class\\
       \rowcolor{LightCyan}
-      \textbf{Solution}           & \textit{}\\
-      \textbf{Post--condition}    & \textit{}\\
-                                  & \textit{}\\
-                                  & \textit{}\\
+      \textbf{Solution}           & \textit{1. Make a the constructor private.}\\
+                                  & \textit{2. Make public static method, It creates single object.}\\
     \toprule
     \end{tabular}
-
 \begin{figure}[ht!]
 \centering
-%\includegraphics[width=128mm]{}
+\includegraphics[width=128mm]{Singleton Design Pattern.jpg}
 \end{figure}
+
+
+
+\subsection{ReadOnly Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need an object to be read-only (We cannot edit it) [Statistics].\\
+      \textbf{Problem}            & How do you create a class whose instances are immutable.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{1. Make an Interface `Read-Only` with getters methods.}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{ReadOnly Design Pattern.png}
+\end{figure}
+
+
+\newpage
+\subsection{Factory Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need to generate objects as a template (automatically).\\
+      \textbf{Problem}            & How to generate obejcts using a generating method (Factory).\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{Make a class (Factory), that contains a method which returns,}\\
+                                  & \textit{an object of the wanted class}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Factory Design Pattern.png}
+\end{figure}
+
+
+
+
+\newpage
+\subsection{Composition Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & Recursive composition, Something that can contain it self.\\
+      \textbf{Problem}            & How can we Enable the complaint to contain a reply \textit{(Which is a complain)}.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{It can be done by self-composition}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Composition Design Pattern.png}
+\end{figure}
+
+
+
+
+
+\newpage
+\subsection{Bridge Design Pattern}
+    \begin{tabular}{ l | l }
+    \toprule
+      \rowcolor{LightCyan}
+      \textbf{Context}            & We need abstraction, and it can be implemented in different ways.\\
+      \textbf{Problem}            & We have \textit{Report class}, it has an abstraction, but there are different subjects of a Report.\\
+      \rowcolor{LightCyan}
+      \textbf{Solution}           & \textit{Make a Report Class, that implements an interface (abstraction)}\\
+                                  & \textit{All different types of the report are children of the Report}\\
+                                  & \textit{Each of them implement the abstraction in its own way}\\
+    \toprule
+    \end{tabular}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{Bridge Design Pattern.png}
+\end{figure}
+
+
+
+
 
 
 
