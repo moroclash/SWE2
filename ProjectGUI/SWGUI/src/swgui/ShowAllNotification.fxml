@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShowAllNotification">
    <children>
-      <TextField layoutX="68.0" layoutY="12.0" opacity="0.4" prefHeight="44.0" prefWidth="509.0" style="-fx-background-color: #FFFFFF;" promptText="Search" />
+      <TextField layoutX="68.0" layoutY="12.0" opacity="0.4" prefHeight="44.0" prefWidth="509.0" style="-fx-background-color: #FFFFFF;" text="Search" />
       <Label fx:id="notificationState" layoutX="300.0" layoutY="300.0" prefHeight="76.0" prefWidth="481.0" text="No Notification &gt;make it empty in case of there is at least one notification" textFill="#c7c8c2" />
       <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="16.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
