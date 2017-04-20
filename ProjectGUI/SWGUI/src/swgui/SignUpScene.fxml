@@ -18,12 +18,12 @@
             <Font name="Apple Braille" size="25.0" />
          </font>
       </Button>
-      <TextField fx:id="name" layoutX="61.0" layoutY="119.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Your Name">
+      <TextField fx:id="name" layoutX="61.0" layoutY="119.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" promptText="Your Name">
          <font>
             <Font name="Apple Braille" size="14.0" />
          </font>
       </TextField>
-      <Text fill="#fcfcfe" layoutX="34.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up for free today!" textAlignment="CENTER" wrappingWidth="309.21875">
+      <Text fill="#fcfcfe" layoutX="34.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" promptText="Sign up for free today!" textAlignment="CENTER" wrappingWidth="309.21875">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
@@ -38,7 +38,7 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <TextField fx:id="username" layoutX="61.0" layoutY="177.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" text="Username">
+      <TextField fx:id="username" layoutX="61.0" layoutY="177.0" opacity="0.54" prefHeight="36.0" prefWidth="253.0" promptText="Username">
          <font>
             <Font name="Apple Braille" size="14.0" />
          </font>

@@ -29,9 +29,7 @@ public class LoginSceneController {
 	private Boolean validatingEmptyFields () {
 
 		if (	usernameTextField.getText().isEmpty() ||
-			usernameTextField.getText().equals("Username or Phone Number") ||
-			passwd.getText().isEmpty() ||
-			passwd.getText().equals("Password")
+			passwd.getText().isEmpty() 
 		   )
 		{
 			Alert alert = new Alert(Alert.AlertType.WARNING);
