@@ -1,6 +1,22 @@
+package system;
 
 import freelaning.Complaint;
-import java.util.*;
+import freelaning.ConsumerAccount;
+import freelaning.Freelancer;
+import freelaning.Notification;
+import freelaning.Offer;
+import freelaning.Task;
+import java.util.ArrayList;
+
+
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)il.*;
+
+
+// Singletone Pattern
+
 
 /**
  * 
@@ -31,15 +47,7 @@ public class System {
     /**
      * 
      */
-    private System static sys;
-
-
-
-
-
-
-
-
+    static private System sys;
 
 
 
@@ -76,9 +84,9 @@ public class System {
      * @param notification 
      * @return
      */
-    public bool notifyAll(Notification notification) {
+    public boolean notifyAll(Notification notification) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -112,36 +120,36 @@ public class System {
      * @param category 
      * @return
      */
-    public bool addCategory(String category) {
+    public boolean addCategory(String category) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
      * @param category 
      * @return
      */
-    public bool deleteCategory(Sting category) {
+    public boolean deleteCategory(String category) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
      * @param technology 
      * @return
      */
-    public bool addTechnology(Sting technology) {
+    public boolean addTechnology(String technology) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
      * @param technology 
      * @return
      */
-    public bool deleteTechnology(Sting technology) {
+    public boolean deleteTechnology(String technology) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -149,9 +157,9 @@ public class System {
      * @param newTech 
      * @return
      */
-    public bool updateTechnology(String oldTech, String newTech) {
+    public boolean updateTechnology(String oldTech, String newTech) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -159,15 +167,15 @@ public class System {
      * @param newCatech 
      * @return
      */
-    public bool updateCategory(String oldCate, String newCatech) {
+    public boolean updateCategory(String oldCate, String newCatech) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
      * @return
      */
-    public ArrayList<Complaints> getSeenComplaints() {
+    public ArrayList<Complaint> getSeenComplaints() {
         // TODO implement here
         return null;
     }
@@ -179,7 +187,7 @@ public class System {
      */
     public Object getAccess(String userName, String passwd) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
