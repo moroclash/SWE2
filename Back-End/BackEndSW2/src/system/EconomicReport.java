@@ -1,17 +1,27 @@
 // Done @moroclash
 package system;
 
+import java.time.LocalDateTime;
+
 /**
  * 
  */
-public class EconomicReport implements Report {
+public class EconomicReport extends Report {
 
     /**
      * Default constructor
      */
     public EconomicReport() {
     }
-
+    
+    /**
+     * @return
+     */
+    public Constraints GetConstraints() {
+	     // TODO implement here
+        return null;
+    }
+    
     /**
      * @return
      */
@@ -20,36 +30,26 @@ public class EconomicReport implements Report {
         return null;
     }
 
-    /**
-     * @return
-     */
-    public String GetDescription() {
-        // TODO implement here
-        return "";
-    }
+	@Override
+	public String GetDescription() {
+		return null;
+	}
 
-    /**
-     * @return
-     */
-    public DateTime GetDate() {
-        // TODO implement here
-        return null;
-    }
+	@Override
+	public LocalDateTime getDate() {
+		return null;
+	}
 
-    /**
-     * @return
-     */
-    public String Next() {
-        // TODO implement here
-        return "";
-    }
+	@Override
+	public String Next() {
+		return null;
+	}
 
-    /**
-     * @return
-     */
-    public bool HasNext() {
-        // TODO implement here
-        return null;
-    }
+	@Override
+	public boolean HasNext() {
+		return true;
+	}
+
+
 
 }
