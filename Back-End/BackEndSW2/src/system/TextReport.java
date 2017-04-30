@@ -1,5 +1,6 @@
+package system;
 
-import java.util.*;
+// @TahaMagdy: DONE
 
 /**
  * 
@@ -16,7 +17,7 @@ public class TextReport extends ReportManager implements Display {
      * @param path 
      * @return
      */
-    public Pdf Print(String path) {
+    public String Print(String path) {
         // TODO implement here
         return null;
     }
