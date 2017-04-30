@@ -38,6 +38,40 @@ public class Freelancer extends ConsumerAccount {
 	 */
 	private FreelancerProfile profile;
 
+	public HashSet<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(HashSet<String> skills) {
+		this.skills = skills;
+	}
+
+	public ArrayList<Experience> getExperience() {
+		return experience;
+	}
+
+	public void setExperience(ArrayList<Experience> experience) {
+		this.experience = experience;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public FreelancerProfile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(FreelancerProfile profile) {
+		this.profile = profile;
+	}
+
+	
+	
 	
 	
 	/**
