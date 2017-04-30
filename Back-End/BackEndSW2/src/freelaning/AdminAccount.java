@@ -1,6 +1,14 @@
+package freelaning;
 
-import freelaning.Complaint;
-import java.util.*;
+import system.Logs;
+import java.util.ArrayList;
+import system.Log;
+import system.Statistics;
+
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
 
 /**
  * 
@@ -66,12 +74,5 @@ public class AdminAccount extends Account implements Logs {
         return null;
     }
 
-    /**
-     * @return
-     */
-    public ArrayList<Log> getLog() {
-        // TODO implement here
-        return null;
-    }
 
 }
