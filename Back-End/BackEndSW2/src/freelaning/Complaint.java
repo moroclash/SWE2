@@ -1,3 +1,6 @@
+package freelaning;
+// @TahaMagdy: DONE
+
 
 import java.util.*;
 
@@ -15,12 +18,68 @@ public class Complaint {
     /**
      * 
      */
-    private Straing message;
+    private String message;
 
     /**
      * 
      */
     private int seenState;
+
+	public String getMessage() {
+		return message;
+	}
+
+	public Boolean setMessage(String message) {
+		this.message = message;
+	}
+
+	public int getSeenState() {
+		return seenState;
+	}
+
+	public Boolean setSeenState(int seenState) {
+		this.seenState = seenState;
+	}
+
+	public Account getOwner() {
+		return owner;
+	}
+
+	public Boolean setOwner(Account owner) {
+		this.owner = owner;
+	}
+
+	public ArrayList<Complaint> getReplies() {
+		return replies;
+	}
+
+	public Boolean setReplies(ArrayList<Complaint> replies) {
+		this.replies = replies;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public Boolean setDate(Date date) {
+		this.date = date;
+	}
+
+	public ConsumerAccount getMake() {
+		return make;
+	}
+
+	public Boolean setMake(ConsumerAccount make) {
+		this.make = make;
+	}
+
+	public Complaint getReply() {
+		return reply;
+	}
+
+	public Boolean setReply(Complaint reply) {
+		this.reply = reply;
+	}
 
     /**
      * 
@@ -35,7 +94,7 @@ public class Complaint {
     /**
      * 
      */
-    private DateTime date;
+    private Date date;
 
     /**
      * 
@@ -62,22 +121,27 @@ public class Complaint {
     /**
      * 
      */
-    public void seen() {
+    public Boolean seen() {
         // TODO implement here
+	return false;
     }
 
     /**
      * 
      */
-    public void unseen() {
+    public Boolean unseen() {
         // TODO implement here
+	return false;
     }
 
     /**
      * 
      */
-    public void isSeen() {
+    public Boolean isSeen() {
         // TODO implement here
+
+
+	return false;
     }
 
 }
