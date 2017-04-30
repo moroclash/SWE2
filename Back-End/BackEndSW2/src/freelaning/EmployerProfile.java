@@ -1,11 +1,11 @@
+// Done @moroclash
+package freelaning;
 
-import java.util.*;
 
 /**
  * 
  */
 public class EmployerProfile extends Profile {
-
     /**
      * Default constructor
      */

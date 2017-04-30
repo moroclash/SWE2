@@ -5,55 +5,55 @@ import java.time.LocalDateTime;
 import system.SystemAccess;
 
 /**
- * 
+ *
  */
 public class Account implements SystemAccess {
 
-    /**
-     * Default constructor
-     */
-    public Account() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Account() {
+	}
 
-    /**
-     * 
-     */
-    private String firstName;
+	/**
+	 *
+	 */
+	private String firstName;
 
-    /**
-     * 
-     */
-    private String lastName;
+	/**
+	 *
+	 */
+	private String lastName;
 
-    /**
-     * 
-     */
-    private String phone;
+	/**
+	 *
+	 */
+	private String phone;
 
-    /**
-     * 
-     */
-    private int id;
+	/**
+	 *
+	 */
+	private int id;
 
-    /**
-     * 
-     */
-    private String password;
+	/**
+	 *
+	 */
+	private String password;
 
-    /**
-     * 
-     */
-    private String userName;
+	/**
+	 *
+	 */
+	private String userName;
 
-    /**
-     * 
-     */
-    private boolean blockState;
+	/**
+	 *
+	 */
+	private boolean blockState;
 
-    /**
-     * 
-     */
-    private LocalDateTime date;
+	/**
+	 *
+	 */
+	private LocalDateTime date;
 
 	public String getFirstName() {
 		return firstName;
@@ -82,7 +82,6 @@ public class Account implements SystemAccess {
 	public int getiD() {
 		return id;
 	}
-
 
 	public String getPassword() {
 		return password;
@@ -116,49 +115,43 @@ public class Account implements SystemAccess {
 		this.date = date;
 	}
 
+	/**
+	 * @return
+	 */
+	public boolean block() {
+		// TODO implement here
+		return true;
+	}
 
-    
-    
-    
-    
-    
-    /**
-     * @return
-     */
-    public boolean block() {
-        // TODO implement here
-        return true;
-    }
+	/**
+	 * @return
+	 */
+	public boolean unblock() {
+		// TODO implement here
+		return true;
+	}
 
-    /**
-     * @return
-     */
-    public boolean unblock() {
-        // TODO implement here
-        return true;
-    }
+	/**
+	 * @return
+	 */
+	public boolean remove() {
+		// TODO implement here
+		return true;
+	}
 
-    /**
-     * @return
-     */
-    public boolean remove() {
-        // TODO implement here
-        return true;
-    }
+	/**
+	 * @return
+	 */
+	public boolean logout() {
+		// TODO implement here
+		return true;
+	}
 
-    /**
-     * @return
-     */
-    public boolean logout() {
-        // TODO implement here
-        return true;
-    }
-
-    /**
-     * 
-     */
-    public void updateProfile() {
-        // TODO implement here
-    }
+	/**
+	 *
+	 */
+	public void updateProfile() {
+		// TODO implement here
+	}
 
 }
