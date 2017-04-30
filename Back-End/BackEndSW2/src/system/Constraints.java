@@ -1,20 +1,16 @@
 package system;
 
 // @TahaMagdy: DONE
-
 // Singletone Pattern
-
 /**
- * 
+ *
  */
 public class Constraints {
 
-
-
-    /**
-     * 
-     */
-    private int fr_timeoutPenalty;
+	/**
+	 *
+	 */
+	private int fr_timeoutPenalty;
 
 	public int getFr_timeoutPenalty() {
 		return fr_timeoutPenalty;
@@ -80,30 +76,30 @@ public class Constraints {
 		this.ourProfit = ourProfit;
 	}
 
-    /**
-     * 
-     */
-    private int fr_cancelingTaskPenalty;
+	/**
+	 *
+	 */
+	private int fr_cancelingTaskPenalty;
 
-    /**
-     * 
-     */
-    private int fr_overtimePenalty;
+	/**
+	 *
+	 */
+	private int fr_overtimePenalty;
 
-    /**
-     * 
-     */
-    private int em_rejectFinishedTaskPenalty;
+	/**
+	 *
+	 */
+	private int em_rejectFinishedTaskPenalty;
 
-    /**
-     * 
-     */
-    private int em_cancelRunningTaskPenalty;
+	/**
+	 *
+	 */
+	private int em_cancelRunningTaskPenalty;
 
-    /**
-     * 
-     */
-    private int em_cancelRunningTaskBudgetPenalty;
+	/**
+	 *
+	 */
+	private int em_cancelRunningTaskBudgetPenalty;
 
 	public static Constraints getConstrain() {
 		return constrain;
@@ -113,38 +109,34 @@ public class Constraints {
 		Constraints.constrain = constrain;
 	}
 
-    /**
-     * 
-     */
-    private int em_rejectFinishedTaskBudgetPenalty;
+	/**
+	 *
+	 */
+	private int em_rejectFinishedTaskBudgetPenalty;
 
-    /**
-     * 
-     */
-    private int ourProfit;
+	/**
+	 *
+	 */
+	private int ourProfit;
 
-    /**
-     * 
-     */
-    static  private Constraints constrain;
+	/**
+	 *
+	 */
+	static private Constraints constrain;
 
+	/**
+	 *
+	 */
+	private void Constraints() {
+		// TODO implement here
+	}
 
-
-
-
-    /**
-     * 
-     */
-    private void Constraints() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Constraints GetInstance() {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @return
+	 */
+	public Constraints GetInstance() {
+		// TODO implement here
+		return null;
+	}
 
 }

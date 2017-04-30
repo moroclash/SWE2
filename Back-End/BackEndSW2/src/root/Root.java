@@ -1,12 +1,11 @@
 package root;
 
-import freelaning.Account;
 import freelaning.AdminAccount;
 import java.util.ArrayList;
 import system.Constraints;
 import system.Log;
 import system.Logs;
-import system.SystemAccess;
+import freelaning.SystemAccess;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
@@ -14,7 +13,7 @@ import system.SystemAccess;
 /**
  * 
  */
-public class Root extends Account implements SystemAccess, Logs {
+public class Root implements SystemAccess, Logs {
 
     /**
      * Default constructor
