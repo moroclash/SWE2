@@ -1,5 +1,5 @@
-
-import java.util.*;
+// Done @moroclash
+package system;
 
 /**
  * 
@@ -15,7 +15,7 @@ public class EconomicReport implements Report {
     /**
      * @return
      */
-    public Statistics GetStatistics() {
+    public GetStatistics GetStatistics() {
         // TODO implement here
         return null;
     }

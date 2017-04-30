@@ -3,20 +3,16 @@ package system;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
-
 // Singletone Pattern
-
 /**
- * 
+ *
  */
 public class Statistics {
 
-
-
-    /**
-     * 
-     */
-    private double totalMoney;
+	/**
+	 *
+	 */
+	private double totalMoney;
 
 	public double getTotalMoney() {
 		return totalMoney;
@@ -98,81 +94,70 @@ public class Statistics {
 		this.numberOfBlockedPeople = numberOfBlockedPeople;
 	}
 
-	public static Statistics getStatistics() {
-		return statistics;
+	/**
+	 *
+	 */
+	private double ourMoney;
+
+	/**
+	 *
+	 */
+	private int numberOfEmployers;
+
+	/**
+	 *
+	 */
+	private int numberOfFreelancers;
+
+	/**
+	 *
+	 */
+	private int numberOfAllTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfAcceptedTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfRejectedTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfComplaints;
+
+	/**
+	 *
+	 */
+	private int numberOfAdmins;
+
+	/**
+	 *
+	 */
+	private int numberOfBlockedPeople;
+
+	/**
+	 *
+	 */
+	static private Statistics statistics;
+
+	/**
+	 *
+	 */
+	private void Statistics() {
+		// TODO implement here
 	}
 
-	public static void setStatistics(Statistics statistics) {
-		Statistics.statistics = statistics;
+	/**
+	 * @return
+	 */
+	// أحا يا ياسر، أكتب أول حرف صغير مش كبير
+	public Statistics getInstance() {
+		// TODO implement here
+		return null;
 	}
-
-    /**
-     * 
-     */
-    private double ourMoney;
-
-    /**
-     * 
-     */
-    private int numberOfEmployers;
-
-    /**
-     * 
-     */
-    private int numberOfFreelancers;
-
-    /**
-     * 
-     */
-    private int numberOfAllTasks;
-
-    /**
-     * 
-     */
-    private int numberOfAcceptedTasks;
-
-    /**
-     * 
-     */
-    private int numberOfRejectedTasks;
-
-    /**
-     * 
-     */
-    private int numberOfComplaints;
-
-    /**
-     * 
-     */
-    private int numberOfAdmins;
-
-    /**
-     * 
-     */
-    private int numberOfBlockedPeople;
-
-    /**
-     * 
-     */
-    static private Statistics statistics;
-
-
-
-
-    /**
-     * 
-     */
-    private void Statistics() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    // أحا يا ياسر، أكتب أول حرف صغير مش كبير
-    public Statistics getInstance() {
-        // TODO implement here
-        return null;
-    }
 
 }
