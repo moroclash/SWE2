@@ -21,7 +21,7 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public Constraints GetConstraint() {
+    public Constraints getConstraint() {
         // TODO implement here
         return null;
     }
@@ -29,7 +29,7 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public Statistics GetStatistics() {
+    public Statistics getStatistics() {
         // TODO implement here
         return null;
     }
@@ -37,7 +37,7 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public String GetDescription() {
+    public String getDescription() {
         // TODO implement here
         return "";
     }
@@ -45,7 +45,7 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public LocalDateTime GetDate() {
+    public LocalDateTime getDate() {
         // TODO implement here
         return null;
     }
@@ -53,7 +53,7 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public String Next() {
+    public String next() {
         // TODO implement here
         return "";
     }
@@ -61,13 +61,28 @@ public class SystemSummary extends Report {
     /**
      * @return
      */
-    public boolean HasNext() {
+    public boolean hasNext() {
         // TODO implement here
         return false;
     }
 
 	@Override
 	public LocalDateTime getDate() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public String GetDescription() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public String Next() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public boolean HasNext() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
