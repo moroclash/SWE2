@@ -6,6 +6,7 @@ import freelaning.Account;
 import java.util.ArrayList;
 import freelaning.Notification;
 import freelaning.Complaint;
+import java.util.List;
 import system.Iterator;
 
 /**
@@ -38,6 +39,58 @@ public abstract class ConsumerAccount extends Account {
 	 *
 	 */
 	private ArrayList<Notification> notifications;
+	
+	
+	
+	/**
+	 * 
+	 * private iterator class
+	 */
+	
+	private class BeIterator implements Iterator
+	{
+
+		@Override
+		public Object next() {
+			return null;
+		}
+
+		@Override
+		public Object previous() {
+			return null;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return true;
+		}
+
+		@Override
+		public int getSize() {
+			return 1;
+		}
+
+		@Override
+		public Object getIndx(int index) {
+			return null;
+		}
+
+		@Override
+		public List getAll() {
+			return null;
+		}
+
+		@Override
+		public List Clone() {
+			return null;
+		}
+
+		@Override
+		public boolean removeIndex(int Index) {
+			return true;
+		}
+	}
+	
 
 	public String getBirthDate() {
 		return birthDate;
@@ -82,7 +135,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 * @return
 	 */
-	public Iterator getOfferHistoryIterator() {
+	public BeIterator getOfferHistoryIterator() {
 		// TODO implement here
 		return null;
 	}
@@ -90,7 +143,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 * @return
 	 */
-	public Iterator getComplainsIterator() {
+	public BeIterator getComplainsIterator() {
 		// TODO implement here
 		return null;
 	}
