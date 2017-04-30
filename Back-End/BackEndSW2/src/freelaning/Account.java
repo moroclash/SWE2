@@ -1,10 +1,12 @@
+// #Done @moroclash
+package freelaning;
 
-import java.util.*;
+import system.SystemAccess;
 
 /**
  * 
  */
-public class Account implements systemAccess {
+public class Account implements SystemAccess {
 
     /**
      * Default constructor
