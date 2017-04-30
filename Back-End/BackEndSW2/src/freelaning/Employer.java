@@ -97,7 +97,7 @@ public class Employer extends ConsumerAccount {
     }
 
 	@Override
-	boolean register() {
+	public boolean register() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
