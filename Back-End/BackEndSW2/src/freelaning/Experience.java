@@ -1,5 +1,9 @@
+package freelaning;
+import java.util.ArrayList;
 
-import java.util.*;
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
 
 /**
  * 
@@ -15,7 +19,39 @@ public class Experience {
     /**
      * 
      */
-    private File picture;
+    private String picture;
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public ArrayList<String> getTechnologies() {
+		return technologies;
+	}
+
+	public void setTechnologies(ArrayList<String> technologies) {
+		this.technologies = technologies;
+	}
 
     /**
      * 
