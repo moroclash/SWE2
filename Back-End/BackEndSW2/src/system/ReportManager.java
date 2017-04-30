@@ -1,5 +1,14 @@
+package system;
+import java.time.LocalDateTime;
 
-import java.util.*;
+
+
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)il.*;
+
+
 
 /**
  * 
@@ -17,6 +26,14 @@ public class ReportManager {
      */
     private Report report;
 
+	public Report getReport() {
+		return report;
+	}
+
+	public void setReport(Report report) {
+		this.report = report;
+	}
+
 
     /**
      * @return
@@ -29,7 +46,7 @@ public class ReportManager {
     /**
      * @return
      */
-    public Date GetReportDate() {
+    public LocalDateTime GetReportDate() {
         // TODO implement here
         return null;
     }
@@ -45,15 +62,15 @@ public class ReportManager {
     /**
      * @return
      */
-    public bool HasNextReport() {
+    public boolean HasNextReport() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
      * @return
      */
-    public Time GetReportTime() {
+    public LocalDateTime GetReportTime() {
         // TODO implement here
         return null;
     }
