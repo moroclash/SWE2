@@ -1,15 +1,15 @@
-
+package system;
 import java.util.*;
 
 /**
  * 
  */
-public interface systemAccess {
+public interface SystemAccess {
 
     /**
      * @return
      */
-    public bool logout();
+    public Boolean logout();
 
     /**
      * 
