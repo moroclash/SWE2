@@ -1,5 +1,11 @@
+package system;
 
-import java.util.*;
+import java.time.LocalDateTime;
+
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)il.*;
 
 /**
  * 
@@ -39,7 +45,7 @@ public class SystemSummary implements Report {
     /**
      * @return
      */
-    public DateTime GetDate() {
+    public LocalDateTime GetDate() {
         // TODO implement here
         return null;
     }
@@ -55,9 +61,9 @@ public class SystemSummary implements Report {
     /**
      * @return
      */
-    public bool HasNext() {
+    public boolean HasNext() {
         // TODO implement here
-        return null;
+        return false;
     }
 
 }
