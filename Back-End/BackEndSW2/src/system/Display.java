@@ -1,5 +1,5 @@
-
-import java.util.*;
+// Done @moroclash
+package system;
 
 /**
  * 
@@ -10,6 +10,6 @@ public interface Display {
      * @param path 
      * @return
      */
-    public Pdf Print(String path);
+    public boolean Print(String path);
 
 }
