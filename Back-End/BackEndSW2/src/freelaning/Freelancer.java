@@ -1,172 +1,187 @@
+// Done @moroclash
 package freelaning;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import system.Iterator;
 
-
-// @TahaMagdy: DONE
 
 
 /**
- * 
+ *
  */
 public class Freelancer extends ConsumerAccount {
 
-    /**
-     * Default constructor
-     */
-    public Freelancer() {
-    }
-
-    /**
-     * 
-     */
-    private ArrayList<String> skills;
-
-    /**
-     * 
-     */
-    private ArrayList<Experience> experience;
-
-	public ArrayList<String> getSkills() {
-		return skills;
+	/**
+	 * Default constructor
+	 */
+	public Freelancer() {
 	}
 
-	public void setSkills(ArrayList<String> skills) {
-		this.skills = skills;
+	/**
+	 *
+	 */
+	private HashSet<String> skills;
+
+	/**
+	 *
+	 */
+	private ArrayList<Experience> experience;
+
+	/**
+	 *
+	 */
+	private double balance;
+
+	/**
+	 *
+	 */
+	private FreelancerProfile profile;
+
+	
+	
+	/**
+	 * 
+	 * private iterator class
+	 */
+	
+	private class BeIterator implements Iterator
+	{
+
+		@Override
+		public Object next() {
+			return null;
+		}
+
+		@Override
+		public Object previous() {
+			return null;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return true;
+		}
+
+		@Override
+		public int getSize() {
+			return 1;
+		}
+
+		@Override
+		public Object getIndx(int index) {
+			return null;
+		}
+
+		@Override
+		public List getAll() {
+			return null;
+		}
+
+		@Override
+		public List Clone() {
+			return null;
+		}
+
+		@Override
+		public boolean removeIndex(int Index) {
+			return true;
+		}
+	}
+	
+	
+	/**
+	 * @param task
+	 * @param offer
+	 */
+	public boolean applyTask(Task task, Offer offer) {
+		// TODO implement here
+		return true;
 	}
 
-	public ArrayList<Experience> getExperience() {
-		return experience;
+	/**
+	 * @param task
+	 */
+	public boolean apologizeForTask(Task task) {
+		// TODO implement here
+		return true;
 	}
 
-	public void setExperience(ArrayList<Experience> experience) {
-		this.experience = experience;
+	/**
+	 * @param task
+	 */
+	public boolean cancelOffer(Task task) {
+		// TODO implement here
+		return true;
 	}
 
-	public double getBalance() {
-		return balance;
+	/**
+	 * @param offer
+	 * @param hoursNeeded
+	 */
+	public boolean requestOverTime(Offer offer, int hoursNeeded) {
+		// TODO implement here
+		return true;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	/**
+	 * @param offer
+	 * @param rateValue
+	 */
+	public boolean rateEmployer(Offer offer, int rateValue) {
+		// TODO implement here
+		return true;
 	}
 
-	public FreelancerProfile getProfile() {
-		return profile;
+	/**
+	 * @return
+	 */
+	public BeIterator getWaitingOffersIterator() {
+		// TODO implement here
+		return null;
 	}
 
-	public void setProfile(FreelancerProfile profile) {
-		this.profile = profile;
+	/**
+	 * @return
+	 */
+	public BeIterator getCompletedTasksIterator() {
+		// TODO implement here
+		return null;
 	}
 
-    /**
-     * 
-     */
-    private double balance;
+	/**
+	 * @return
+	 */
+	public BeIterator getAcceptedTasksIterator() {
+		// TODO implement here
+		return null;
+	}
 
-    /**
-     * 
-     */
-    private FreelancerProfile profile;
+	/**
+	 * @param skill
+	 */
+	public void addSkill(String skill) {
+		// TODO implement here
+	}
 
+	/**
+	 * @param skill
+	 */
+	public void deleteSkill(String skill) {
+		// TODO implement here
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @param task 
-     * @param offer
-     */
-    public void applyTask(Task task, Offer offer) {
-        // TODO implement here
-    }
-
-    /**
-     * @param task
-     */
-    public void apologizeForTask(Task task) {
-        // TODO implement here
-    }
-
-    /**
-     * @param task
-     */
-    public void cancelOffer(Task task) {
-        // TODO implement here
-    }
-
-    /**
-     * @param offer 
-     * @param hoursNeeded
-     */
-    public void requestOverTime(Offer offer, int hoursNeeded) {
-        // TODO implement here
-    }
-
-    /**
-     * @param offer 
-     * @param rateValue
-     */
-    public void rateEmployer(Offer offer, int rateValue) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Offer> getWaitingOffers() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Task> getCompletedTasks() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Task> getAcceptedTasks() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param skill
-     */
-    public void addSkill(String skill) {
-        // TODO implement here
-    }
-
-    /**
-     * @param skill
-     */
-    public void deleteSkill(String skill) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void listTasks() {
-        // TODO implement here
-    }
+	/**
+	 *
+	 */
+	public void listTasks() {
+		// TODO implement here
+	}
 
 	@Override
-	boolean register() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public boolean register() {
+	     return true;
 	}
 
 }
+ 
