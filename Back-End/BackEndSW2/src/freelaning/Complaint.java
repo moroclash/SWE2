@@ -1,8 +1,13 @@
 package freelaning;
 // @TahaMagdy: DONE
+// @Note: Any Boolean function returns false 
+//        (Change it if you're implementing it)
+
+import java.util.ArrayList;
+import java.util.Date;
 
 
-import java.util.*;
+
 
 /**
  * 
@@ -31,6 +36,7 @@ public class Complaint {
 
 	public Boolean setMessage(String message) {
 		this.message = message;
+	return false;
 	}
 
 	public int getSeenState() {
@@ -47,6 +53,7 @@ public class Complaint {
 
 	public Boolean setOwner(Account owner) {
 		this.owner = owner;
+	return false;
 	}
 
 	public ArrayList<Complaint> getReplies() {
@@ -55,6 +62,7 @@ public class Complaint {
 
 	public Boolean setReplies(ArrayList<Complaint> replies) {
 		this.replies = replies;
+	return false;
 	}
 
 	public Date getDate() {
@@ -63,6 +71,7 @@ public class Complaint {
 
 	public Boolean setDate(Date date) {
 		this.date = date;
+	return false;
 	}
 
 	public ConsumerAccount getMake() {
@@ -71,6 +80,7 @@ public class Complaint {
 
 	public Boolean setMake(ConsumerAccount make) {
 		this.make = make;
+	return false;
 	}
 
 	public Complaint getReply() {
@@ -79,6 +89,7 @@ public class Complaint {
 
 	public Boolean setReply(Complaint reply) {
 		this.reply = reply;
+	return false;
 	}
 
     /**
