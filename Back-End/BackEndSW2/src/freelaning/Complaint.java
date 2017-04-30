@@ -1,5 +1,13 @@
+package freelaning;
+// @TahaMagdy: DONE
+// @Note: Any Boolean function returns false 
+//        (Change it if you're implementing it)
 
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+
+
 
 /**
  * 
@@ -15,12 +23,75 @@ public class Complaint {
     /**
      * 
      */
-    private Straing message;
+    private String message;
 
     /**
      * 
      */
     private int seenState;
+
+	public String getMessage() {
+		return message;
+	}
+
+	public Boolean setMessage(String message) {
+		this.message = message;
+	return false;
+	}
+
+	public int getSeenState() {
+		return seenState;
+	}
+
+	public Boolean setSeenState(int seenState) {
+		this.seenState = seenState;
+	return false;
+	}
+
+	public Account getOwner() {
+		return owner;
+	}
+
+	public Boolean setOwner(Account owner) {
+		this.owner = owner;
+	return false;
+	}
+
+	public ArrayList<Complaint> getReplies() {
+		return replies;
+	}
+
+	public Boolean setReplies(ArrayList<Complaint> replies) {
+		this.replies = replies;
+	return false;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public Boolean setDate(LocalDateTime date) {
+		this.date = date;
+	return false;
+	}
+
+	public ConsumerAccount getMake() {
+		return make;
+	}
+
+	public Boolean setMake(ConsumerAccount make) {
+		this.make = make;
+	return false;
+	}
+
+	public Complaint getReply() {
+		return reply;
+	}
+
+	public Boolean setReply(Complaint reply) {
+		this.reply = reply;
+	return false;
+	}
 
     /**
      * 
@@ -35,7 +106,7 @@ public class Complaint {
     /**
      * 
      */
-    private DateTime date;
+    private LocalDateTime date;
 
     /**
      * 
@@ -62,22 +133,27 @@ public class Complaint {
     /**
      * 
      */
-    public void seen() {
+    public Boolean seen() {
         // TODO implement here
+	return false;
     }
 
     /**
      * 
      */
-    public void unseen() {
+    public Boolean unseen() {
         // TODO implement here
+	return false;
     }
 
     /**
      * 
      */
-    public void isSeen() {
+    public Boolean isSeen() {
         // TODO implement here
+
+
+	return false;
     }
 
 }
