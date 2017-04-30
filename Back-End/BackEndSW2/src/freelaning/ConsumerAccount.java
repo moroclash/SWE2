@@ -1,6 +1,10 @@
 package freelaning;
 import freelaning.Complaint;
 import freelaning.Account;
+import java.util.ArrayList;
+import freelaning.Notification;
+import freelaning.Complaint;
+import system.Iterator;
 /**
  * 
  */
@@ -38,10 +42,30 @@ public class ConsumerAccount extends Account {
     /**
      * @param complaint
      */
-    public void makeComplaint(Complaint complaint) {
+    public boolean makeComplaint(Complaint complaint) {
         // TODO implement here
+	return true;
     }
 
+    
+    /**
+     * @return
+     */
+    public Iterator getOfferHistoryIterator() {
+        // TODO implement here
+        return null;
+    }
+    
+    
+    /**
+     * @return
+     */
+    public Iterator getComplainsIterator() {
+        // TODO implement here
+        return null;
+    }
+    
+    
     /**
      * @return
      */
