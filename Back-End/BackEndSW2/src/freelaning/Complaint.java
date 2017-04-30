@@ -3,6 +3,7 @@ package freelaning;
 // @Note: Any Boolean function returns false 
 //        (Change it if you're implementing it)
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -45,6 +46,7 @@ public class Complaint {
 
 	public Boolean setSeenState(int seenState) {
 		this.seenState = seenState;
+	return false;
 	}
 
 	public Account getOwner() {
@@ -65,11 +67,11 @@ public class Complaint {
 	return false;
 	}
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public Boolean setDate(Date date) {
+	public Boolean setDate(LocalDateTime date) {
 		this.date = date;
 	return false;
 	}
@@ -105,7 +107,7 @@ public class Complaint {
     /**
      * 
      */
-    private Date date;
+    private LocalDateTime date;
 
     /**
      * 
