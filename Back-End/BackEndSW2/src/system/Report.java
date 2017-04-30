@@ -1,20 +1,27 @@
+package system;
 
-import java.util.*;
+import java.time.LocalDateTime;
+
+
+
+
+// @TahaMagdy: DONE
+
 
 /**
  * 
  */
-public interface Report {
+public abstract class Report {
 
     /**
      * 
      */
-    private String Name;
+    private String name;
 
     /**
      * 
      */
-    private DateTime Date;
+    private LocalDateTime date;
 
     /**
      * 
@@ -24,21 +31,20 @@ public interface Report {
     /**
      * @return
      */
-    public String GetDescription();
+    public abstract String GetDescription();
 
     /**
      * @return
      */
-    public DateTime GetDate();
+    public abstract LocalDateTime getDate();
 
     /**
      * @return
      */
-    public String Next();
+    public abstract String Next();
 
     /**
      * @return
      */
-    public bool HasNext();
-
+    public abstract boolean HasNext();
 }
