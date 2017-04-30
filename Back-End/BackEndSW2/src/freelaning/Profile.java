@@ -92,9 +92,9 @@ public class Profile {
     /**
      * @return
      */
-    public Boolean editProfile() {
+    public boolean editProfile() {
         // TODO implement here
-        return null;
+        return false;
     }
 
 }

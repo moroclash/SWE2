@@ -1,6 +1,6 @@
 package freelaning;
 // @TahaMagdy: DONE
-// @Note: Any Boolean function returns false 
+// @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
 
 import java.time.LocalDateTime;
@@ -34,7 +34,7 @@ public class Complaint {
 		return message;
 	}
 
-	public Boolean setMessage(String message) {
+	public boolean setMessage(String message) {
 		this.message = message;
 	return false;
 	}
@@ -43,7 +43,7 @@ public class Complaint {
 		return seenState;
 	}
 
-	public Boolean setSeenState(int seenState) {
+	public boolean setSeenState(int seenState) {
 		this.seenState = seenState;
 	return false;
 	}
@@ -52,7 +52,7 @@ public class Complaint {
 		return owner;
 	}
 
-	public Boolean setOwner(Account owner) {
+	public boolean setOwner(Account owner) {
 		this.owner = owner;
 	return false;
 	}
@@ -61,7 +61,7 @@ public class Complaint {
 		return replies;
 	}
 
-	public Boolean setReplies(ArrayList<Complaint> replies) {
+	public boolean setReplies(ArrayList<Complaint> replies) {
 		this.replies = replies;
 	return false;
 	}
@@ -70,7 +70,7 @@ public class Complaint {
 		return date;
 	}
 
-	public Boolean setDate(LocalDateTime date) {
+	public boolean setDate(LocalDateTime date) {
 		this.date = date;
 	return false;
 	}
@@ -79,7 +79,7 @@ public class Complaint {
 		return make;
 	}
 
-	public Boolean setMake(ConsumerAccount make) {
+	public boolean setMake(ConsumerAccount make) {
 		this.make = make;
 	return false;
 	}
@@ -88,7 +88,7 @@ public class Complaint {
 		return reply;
 	}
 
-	public Boolean setReply(Complaint reply) {
+	public boolean setReply(Complaint reply) {
 		this.reply = reply;
 	return false;
 	}
@@ -133,7 +133,7 @@ public class Complaint {
     /**
      * 
      */
-    public Boolean seen() {
+    public boolean seen() {
         // TODO implement here
 	return false;
     }
@@ -141,7 +141,7 @@ public class Complaint {
     /**
      * 
      */
-    public Boolean unseen() {
+    public boolean unseen() {
         // TODO implement here
 	return false;
     }
@@ -149,7 +149,7 @@ public class Complaint {
     /**
      * 
      */
-    public Boolean isSeen() {
+    public boolean isSeen() {
         // TODO implement here
 
 
