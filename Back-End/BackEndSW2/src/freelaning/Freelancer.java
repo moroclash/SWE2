@@ -1,5 +1,11 @@
+package freelaning;
+import java.util.ArrayList;
 
-import java.util.*;
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
+
 
 /**
  * 
@@ -21,6 +27,38 @@ public class Freelancer extends ConsumerAccount {
      * 
      */
     private ArrayList<Experience> experience;
+
+	public ArrayList<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(ArrayList<String> skills) {
+		this.skills = skills;
+	}
+
+	public ArrayList<Experience> getExperience() {
+		return experience;
+	}
+
+	public void setExperience(ArrayList<Experience> experience) {
+		this.experience = experience;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public FreelancerProfile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(FreelancerProfile profile) {
+		this.profile = profile;
+	}
 
     /**
      * 
@@ -86,7 +124,7 @@ public class Freelancer extends ConsumerAccount {
     /**
      * @return
      */
-    public ArrayList<Offers> getWaitingOffers() {
+    public ArrayList<Offer> getWaitingOffers() {
         // TODO implement here
         return null;
     }
@@ -127,5 +165,10 @@ public class Freelancer extends ConsumerAccount {
     public void listTasks() {
         // TODO implement here
     }
+
+	@Override
+	boolean register() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }
