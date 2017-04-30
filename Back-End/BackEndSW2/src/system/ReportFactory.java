@@ -1,5 +1,7 @@
+package system;
 
-import java.util.*;
+
+// @TahaMagdy: DONE
 
 /**
  * 
@@ -16,7 +18,7 @@ public class ReportFactory {
      * @param Name 
      * @return
      */
-    public Report GetReport(String Name) {
+    public Report getReport(String Name) {
         // TODO implement here
         return null;
     }
