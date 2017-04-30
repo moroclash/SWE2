@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * 
  */
-public class SystemSummary implements Report {
+public class SystemSummary extends Report {
 
     /**
      * Default constructor
@@ -65,5 +65,10 @@ public class SystemSummary implements Report {
         // TODO implement here
         return false;
     }
+
+	@Override
+	public LocalDateTime getDate() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }
