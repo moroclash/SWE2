@@ -1,5 +1,7 @@
+package freelaning;
+import java.util.ArrayList;
+// @TahaMagdy: DONE
 
-import java.util.*;
 
 /**
  * 
@@ -16,6 +18,22 @@ public class FreelancerProfile extends Profile {
      * 
      */
     private int averageHourCost;
+
+	public int getAverageHourCost() {
+		return averageHourCost;
+	}
+
+	public void setAverageHourCost(int averageHourCost) {
+		this.averageHourCost = averageHourCost;
+	}
+
+	public ArrayList<Feedback> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(ArrayList<Feedback> reviews) {
+		this.reviews = reviews;
+	}
 
     /**
      * 

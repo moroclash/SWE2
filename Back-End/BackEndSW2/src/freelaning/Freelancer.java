@@ -1,10 +1,11 @@
 // Done @moroclash
 package freelaning;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import system.Iterator;
+
+
 
 /**
  *
@@ -178,8 +179,9 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	@Override
-	boolean register() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public boolean register() {
+	     return true;
 	}
 
 }
+ 

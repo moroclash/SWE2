@@ -151,7 +151,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 * @return
 	 */
-	abstract boolean register();
+	public abstract boolean register();
 
 	/**
 	 * @return
