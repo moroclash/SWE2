@@ -1,9 +1,16 @@
+package freelaning;
 
-import java.util.*;
+import java.util.ArrayList;
+
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it);
 
 /**
  * 
  */
+
 public class Employer extends ConsumerAccount {
 
     /**
@@ -27,7 +34,10 @@ public class Employer extends ConsumerAccount {
      * @param description 
      * @param technologies
      */
-    public void createTask(int numberOfHours, double budget, String description, ArrayList<Strings> technologies) {
+    public void createTask(int numberOfHours,
+	    		   double budget,
+			   String description, 
+			   ArrayList<String> technologies) {
         // TODO implement here
     }
 
@@ -72,9 +82,9 @@ public class Employer extends ConsumerAccount {
      * @param offer 
      * @return
      */
-    public bool rejectFinishedTask(Offer offer) {
+    public boolean rejectFinishedTask(Offer offer) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -85,5 +95,10 @@ public class Employer extends ConsumerAccount {
     public void makeFeedback(Offer offer, String description, int ratePercentage) {
         // TODO implement here
     }
+
+	@Override
+	boolean register() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }
