@@ -9,7 +9,7 @@ public interface SystemAccess {
     /**
      * @return
      */
-    public Boolean logout();
+    public boolean logout();
 
     /**
      * 
