@@ -1,5 +1,9 @@
+package system;
 
-import java.util.*;
+
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
 
 /**
  * 
@@ -16,9 +20,9 @@ public class FigureReport extends ReportManager implements Display {
      * @param path 
      * @return
      */
-    public Pdf Print(String path) {
+    public boolean Print(String path) {
         // TODO implement here
-        return null;
+        return false;
     }
 
 }
