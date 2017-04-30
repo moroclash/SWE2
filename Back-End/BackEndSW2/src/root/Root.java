@@ -1,10 +1,20 @@
+package root;
 
-import java.util.*;
+import freelaning.Account;
+import freelaning.AdminAccount;
+import java.util.ArrayList;
+import system.Constraints;
+import system.Log;
+import system.Logs;
+import system.SystemAccess;
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
 
 /**
  * 
  */
-public class Root extends Account implements systemAccess, Logs {
+public class Root extends Account implements SystemAccess, Logs {
 
     /**
      * Default constructor
@@ -18,10 +28,15 @@ public class Root extends Account implements systemAccess, Logs {
     private String password;
 
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
     /**
      * @param admin
      */
-    public void createAdmin(Admin admin) {
+    public void createAdmin(AdminAccount admin) {
         // TODO implement here
     }
 
@@ -43,9 +58,9 @@ public class Root extends Account implements systemAccess, Logs {
     /**
      * @return
      */
-    public bool logout() {
+    public boolean logout() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
