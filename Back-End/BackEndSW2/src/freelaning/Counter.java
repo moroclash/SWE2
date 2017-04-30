@@ -1,5 +1,9 @@
+package freelaning;
+import java.time.LocalDateTime;
 
-import java.util.*;
+// @TahaMagdy: DONE
+// @Note: Any boolean function returns false 
+//        (Change it if you're implementing it)
 
 /**
  * 
@@ -15,16 +19,24 @@ public class Counter {
     /**
      * 
      */
-    private DateTime deadline;
+    private LocalDateTime deadline;
+
+	public LocalDateTime getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(LocalDateTime deadline) {
+		this.deadline = deadline;
+	}
 
 
 
     /**
      * @return
      */
-    public bool alarm() {
+    public boolean alarm() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -48,10 +60,8 @@ public class Counter {
         // TODO implement here
     }
 
-    /**
-     * @param int
-     */
-    public void increase(numberOfHours int) {
+ 
+    public void increase(int numberOfHours ) {
         // TODO implement here
     }
 
