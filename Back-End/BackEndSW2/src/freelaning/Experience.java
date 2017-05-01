@@ -1,7 +1,7 @@
 package freelaning;
 
-import java.util.ArrayList;
 import freelaning.Skill;
+import java.util.Set;
 
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
@@ -35,13 +35,9 @@ public class Experience {
 	/**
 	 *
 	 */
-	private ArrayList<Skill> technologies;
+	private Set<Skill> technologies;
 
 	private int id;
-
-	public int getId() {
-		return id;
-	}
 
 	public String getPicture() {
 		return picture;
@@ -67,12 +63,22 @@ public class Experience {
 		this.summary = summary;
 	}
 
-	public ArrayList<Skill> getTechnologies() {
+	public Set<Skill> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(ArrayList<Skill> technologies) {
+	public void setTechnologies(Set<Skill> technologies) {
 		this.technologies = technologies;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 }

@@ -153,4 +153,13 @@ public class Account implements SystemAccess {
 		// TODO implement here
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 }

@@ -1,23 +1,31 @@
 package freelaning;
-import java.util.ArrayList;
+
+import java.util.List;
 // @TahaMagdy: DONE
 
-
 /**
- * 
+ *
  */
 public class FreelancerProfile extends Profile {
 
-    /**
-     * Default constructor
-     */
-    public FreelancerProfile() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public FreelancerProfile() {
+	}
 
-    /**
-     * 
-     */
-    private int averageHourCost;
+	/**
+	 *
+	 */
+	private int averageHourCost;
+
+	/**
+	 *
+	 */
+	private List<Feedback> reviews;
+	
+	
+	
 
 	public int getAverageHourCost() {
 		return averageHourCost;
@@ -27,19 +35,12 @@ public class FreelancerProfile extends Profile {
 		this.averageHourCost = averageHourCost;
 	}
 
-	public ArrayList<Feedback> getReviews() {
+	public List<Feedback> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(ArrayList<Feedback> reviews) {
+	public void setReviews(List<Feedback> reviews) {
 		this.reviews = reviews;
 	}
-
-    /**
-     * 
-     */
-    private ArrayList<Feedback> reviews;
-
-
 
 }

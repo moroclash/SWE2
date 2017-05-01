@@ -1,0 +1,25 @@
+Account                                 *
+        ConsumerAccount                 *
+                FreeLancer              *
+                Employeer               *
+        AdminAccount                    *
+
+
+Profile                                 *
+        EmployeerProfile                *
+        FreelancerProfile               *
+
+Task                                    *
+Offer                                   *
+Complain                                -
+Experiance                              *
+Counter                                 *
+Rate                                    *
+invoice                                 -
+logs                                    -
+FeedBack                                *
+Offer                                   *
+Notification                            *
+Statistic                               -
+Constarain                              -
+Root     

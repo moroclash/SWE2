@@ -3,24 +3,56 @@ package freelaning;
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
 
-
-
 /**
- * 
+ *
  */
 public class Profile {
 
-    /**
-     * Default constructor
-     */
-    public Profile() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Profile() {
+	}
 
-    /**
-     * 
-     */
-    // Umar: Path
-    private String picture;
+	/**
+	 *
+	 */
+	// Umar: Path
+	private String picture;
+
+	/**
+	 *
+	 */
+	private String description;
+
+	/**
+	 *
+	 */
+	private Rate rate;
+
+	/**
+	 *
+	 */
+	private double totalMoney;
+
+	/**
+	 *
+	 */
+	private int numberOfTasks;
+	
+	
+	private int id;
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	
+	
 
 	public String getPicture() {
 		return picture;
@@ -62,40 +94,19 @@ public class Profile {
 		this.numberOfTasks = numberOfTasks;
 	}
 
-    /**
-     * 
-     */
-    private String description;
+	/**
+	 * @param picture
+	 */
+	public void uploadPicture(String picture) {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    private Rate rate;
-
-    /**
-     * 
-     */
-    private double totalMoney;
-
-    /**
-     * 
-     */
-    private int numberOfTasks;
-
-
-    /**
-     * @param picture
-     */
-    public void uploadPicture(String picture) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public boolean editProfile() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @return
+	 */
+	public boolean editProfile() {
+		// TODO implement here
+		return false;
+	}
 
 }

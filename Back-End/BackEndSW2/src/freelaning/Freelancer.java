@@ -1,8 +1,7 @@
 // Done @moroclash
 package freelaning;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import system.Iterator;
 
 
@@ -21,12 +20,12 @@ public class Freelancer extends ConsumerAccount {
 	/**
 	 *
 	 */
-	private HashSet<Skill> skills;
+	private Set<Skill> skills;
 
 	/**
 	 *
 	 */
-	private ArrayList<Experience> experience;
+	private List<Experience> experience;
 
 	/**
 	 *
@@ -40,19 +39,19 @@ public class Freelancer extends ConsumerAccount {
 	
 	
 
-	public HashSet<Skill> getSkills() {
+	public Set<Skill> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(HashSet<Skill> skills) {
+	public void setSkills(Set<Skill> skills) {
 		this.skills = skills;
 	}
 
-	public ArrayList<Experience> getExperience() {
+	public List<Experience> getExperience() {
 		return experience;
 	}
 
-	public void setExperience(ArrayList<Experience> experience) {
+	public void setExperience(List<Experience> experience) {
 		this.experience = experience;
 	}
 

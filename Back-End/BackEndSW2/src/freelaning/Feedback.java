@@ -1,39 +1,48 @@
 package freelaning;
+
 import java.time.LocalDateTime;
 
 // @TahaMagdy: DONE
-
-
 /**
- * 
+ *
  */
 public class Feedback {
 
-    /**
-     * Default constructor
-     */
-    public Feedback() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Feedback() {
+	}
 
-    /**
-     * 
-     */
-    private String description;
+	/**
+	 *
+	 */
+	private String description;
 
-    /**
-     * 
-     */
-    private Offer offer;
+	/**
+	 *
+	 */
+	private Offer offer;
 
-    /**
-     * 
-     */
-    private int rateValue;
+	/**
+	 *
+	 */
+	private int rateValue;
 
-    /**
-     * 
-     */
-    private LocalDateTime date;
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	private int id;
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
 
 	public String getDescription() {
 		return description;
@@ -66,6 +75,5 @@ public class Feedback {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
-
 
 }

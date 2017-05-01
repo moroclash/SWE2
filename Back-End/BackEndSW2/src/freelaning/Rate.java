@@ -1,41 +1,57 @@
-
 package freelaning;
+
 /**
- * 
+ *
  */
 public class Rate {
 
-    /**
-     * Default constructor
-     */
-    public Rate() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Rate() {
+	}
 
-    /**
-     * 
-     */
-    private int theRate;
+	/**
+	 *
+	 */
+	private int theRate;
+	private int id;
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    /**
-     * @param ratio
-     */
-    public void increase(int ratio) {
-        // TODO implement here
-    }
+	public int getId() {
+		return id;
+	}
 
-    /**
-     * @param ratio
-     */
-    public void decrease(int ratio) {
-        // TODO implement here
-    }
+	public void setTheRate(int theRate) {
+		this.theRate = theRate;
+	}
 
-    /**
-     * 
-     */
-    public void recalculateRate() {
-        // TODO implement here
-    }
+	public int getTheRate() {
+		return theRate;
+	}
+
+	/**
+	 * @param ratio
+	 */
+	public void increase(int ratio) {
+		// TODO implement here
+	}
+
+	/**
+	 * @param ratio
+	 */
+	public void decrease(int ratio) {
+		// TODO implement here
+	}
+
+	/**
+	 *
+	 */
+	public void recalculateRate() {
+		// TODO implement here
+	}
 
 }

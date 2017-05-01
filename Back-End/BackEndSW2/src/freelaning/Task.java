@@ -1,28 +1,68 @@
 package freelaning;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
-
-
 /**
- * 
+ *
  */
 public class Task {
 
-    /**
-     * Default constructor
-     */
-    public Task() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Task() {
+	}
 
-    /**
-     * 
-     */
-    private String task;
+	/**
+	 *
+	 */
+	private String task;
+
+	/**
+	 *
+	 */
+	// @Taha: It should be unsigend 
+	private int timeTaken;
+
+	/**
+	 *
+	 */
+	private List<Offer> offers;
+
+	/**
+	 *
+	 */
+	private Employer employer;
+
+	/**
+	 *
+	 */
+	private int id;
+
+	/**
+	 *
+	 */
+	private String category;
+
+	/**
+	 *
+	 */
+	private int state;
+
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	/**
+	 *
+	 */
+	public Set<Skill> technologies;
 
 	public String getTask() {
 		return task;
@@ -40,11 +80,11 @@ public class Task {
 		this.timeTaken = timeTaken;
 	}
 
-	public ArrayList<Offer> getOffers() {
+	public List<Offer> getOffers() {
 		return offers;
 	}
 
-	public void setOffers(ArrayList<Offer> offers) {
+	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
 	}
 
@@ -56,10 +96,15 @@ public class Task {
 		this.employer = employer;
 	}
 
-	public int getTaskID() {
-		return taskID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	
 
 	public String getCategory() {
 		return category;
@@ -85,87 +130,36 @@ public class Task {
 		this.date = date;
 	}
 
-	public ArrayList<String> getTechnologies() {
+	public Set<Skill> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(ArrayList<String> technologies) {
+	public void setTechnologies(Set<Skill> technologies) {
 		this.technologies = technologies;
 	}
 
-    /**
-     * 
-     */
-    // @Taha: It should be unsigend 
-    private int timeTaken;
+	/**
+	 * @return
+	 */
+	public boolean uploadTask() {
+		// TODO implement here
+		return false;
+	}
 
-    /**
-     * 
-     */
-    private ArrayList<Offer> offers;
+	/**
+	 * @return
+	 */
+	public boolean cancelTask() {
+		// TODO implement here
+		return false;
+	}
 
-    /**
-     * 
-     */
-    private Employer employer;
-
-    /**
-     * 
-     */
-    private int taskID;
-
-    /**
-     * 
-     */
-    private String category;
-
-    /**
-     * 
-     */
-    private int state;
-
-    /**
-     * 
-     */
-    private LocalDateTime date;
-
-    /**
-     * 
-     */
-    public ArrayList<String> technologies;
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @return
-     */
-    public boolean uploadTask() {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @return
-     */
-    public boolean cancelTask() {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @return
-     */
-    public boolean editTask() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @return
+	 */
+	public boolean editTask() {
+		// TODO implement here
+		return false;
+	}
 
 }

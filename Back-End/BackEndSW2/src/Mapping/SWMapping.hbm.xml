@@ -22,21 +22,216 @@
         <property name="phone" type="string"/>
         
         <!--consumerAccount Mapping--> 
-        <joined-subclass name="freelaning.ConsumerAccount" table="consumerAccounts">
+        <joined-subclass name="freelaning.ConsumerAccount">
             <key column="Account_id"/>
             <property name="birthDate" type="string"/>
             <property name="country" type="string"/>
             <property name="visaNumber" type="string"/>
-            ***************notifications *******************
+            
+            <!--his notifications-->
+            <list name="notifications" cascade="save-update , delete">
+                <key column="Account_id"/>
+                <one-to-many class="freelaning.Notification"/>
+            </list>
+            <!--end of his notification-->
+            
+            <!--mapping of freelancer-->
+            <joined-subclass name="freelaning.Freelancer">
+                <key column="ConsumerAccount"/>
+                <property name="balance" type="double"/>
+                
+                <!--his experiance-->
+                <list name="experience" cascade="save-update, delete">
+                    <key column="Account_id"/>
+                    <one-to-many class="freelaning.Experience"/>
+                </list>
+                <!--endo of his experiance-->
+                
+                <!--freelancer profile-->
+                <one-to-one name="profile" class="freelaning.FreelancerProfile" cascade="save-update,delete"/>
+                <!--end of freelancer profile-->
+                
+                                <!--freelanseer  skills-->
+                <set name="skills" cascade="all">
+                    <key column="account_id"/>
+                    <many-to-many class="freelaning.Skill" column="Skill_id"/>
+                </set>
+                <!--end freelancer skills-->
+                
+            </joined-subclass>
+             <!--end mapping of freelancer-->
+            
+            <!--mapping of Employeer-->
+            <joined-subclass name="freelaning.Employer">
+                <key column="ConsumerAccount"/>
+                
+                <!--Employeer profile-->
+                <one-to-one name="profile" class="freelaning.EmployerProfile" cascade="save-update,delete"/>
+                <!--end of Employeer profile-->
+                
+            </joined-subclass>
+             <!--end mapping of Employeer-->
+            
+        </joined-subclass>
+        <!--end consumerAccount mapping-->
+        
+        <!--adminAccount mapping-->
+        <union-subclass name="freelaning.AdminAccount" table="AdminsAccounts" />
+        <!--end adminAccount mapping-->      
+    </class>
+    <!--end of class Account and his inheritance-->
+    
+    
+    <!--profile mapping-->
+    <class name="freelaning.Profile">
+        <id name="id">
+           <generator class="increment"/> 
+        </id>
+        <property name="description" type="string"/>
+        <property name="numberOfTasks" type="int"/>
+        <property name="picture" type="string"/>
+        <property name="totalMoney" type="double"/>
+        <one-to-one  name="rate" class="freelaning.Rate" cascade="save-update,delete"/>
+        
+        <joined-subclass name="freelaning.FreelancerProfile">
+            <key column="Profile_id"/>
+            <property name="averageHourCost" type="int"/>
+            
+            <!--his feedbacks-->
+            <list name="reviews" cascade="save-update,delete">
+                <key column="profile_id"/>
+                <one-to-many class="freelaning.Feedback"/>
+            </list>
+            <!--end his feedbacks-->            
         </joined-subclass>
         
-        <joined-subclass name="freelaning.Freelancer" table="freelancers">
-            <key column="ConsumerAccount"/>
-        </joined-subclass>
-
-        
+        <union-subclass name="freelaning.EmployerProfile"/>
         
     </class>
+    <!--end profile mapping-->
+    
+    
+    <!--rate mapping-->
+    <class name="freelaning.Rate">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="theRate" type="integer"/>
+    </class>
+    <!--end rate mapping-->
+    
+    <!--notification mapping-->
+    <class name="freelaning.Notification">
+        <id name="id">
+            <generator class="sequence"/>
+        </id>
+        <property name="date" type="date"/>
+        <property name="message" type="string"/>
+        <property name="state" type="boolean"/>
+        <!--sent to account-->
+        <one-to-one name="to" class="freelaning.Account"/>
+        <!--from account-->
+        <one-to-one name="from" class="freelaning.Account"/>
+    </class>
+    <!--end notification mapping-->
+    
+    
+    <!--experiance mapping-->
+    <class name="freelaning.Experience">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="link" type="string"/>
+        <property name="picture" type="string"/>
+        <property name="summary" type="string"/>
+        <!--his technologies-->
+        <set name="technologies" cascade="all">
+            <key column="experiance_id"/>
+            <many-to-many class="freelaning.Skill" column="Skill_id"/>
+        </set>
+    </class>
+    <!--end expience mapping-->
+    
+    
+    <!--Skill mapping-->
+    <class name="freelaning.Skill">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="name" type="string"/>
+    </class>
+    <!--end skill mapping-->
+    
+    <!--feedBack Mapping--> 
+    <class name="freelaning.Feedback">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="date" type="date"/>
+        <property name="description" type="string"/>
+        <property name="rateValue" type="integer"/>
+        <one-to-one name="offer" class="freelaning.Offer" cascade="none"/>
+    </class>
+    <!--enf feedBack mapping-->
+    
+    
+    <!--offer mapping--> 
+    <class name="freelaning.Offer">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <one-to-one name="counter" class="freelaning.Counter" cascade="save-update,delete"/>
+        <property name="date" type="date"/>
+        <property name="description" type="string"/>
+        <property name="hourCost" type="integer"/>
+        <property name="numberOfHours" type="integer"/>
+        <one-to-one name="owner" class="freelaning.Freelancer" cascade="none"/>
+        <property name="state" type="integer"/>
+        <property name="timeNeeded" type="integer"/>
+        <one-to-one name="task" class="freelaning.Task" cascade="none"/>
+    </class>
+    <!--end offer mapping-->
+    
+    
+    <!--counter mapping-->
+    <class name="freelaning.Counter">
+        <id name="id" >
+            <generator class="increment"/>
+        </id>
+        <property name="deadline" type="date"/>
+        <one-to-one name="offer" class="freelaning.Offer" cascade="none"/>
+    </class>
+    <!--end counter mapping-->
+    
+    
+    <!--task mapping-->
+    <class name="freelaning.Task">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="category" type="string"/>
+        <property name="date" type="date"/>
+        <one-to-one name="employer" class="freelaning.Employer" cascade="none"/>
+        <property name="state" type="integer"/>
+        
+        <!--his applied offer-->
+        <list name="offers" cascade="save-update,delete">
+            <key column="Task_id"/>
+            <one-to-many class="freelaning.Offer"/>
+        </list>
+        <!--end his applied offer-->
+        
+        <property name="task" type="string" />
+        <property name="timeTaken" type="integer"/>
+        
+        <!--his technologies-->
+        <set name="technologies" cascade="all">
+            <key column="task_id"/>
+            <many-to-many class="freelaning.Skill" column="Skill_id"/>
+        </set>
+    </class>
+    <!--end task mapping-->
+    
     
     
     <!--Mapping for Complain Class-->
@@ -44,6 +239,6 @@
         
         
     </class>
-  
+    <!--end Mapping for Complain Class-->
 
 </hibernate-mapping>

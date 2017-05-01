@@ -3,7 +3,6 @@ package freelaning;
 
 import freelaning.Complaint;
 import freelaning.Account;
-import java.util.ArrayList;
 import freelaning.Notification;
 import freelaning.Complaint;
 import java.util.List;
@@ -38,7 +37,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 *
 	 */
-	private ArrayList<Notification> notifications;
+	private List<Notification> notifications;
 	
 	
 	
@@ -116,11 +115,11 @@ public abstract class ConsumerAccount extends Account {
 		this.visaNumber = visaNumber;
 	}
 
-	public ArrayList<Notification> getNotifications() {
+	public List<Notification> getNotifications() {
 		return notifications;
 	}
 
-	public void setNotifications(ArrayList<Notification> notifications) {
+	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
 	}
 
@@ -169,4 +168,5 @@ public abstract class ConsumerAccount extends Account {
 		return true;
 	}
 
+	
 }

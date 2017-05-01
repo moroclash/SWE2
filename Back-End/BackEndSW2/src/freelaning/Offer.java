@@ -1,25 +1,73 @@
 package freelaning;
+
 import java.time.LocalDateTime;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
 
 /**
- * 
+ *
  */
 public class Offer {
 
-    /**
-     * Default constructor
-     */
-    public Offer() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Offer() {
+	}
 
-    /**
-     * 
-     */
-    private int hourCost;
+	/**
+	 *
+	 */
+	private int hourCost;
 
+
+	/**
+	 *
+	 */
+	private int numberOfHours;
+
+	/**
+	 *
+	 */
+	private String description;
+
+	/**
+	 *
+	 */
+	private Freelancer owner;
+
+	/**
+	 *
+	 */
+	private Counter counter;
+
+	/**
+	 *
+	 */
+	private Task task;
+
+	/**
+	 *
+	 */
+	private int id;
+
+	/**
+	 *
+	 */
+	private int state;
+
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	/**
+	 *
+	 */
+	private int timeNeeded;
+
+	
 	public int getHourCost() {
 		return hourCost;
 	}
@@ -68,13 +116,15 @@ public class Offer {
 		this.task = task;
 	}
 
-	public int getOfferID() {
-		return offerID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setOfferID(int offerID) {
-		this.offerID = offerID;
+	public int getId() {
+		return id;
 	}
+
+	
 
 	public int getState() {
 		return state;
@@ -99,79 +149,28 @@ public class Offer {
 	public void setTimeNeeded(int timeNeeded) {
 		this.timeNeeded = timeNeeded;
 	}
+	
+	
+	/**
+	 *
+	 */
+	public void cancelOffer() {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    private int numberOfHours;
+	/**
+	 *
+	 */
+	public void acceptOffer() {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    private String description;
-
-    /**
-     * 
-     */
-    private Freelancer owner;
-
-    /**
-     * 
-     */
-    private Counter counter;
-
-    /**
-     * 
-     */
-    private Task task;
-
-    /**
-     * 
-     */
-    private int offerID;
-
-    /**
-     * 
-     */
-    private int state;
-
-    /**
-     * 
-     */
-    private LocalDateTime date;
-
-    /**
-     * 
-     */
-    private int timeNeeded;
-
-
-
-
-
-
-
-
-    /**
-     * 
-     */
-    public void cancelOffer() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void acceptOffer() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public boolean editOffer() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @return
+	 */
+	public boolean editOffer() {
+		// TODO implement here
+		return false;
+	}
 
 }

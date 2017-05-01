@@ -9,6 +9,7 @@ import java.util.*;
  */
 public class Notification {
 
+	
 	/**
 	 * Default constructor
 	 */
@@ -18,27 +19,33 @@ public class Notification {
 	/**
 	 *
 	 */
-	public Account from;
+	private int id;
+	
+	
+	/**
+	 *
+	 */
+	private Account from;
 
 	/**
 	 *
 	 */
-	public Account to;
+	private  Account to;
 
 	/**
 	 *
 	 */
-	public LocalDateTime date;
+	private  LocalDateTime date;
 
 	/**
 	 *
 	 */
-	public String message;
+	private  String message;
 
 	/**
 	 *
 	 */
-	public boolean state;
+	private  boolean state;
 
 	public Account getFrom() {
 		return from;
@@ -78,6 +85,14 @@ public class Notification {
 
 	public void setState(boolean state) {
 		this.state = state;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
