@@ -1,25 +1,47 @@
 package freelaning;
+
 import java.util.ArrayList;
+import freelaning.Skill;
 
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
-
 /**
- * 
+ *
  */
 public class Experience {
 
-    /**
-     * Default constructor
-     */
-    public Experience() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Experience() {
+	}
 
-    /**
-     * 
-     */
-    private String picture;
+	/**
+	 *
+	 */
+	private String picture;
+
+	/**
+	 *
+	 */
+	private String link;
+
+	/**
+	 *
+	 */
+	private String summary;
+
+	/**
+	 *
+	 */
+	private ArrayList<Skill> technologies;
+
+	private int id;
+
+	public int getId() {
+		return id;
+	}
 
 	public String getPicture() {
 		return picture;
@@ -45,28 +67,12 @@ public class Experience {
 		this.summary = summary;
 	}
 
-	public ArrayList<String> getTechnologies() {
+	public ArrayList<Skill> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(ArrayList<String> technologies) {
+	public void setTechnologies(ArrayList<Skill> technologies) {
 		this.technologies = technologies;
 	}
-
-    /**
-     * 
-     */
-    private String link;
-
-    /**
-     * 
-     */
-    private String summary;
-
-    /**
-     * 
-     */
-    private ArrayList<String> technologies;
-
 
 }

@@ -6,37 +6,92 @@ package freelaning;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-
-
-
 /**
- * 
+ *
  */
 public class Complaint {
 
-    /**
-     * Default constructor
-     */
-    public Complaint() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Complaint() {
+	}
 
-    /**
-     * 
-     */
-    private String message;
+	/**
+	 *
+	 */
+	private int id;
 
-    /**
-     * 
-     */
-    private int seenState;
+	/**
+	 *
+	 */
+	private String message;
 
+	/**
+	 *
+	 */
+	private int seenState;
+
+	/**
+	 *
+	 */
+	private Account owner;
+
+	/**
+	 *
+	 */
+	private ArrayList<Complaint> replies;
+
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	/**
+	 *
+	 */
+	public ConsumerAccount make;
+
+	/**
+	 *
+	 */
+	public Complaint reply;
+
+	
+	
+	
+	/**
+	 *
+	 */
+	public boolean seen() {
+		// TODO implement here
+		return false;
+	}
+
+	/**
+	 *
+	 */
+	public boolean unseen() {
+		// TODO implement here
+		return false;
+	}
+
+	/**
+	 *
+	 */
+	public boolean isSeen() {
+		// TODO implement here
+
+		return false;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
 
 	public boolean setMessage(String message) {
 		this.message = message;
-	return false;
+		return false;
 	}
 
 	public int getSeenState() {
@@ -45,7 +100,7 @@ public class Complaint {
 
 	public boolean setSeenState(int seenState) {
 		this.seenState = seenState;
-	return false;
+		return false;
 	}
 
 	public Account getOwner() {
@@ -54,7 +109,7 @@ public class Complaint {
 
 	public boolean setOwner(Account owner) {
 		this.owner = owner;
-	return false;
+		return false;
 	}
 
 	public ArrayList<Complaint> getReplies() {
@@ -63,7 +118,7 @@ public class Complaint {
 
 	public boolean setReplies(ArrayList<Complaint> replies) {
 		this.replies = replies;
-	return false;
+		return false;
 	}
 
 	public LocalDateTime getDate() {
@@ -72,7 +127,7 @@ public class Complaint {
 
 	public boolean setDate(LocalDateTime date) {
 		this.date = date;
-	return false;
+		return false;
 	}
 
 	public ConsumerAccount getMake() {
@@ -81,7 +136,7 @@ public class Complaint {
 
 	public boolean setMake(ConsumerAccount make) {
 		this.make = make;
-	return false;
+		return false;
 	}
 
 	public Complaint getReply() {
@@ -90,70 +145,13 @@ public class Complaint {
 
 	public boolean setReply(Complaint reply) {
 		this.reply = reply;
-	return false;
+		return false;
 	}
 
-    /**
-     * 
-     */
-    private Account owner;
+	public int getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private ArrayList<Complaint> replies;
-
-    /**
-     * 
-     */
-    private LocalDateTime date;
-
-    /**
-     * 
-     */
-    public ConsumerAccount make;
-
-
-
-
-
-
-
-
-
-
-    /**
-     * 
-     */
-    public Complaint reply;
-
-
-
-
-    /**
-     * 
-     */
-    public boolean seen() {
-        // TODO implement here
-	return false;
-    }
-
-    /**
-     * 
-     */
-    public boolean unseen() {
-        // TODO implement here
-	return false;
-    }
-
-    /**
-     * 
-     */
-    public boolean isSeen() {
-        // TODO implement here
-
-
-	return false;
-    }
+	
 
 }

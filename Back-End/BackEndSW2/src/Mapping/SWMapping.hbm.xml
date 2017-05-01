@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <!--Mapping for Account ,ConsumerAccount , FreeLancer , Employer and AdminAccount Class-->
+    <!--using join Table Stratgy-->
+    <class name="freelaning.Account" table="Accounts">
+        <id name="id" type="integer" column="id">
+            <generator class="sequence"/>
+        </id>
+        
+        <property name="date" type="date"/>
+        <property name="blockState" type="boolean"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="password" type="string"/>
+        <property name="userName" type="string"/>
+        <property name="phone" type="string"/>
+        
+        <!--consumerAccount Mapping--> 
+        <joined-subclass name="freelaning.ConsumerAccount" table="consumerAccounts">
+            <key column="Account_id"/>
+            <property name="birthDate" type="string"/>
+            <property name="country" type="string"/>
+            <property name="visaNumber" type="string"/>
+            ***************notifications *******************
+        </joined-subclass>
+        
+        <joined-subclass name="freelaning.Freelancer" table="freelancers">
+            <key column="ConsumerAccount"/>
+        </joined-subclass>
+
+        
+        
+    </class>
+    
+    
+    <!--Mapping for Complain Class-->
+    <class name="freelaning.Complaint" table="complaints">
+        
+        
+    </class>
+  
+
+</hibernate-mapping>

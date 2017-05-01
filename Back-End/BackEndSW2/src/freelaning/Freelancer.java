@@ -21,7 +21,7 @@ public class Freelancer extends ConsumerAccount {
 	/**
 	 *
 	 */
-	private HashSet<String> skills;
+	private HashSet<Skill> skills;
 
 	/**
 	 *
@@ -37,12 +37,14 @@ public class Freelancer extends ConsumerAccount {
 	 *
 	 */
 	private FreelancerProfile profile;
+	
+	
 
-	public HashSet<String> getSkills() {
+	public HashSet<Skill> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(HashSet<String> skills) {
+	public void setSkills(HashSet<Skill> skills) {
 		this.skills = skills;
 	}
 
