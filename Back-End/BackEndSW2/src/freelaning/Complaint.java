@@ -4,7 +4,7 @@ package freelaning;
 //        (Change it if you're implementing it)
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -35,12 +35,7 @@ public class Complaint {
 	/**
 	 *
 	 */
-	private Account owner;
-
-	/**
-	 *
-	 */
-	private ArrayList<Complaint> replies;
+	private Set<Complaint> replies;
 
 	/**
 	 *
@@ -50,12 +45,8 @@ public class Complaint {
 	/**
 	 *
 	 */
-	public ConsumerAccount make;
+	public ConsumerAccount owner;
 
-	/**
-	 *
-	 */
-	public Complaint reply;
 
 	
 	
@@ -84,73 +75,58 @@ public class Complaint {
 
 		return false;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getMessage() {
 		return message;
 	}
 
-	public boolean setMessage(String message) {
+	public void setMessage(String message) {
 		this.message = message;
-		return false;
 	}
 
 	public int getSeenState() {
 		return seenState;
 	}
 
-	public boolean setSeenState(int seenState) {
+	public void setSeenState(int seenState) {
 		this.seenState = seenState;
-		return false;
 	}
 
-	public Account getOwner() {
+	public ConsumerAccount getOwner() {
 		return owner;
 	}
 
-	public boolean setOwner(Account owner) {
+	public void setOwner(ConsumerAccount owner) {
 		this.owner = owner;
-		return false;
 	}
 
-	public ArrayList<Complaint> getReplies() {
+	public Set<Complaint> getReplies() {
 		return replies;
 	}
 
-	public boolean setReplies(ArrayList<Complaint> replies) {
+	public void setReplies(Set<Complaint> replies) {
 		this.replies = replies;
-		return false;
 	}
 
 	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public boolean setDate(LocalDateTime date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
-		return false;
 	}
 
-	public ConsumerAccount getMake() {
-		return make;
-	}
 
-	public boolean setMake(ConsumerAccount make) {
-		this.make = make;
-		return false;
-	}
-
-	public Complaint getReply() {
-		return reply;
-	}
-
-	public boolean setReply(Complaint reply) {
-		this.reply = reply;
-		return false;
-	}
-
-	public int getId() {
-		return id;
-	}
+	
+	
 
 	
 

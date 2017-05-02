@@ -10,10 +10,10 @@
     <!--using join Table Stratgy-->
     <class name="freelaning.Account" table="Accounts">
         <id name="id" type="integer" column="id">
-            <generator class="sequence"/>
+            <generator class="increment"/>
         </id>
         
-        <property name="date" type="date"/>
+        <property name="date"/>
         <property name="blockState" type="boolean"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>
@@ -29,10 +29,10 @@
             <property name="visaNumber" type="string"/>
             
             <!--his notifications-->
-            <list name="notifications" cascade="save-update , delete">
-                <key column="Account_id"/>
+            <set name="notifications" cascade="save-update , delete">
+                <key column="to"/>
                 <one-to-many class="freelaning.Notification"/>
-            </list>
+            </set>
             <!--end of his notification-->
             
             <!--mapping of freelancer-->
@@ -41,17 +41,18 @@
                 <property name="balance" type="double"/>
                 
                 <!--his experiance-->
-                <list name="experience" cascade="save-update, delete">
+                <set name="experience" cascade="save-update, delete">
                     <key column="Account_id"/>
                     <one-to-many class="freelaning.Experience"/>
-                </list>
+                </set>
                 <!--endo of his experiance-->
                 
+                
                 <!--freelancer profile-->
-                <one-to-one name="profile" class="freelaning.FreelancerProfile" cascade="save-update,delete"/>
+                <many-to-one name="profile" class="freelaning.FreelancerProfile" cascade="save-update,delete" not-null="true" unique="true"/>
                 <!--end of freelancer profile-->
                 
-                                <!--freelanseer  skills-->
+                <!--freelanseer  skills-->
                 <set name="skills" cascade="all">
                     <key column="account_id"/>
                     <many-to-many class="freelaning.Skill" column="Skill_id"/>
@@ -66,7 +67,7 @@
                 <key column="ConsumerAccount"/>
                 
                 <!--Employeer profile-->
-                <one-to-one name="profile" class="freelaning.EmployerProfile" cascade="save-update,delete"/>
+                <many-to-one name="profile" class="freelaning.EmployerProfile" cascade="save-update,delete" not-null="true" unique="true"/>
                 <!--end of Employeer profile-->
                 
             </joined-subclass>
@@ -76,7 +77,9 @@
         <!--end consumerAccount mapping-->
         
         <!--adminAccount mapping-->
-        <union-subclass name="freelaning.AdminAccount" table="AdminsAccounts" />
+        <joined-subclass name="freelaning.AdminAccount">
+            <key column="account_id"/>
+        </joined-subclass>
         <!--end adminAccount mapping-->      
     </class>
     <!--end of class Account and his inheritance-->
@@ -91,21 +94,24 @@
         <property name="numberOfTasks" type="int"/>
         <property name="picture" type="string"/>
         <property name="totalMoney" type="double"/>
-        <one-to-one  name="rate" class="freelaning.Rate" cascade="save-update,delete"/>
+        <many-to-one  name="rate" class="freelaning.Rate" cascade="save-update,delete" unique="true" />
         
         <joined-subclass name="freelaning.FreelancerProfile">
             <key column="Profile_id"/>
             <property name="averageHourCost" type="int"/>
             
             <!--his feedbacks-->
-            <list name="reviews" cascade="save-update,delete">
+            <set name="reviews" cascade="save-update,delete">
                 <key column="profile_id"/>
                 <one-to-many class="freelaning.Feedback"/>
-            </list>
-            <!--end his feedbacks-->            
+            </set>
+            <!--end his feedbacks--> 
+                       
         </joined-subclass>
         
-        <union-subclass name="freelaning.EmployerProfile"/>
+        <joined-subclass name="freelaning.EmployerProfile">
+            <key column="profile_id"/>
+        </joined-subclass>
         
     </class>
     <!--end profile mapping-->
@@ -123,15 +129,15 @@
     <!--notification mapping-->
     <class name="freelaning.Notification">
         <id name="id">
-            <generator class="sequence"/>
+            <generator class="increment"/>
         </id>
-        <property name="date" type="date"/>
+        <property name="date"/>
         <property name="message" type="string"/>
         <property name="state" type="boolean"/>
         <!--sent to account-->
-        <one-to-one name="to" class="freelaning.Account"/>
+        <many-to-one name="to" class="freelaning.Account" not-null="true" unique="false"/>
         <!--from account-->
-        <one-to-one name="from" class="freelaning.Account"/>
+        <many-to-one name="from" class="freelaning.Account" not-null="true" unique="false" />
     </class>
     <!--end notification mapping-->
     
@@ -154,7 +160,7 @@
     
     
     <!--Skill mapping-->
-    <class name="freelaning.Skill">
+    <class name="freelaning.Skill" >
         <id name="id">
             <generator class="increment"/>
         </id>
@@ -167,10 +173,10 @@
         <id name="id">
             <generator class="increment"/>
         </id>
-        <property name="date" type="date"/>
+        <property name="date"/>
         <property name="description" type="string"/>
         <property name="rateValue" type="integer"/>
-        <one-to-one name="offer" class="freelaning.Offer" cascade="none"/>
+        <many-to-one name="offer" class="freelaning.Offer" unique="false" not-null="true"/>
     </class>
     <!--enf feedBack mapping-->
     
@@ -180,15 +186,15 @@
         <id name="id">
             <generator class="increment"/>
         </id>
-        <one-to-one name="counter" class="freelaning.Counter" cascade="save-update,delete"/>
-        <property name="date" type="date"/>
+        <many-to-one name="counter" cascade="save-update,delete" unique="true" not-null="true"/>
+        <property name="date"/>
         <property name="description" type="string"/>
         <property name="hourCost" type="integer"/>
         <property name="numberOfHours" type="integer"/>
-        <one-to-one name="owner" class="freelaning.Freelancer" cascade="none"/>
+        <many-to-one name="owner" class="freelaning.Freelancer" not-null="true"/>
         <property name="state" type="integer"/>
         <property name="timeNeeded" type="integer"/>
-        <one-to-one name="task" class="freelaning.Task" cascade="none"/>
+        <many-to-one name="task" class="freelaning.Task" not-null="true"/>
     </class>
     <!--end offer mapping-->
     
@@ -198,8 +204,7 @@
         <id name="id" >
             <generator class="increment"/>
         </id>
-        <property name="deadline" type="date"/>
-        <one-to-one name="offer" class="freelaning.Offer" cascade="none"/>
+        <property name="deadline"/>
     </class>
     <!--end counter mapping-->
     
@@ -210,15 +215,15 @@
             <generator class="increment"/>
         </id>
         <property name="category" type="string"/>
-        <property name="date" type="date"/>
-        <one-to-one name="employer" class="freelaning.Employer" cascade="none"/>
+        <property name="date"/>
+        <many-to-one name="employer" class="freelaning.Employer" not-null="true"/>
         <property name="state" type="integer"/>
         
         <!--his applied offer-->
-        <list name="offers" cascade="save-update,delete">
-            <key column="Task_id"/>
+        <set name="offers" cascade="save-update,delete">
+            <key column="task"/>
             <one-to-many class="freelaning.Offer"/>
-        </list>
+        </set>
         <!--end his applied offer-->
         
         <property name="task" type="string" />
@@ -236,9 +241,74 @@
     
     <!--Mapping for Complain Class-->
     <class name="freelaning.Complaint" table="complaints">
-        
-        
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="date"/>
+        <many-to-one name="owner" class="freelaning.ConsumerAccount" not-null="true"/>
+        <property name="message" type="string"/>
+        <property name="seenState" type="integer"/>
+        <set name="replies" cascade="save-update,delete">
+            <key column="Complain_Id"/>
+            <many-to-many class="freelaning.Complaint" column="Replay_Id"/>
+        </set>
     </class>
     <!--end Mapping for Complain Class-->
+    
+    <!--mapping Constrain class-->
+    <class name="system.Constraints">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="em_cancelRunningTaskBudgetPenalty" type="integer"/>
+        <property name="em_cancelRunningTaskPenalty" type="integer"/>
+        <property name="em_rejectFinishedTaskBudgetPenalty" type="integer"/>
+        <property name="em_rejectFinishedTaskPenalty" type="integer"/>
+        <property name="fr_cancelingTaskPenalty" type="integer"/>
+        <property name="fr_overtimePenalty" type="integer"/>
+        <property name="fr_timeoutPenalty" type="integer"/>
+        <property name="ourProfit" type="integer"/>
+    </class>
+    <!--end constrain class-->
+    
+     <!--mapping Constrain class-->
+    <class name="system.Statistics">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="numberOfAcceptedTasks" type="integer"/>
+        <property name="numberOfAdmins" type="integer"/>
+        <property name="numberOfAllTasks" type="integer"/>
+        <property name="numberOfBlockedPeople" type="integer"/>
+        <property name="numberOfComplaints" type="integer"/>
+        <property name="numberOfEmployers" type="integer"/>
+        <property name="numberOfFreelancers" type="integer"/>
+        <property name="numberOfRejectedTasks" type="integer"/>
+        <property name="ourMoney" type="double"/>
+        <property name="totalMoney" type="double"/>
+    </class>
+    <!--end constrain class-->
+    
 
+    <!--Root mapping-->
+    <class name="root.Root">
+        <id name="id">
+            <generator  class="increment"/>
+        </id>
+        <property name="password" type="string"/>
+    </class>
+    <!--end root Mapping-->
+    
+    <!--invoice mapping-->
+    <class name="freelaning.Invoice">
+        <id name="id">
+            <generator  class="increment"/>
+        </id>
+        <property name="date"/>
+        <property name="price" type="double"/>
+        <property name="state" type="integer"/>
+        <many-to-one name="offer" class="freelaning.Offer" not-null="true"/>
+    </class>
+    <!--end invoice mapping--> 
+    
 </hibernate-mapping>

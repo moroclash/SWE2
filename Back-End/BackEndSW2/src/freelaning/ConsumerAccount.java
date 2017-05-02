@@ -5,7 +5,7 @@ import freelaning.Complaint;
 import freelaning.Account;
 import freelaning.Notification;
 import freelaning.Complaint;
-import java.util.List;
+import java.util.Set;
 import system.Iterator;
 
 /**
@@ -37,7 +37,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 *
 	 */
-	private List<Notification> notifications;
+	private Set<Notification> notifications;
 	
 	
 	
@@ -75,12 +75,12 @@ public abstract class ConsumerAccount extends Account {
 		}
 
 		@Override
-		public List getAll() {
+		public Set getAll() {
 			return null;
 		}
 
 		@Override
-		public List Clone() {
+		public Set Clone() {
 			return null;
 		}
 
@@ -115,11 +115,11 @@ public abstract class ConsumerAccount extends Account {
 		this.visaNumber = visaNumber;
 	}
 
-	public List<Notification> getNotifications() {
+	public Set<Notification> getNotifications() {
 		return notifications;
 	}
 
-	public void setNotifications(List<Notification> notifications) {
+	public void setNotifications(Set<Notification> notifications) {
 		this.notifications = notifications;
 	}
 

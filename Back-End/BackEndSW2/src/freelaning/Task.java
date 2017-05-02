@@ -32,7 +32,7 @@ public class Task {
 	/**
 	 *
 	 */
-	private List<Offer> offers;
+	private Set<Offer> offers;
 
 	/**
 	 *
@@ -80,11 +80,11 @@ public class Task {
 		this.timeTaken = timeTaken;
 	}
 
-	public List<Offer> getOffers() {
+	public Set<Offer> getOffers() {
 		return offers;
 	}
 
-	public void setOffers(List<Offer> offers) {
+	public void setOffers(Set<Offer> offers) {
 		this.offers = offers;
 	}
 

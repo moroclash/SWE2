@@ -1,6 +1,6 @@
 package freelaning;
 
-import java.util.List;
+import java.util.Set;
 // @TahaMagdy: DONE
 
 /**
@@ -22,7 +22,7 @@ public class FreelancerProfile extends Profile {
 	/**
 	 *
 	 */
-	private List<Feedback> reviews;
+	private Set<Feedback> reviews;
 	
 	
 	
@@ -35,11 +35,11 @@ public class FreelancerProfile extends Profile {
 		this.averageHourCost = averageHourCost;
 	}
 
-	public List<Feedback> getReviews() {
+	public Set<Feedback> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(List<Feedback> reviews) {
+	public void setReviews(Set<Feedback> reviews) {
 		this.reviews = reviews;
 	}
 

@@ -1,25 +1,25 @@
-Account                                 *
-        ConsumerAccount                 *
-                FreeLancer              *
-                Employeer               *
-        AdminAccount                    *
+Account                                 *	#Done
+        ConsumerAccount                 *	#Done
+                FreeLancer              *	#Done
+                Employeer               *	#Done
+        AdminAccount                    *      #Done
 
 
-Profile                                 *
-        EmployeerProfile                *
-        FreelancerProfile               *
+Profile                                 *	#Done
+        EmployeerProfile                *	#Done
+        FreelancerProfile               *	#Done
 
-Task                                    *
-Offer                                   *
-Complain                                -
-Experiance                              *
-Counter                                 *
-Rate                                    *
-invoice                                 -
+Task                                    *	#Done
+Offer                                   *	#Done
+Complain     				*	#Done                           
+Experiance                              *	#Done
+Counter                                 * should deleted and counted in runtime using Deadline date and current date in your device  !!::    #Done
+Rate                                    *	#Done
+invoice                                 *	#Done	
 logs                                    -
-FeedBack                                *
-Offer                                   *
-Notification                            *
-Statistic                               -
-Constarain                              -
-Root     
+FeedBack                                *	#Done
+Notification                            *	#Done
+Statistic                               *	#Done
+Constarain                              *	#Done
+Root    				*	#Done
+Skill					*       #Done

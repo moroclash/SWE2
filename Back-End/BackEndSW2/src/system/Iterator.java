@@ -7,6 +7,7 @@
 package system;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -19,7 +20,7 @@ public interface Iterator {
 	public boolean hasNext();
 	public int getSize();
 	public Object getIndx(int index);
-	public List getAll();
-	public List Clone();
+	public Set getAll();
+	public Set Clone();
 	public boolean removeIndex(int Index);
 }

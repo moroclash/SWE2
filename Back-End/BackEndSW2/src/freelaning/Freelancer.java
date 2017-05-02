@@ -1,6 +1,5 @@
 // Done @moroclash
 package freelaning;
-import java.util.List;
 import java.util.Set;
 import system.Iterator;
 
@@ -25,7 +24,7 @@ public class Freelancer extends ConsumerAccount {
 	/**
 	 *
 	 */
-	private List<Experience> experience;
+	private Set<Experience> experience;
 
 	/**
 	 *
@@ -47,11 +46,11 @@ public class Freelancer extends ConsumerAccount {
 		this.skills = skills;
 	}
 
-	public List<Experience> getExperience() {
+	public Set<Experience> getExperience() {
 		return experience;
 	}
 
-	public void setExperience(List<Experience> experience) {
+	public void setExperience(Set<Experience> experience) {
 		this.experience = experience;
 	}
 
@@ -109,12 +108,12 @@ public class Freelancer extends ConsumerAccount {
 		}
 
 		@Override
-		public List getAll() {
+		public Set getAll() {
 			return null;
 		}
 
 		@Override
-		public List Clone() {
+		public Set Clone() {
 			return null;
 		}
 

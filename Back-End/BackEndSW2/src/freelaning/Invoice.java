@@ -1,29 +1,42 @@
 package freelaning;
+
 import java.time.LocalDateTime;
-
-
-
 
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
-
-
 /**
- * 
+ *
  */
 public class Invoice {
 
-    /**
-     * Default constructor
-     */
-    public Invoice() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Invoice() {
+	}
 
-    /**
-     * 
-     */
-    private Offer offer;
+	/**
+	 *
+	 */
+	private Offer offer;
+
+	/**
+	 *
+	 */
+	private int state;
+
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	/**
+	 *
+	 */
+	private Double price;
+
+	private int id;
 
 	public Offer getOffer() {
 		return offer;
@@ -57,27 +70,20 @@ public class Invoice {
 		this.price = price;
 	}
 
-    /**
-     * 
-     */
-    private int state;
+	public int getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private LocalDateTime date;
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    /**
-     * 
-     */
-    public Double price;
-
-    /**
-     * @return
-     */
-    public boolean pay() {
-        // TODO implement here
-        return false;
-    }
+	/**
+	 * @return
+	 */
+	public boolean pay() {
+		// TODO implement here
+		return false;
+	}
 
 }

@@ -8,6 +8,7 @@ package system;
 import freelaning.Task;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -50,12 +51,12 @@ public class TechnologyFilter implements Cariteria{
 		}
 
 		@Override
-		public List getAll() {
+		public Set getAll() {
 			return null;
 		}
 
 		@Override
-		public List Clone() {
+		public Set Clone() {
 			return null;
 		}
 

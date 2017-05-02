@@ -14,6 +14,75 @@ public class Statistics {
 	 */
 	private double totalMoney;
 
+
+	/**
+	 *
+	 */
+	private double ourMoney;
+
+	/**
+	 *
+	 */
+	private int numberOfEmployers;
+
+	/**
+	 *
+	 */
+	private int numberOfFreelancers;
+
+	/**
+	 *
+	 */
+	private int numberOfAllTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfAcceptedTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfRejectedTasks;
+
+	/**
+	 *
+	 */
+	private int numberOfComplaints;
+
+	/**
+	 *
+	 */
+	private int numberOfAdmins;
+
+	/**
+	 *
+	 */
+	private int numberOfBlockedPeople;
+
+	/**
+	 *
+	 */
+	private static Statistics statistics;
+
+	private int id;
+	
+	/**
+	 *
+	 */
+	private void Statistics() {
+		// TODO implement here
+	}
+
+	/**
+	 * @return
+	 */
+	// أحا يا ياسر، أكتب أول حرف صغير مش كبير
+	public Statistics getInstance() {
+		// TODO implement here
+		return null;
+	}
+
 	public double getTotalMoney() {
 		return totalMoney;
 	}
@@ -94,70 +163,13 @@ public class Statistics {
 		this.numberOfBlockedPeople = numberOfBlockedPeople;
 	}
 
-	/**
-	 *
-	 */
-	private double ourMoney;
-
-	/**
-	 *
-	 */
-	private int numberOfEmployers;
-
-	/**
-	 *
-	 */
-	private int numberOfFreelancers;
-
-	/**
-	 *
-	 */
-	private int numberOfAllTasks;
-
-	/**
-	 *
-	 */
-	private int numberOfAcceptedTasks;
-
-	/**
-	 *
-	 */
-	private int numberOfRejectedTasks;
-
-	/**
-	 *
-	 */
-	private int numberOfComplaints;
-
-	/**
-	 *
-	 */
-	private int numberOfAdmins;
-
-	/**
-	 *
-	 */
-	private int numberOfBlockedPeople;
-
-	/**
-	 *
-	 */
-	static private Statistics statistics;
-
-	/**
-	 *
-	 */
-	private void Statistics() {
-		// TODO implement here
+	public int getId() {
+		return id;
 	}
 
-	/**
-	 * @return
-	 */
-	// أحا يا ياسر، أكتب أول حرف صغير مش كبير
-	public Statistics getInstance() {
-		// TODO implement here
-		return null;
+	public void setId(int id) {
+		this.id = id;
 	}
 
+	
 }

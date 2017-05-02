@@ -6,6 +6,7 @@ import system.Constraints;
 import system.Log;
 import system.Logs;
 import freelaning.SystemAccess;
+import java.util.Set;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
@@ -25,11 +26,25 @@ public class Root implements SystemAccess, Logs {
      * 
      */
     private String password;
+    private int id;
 
+	public String getPassword() {
+		return password;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 
     /**
@@ -72,7 +87,7 @@ public class Root implements SystemAccess, Logs {
     /**
      * @return
      */
-    public ArrayList<Log> getLog() {
+    public Set<Log> getLog() {
         // TODO implement here
         return null;
     }

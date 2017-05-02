@@ -2,6 +2,7 @@ package freelaning;
 
 import system.Logs;
 import java.util.ArrayList;
+import java.util.Set;
 import system.Log;
 import system.Statistics;
 
@@ -69,7 +70,7 @@ public class AdminAccount extends Account implements Logs {
     /**
      * @return
      */
-    public ArrayList<Log> getLog() {
+    public Set<Log> getLog() {
         // TODO implement here
         return null;
     }

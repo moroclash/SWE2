@@ -11,6 +11,6 @@ public interface Logs {
     /**
      * @return
      */
-    public ArrayList<Log> getLog();
+    public Set<Log> getLog();
 
 }

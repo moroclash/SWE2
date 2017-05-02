@@ -21,7 +21,6 @@ public class Counter {
 	 */
 	private LocalDateTime deadline;
 	private int id;
-	private Offer offer;
 
 	public void setId(int id) {
 		this.id = id;
@@ -31,13 +30,6 @@ public class Counter {
 		return id;
 	}
 
-	public void setOffer(Offer offer) {
-		this.offer = offer;
-	}
-
-	public Offer getOffer() {
-		return offer;
-	}
 
 	public LocalDateTime getDeadline() {
 		return deadline;
