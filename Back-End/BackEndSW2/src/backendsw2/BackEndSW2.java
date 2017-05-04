@@ -36,9 +36,24 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-	
+		Session s;
+		try {
+//			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception e) {
+			 
+		}
+		s = databaseManager.SessionsManager.getSessionFactory().openSession();
+		System.out.println("sssss");
+		s.close();
+		
 	}
 
+	
+	
+	
+	
+	
+	
 	
 	public static void select()
 	{

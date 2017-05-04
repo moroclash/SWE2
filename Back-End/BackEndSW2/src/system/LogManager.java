@@ -20,7 +20,7 @@ public class LogManager {
 	 * Don't use this function ever
 	 * 
 	 */
-	public static void CreateTableLogs()
+	private static void CreateTableLogs()
 	{
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
@@ -43,9 +43,9 @@ public class LogManager {
 	 * @param Type  : this is a type of a massage such as  Access , Login , delete , add  ....etc
 	 * @param Massage : this is a massage that will save 
 	 */
-	public static void Log(String Type,String Massage)
+	public static void Log(String Massage)
 	{
-		log.info(Type+"  "+Massage);
+		log.info(Massage);
 	}
 	
 	

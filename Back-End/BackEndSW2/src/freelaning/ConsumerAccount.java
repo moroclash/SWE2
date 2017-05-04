@@ -5,7 +5,9 @@ import freelaning.Complaint;
 import freelaning.Account;
 import freelaning.Notification;
 import freelaning.Complaint;
+import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.Session;
 import system.Iterator;
 
 /**
@@ -156,17 +158,57 @@ public abstract class ConsumerAccount extends Account {
 	 * @return
 	 */
 	public boolean addNotification(Notification notify) {
-		// TODO implement here
-		return true;
-	}
-
-	/**
-	 * @return
-	 */
-	public boolean SendNotify(Notification notify, ConsumerAccount account) {
-		// TODO implement here
+		//this try to check if Notification list is assigend to object or not
+		try{
+		    //list is assigend
+		    this.notifications.add(notify);
+		}catch(Exception ex)
+		{
+		    //assign List to object 	
+		    this.notifications = new HashSet<>();
+		    //add notification in the notificationBox
+		    this.notifications.add(notify);
+		    
+		    //update data in DB
+		    Session se ;
+		    try{
+			    //if exist session 
+			    se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		    }catch(Exception exp)
+		    {
+			    // if not exist session
+			    se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		    }   
+		    se.getTransaction().begin();
+		    try{
+			     se.update(this);
+			     se.getTransaction().commit();
+		    }catch(Exception exp){
+			    se.getTransaction().rollback();
+		    }finally{
+			    se.close();
+		    }
+		}
 		return true;
 	}
 
 	
+	/**
+	 * not tested
+	 * @moroclash
+	 * 
+	 * @param notify : this is a notification that will added in NotificationBox of ConsumerAccount.
+	 * @param account : this is aConsumer account that will receive notification.  
+	 * @return : boolean true if notification added or false if note.
+	 */
+	public boolean SendNotify(Notification notify, ConsumerAccount account) {
+		try{
+			account.addNotification(notify);
+			return true;
+		}
+		catch(Exception ex)
+		{
+			return false;
+		}
+	}
 }
