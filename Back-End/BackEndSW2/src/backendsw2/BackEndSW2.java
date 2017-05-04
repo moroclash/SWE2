@@ -19,8 +19,12 @@ import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import system.Constraints;
+import system.LogManager;
 
 /**
  *
@@ -32,7 +36,7 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		insert();
+	
 	}
 
 	
@@ -214,13 +218,18 @@ public class BackEndSW2 {
 //			System.out.print(of.getId() + "   ");
 //
 
-		Feedback fee = new Feedback();
-		fee.setDate(LocalDateTime.now());
-		fee.setDescription("dasdkj kjkl jl jl kjalskdjl jl ");
-		fee.setOffer((Offer) se.get(Offer.class, 1));
-		fee.setRateValue(12);
-		se.save(fee);
+//		Feedback fee = new Feedback();
+//		fee.setDate(LocalDateTime.now());
+//		fee.setDescription("dasdkj kjkl jl jl kjalskdjl jl ");
+//		fee.setOffer((Offer) se.get(Offer.class, 1));
+//		fee.setRateValue(12);
+//		se.save(fee);
+
+
 		
+
+
+
 		se.getTransaction().commit();
 		se.close();
 	}

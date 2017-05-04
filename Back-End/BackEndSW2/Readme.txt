@@ -4,7 +4,7 @@
    it exist in "jar/mysql-connector-java-5.1.42/"
 
 2- reimport hibernate libs  called "Hibernate 4.3.x modlegate".  
-
+3- reimport "log4j-1.2.17.jar" from folder "/jar/apache-log4j-1.2.17".
 
 *MySQL Config
 1- run MySQL server
