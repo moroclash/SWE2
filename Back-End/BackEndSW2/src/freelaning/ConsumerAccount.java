@@ -155,7 +155,15 @@ public abstract class ConsumerAccount extends Account {
 	public abstract boolean register();
 
 	
-
+	/**
+	 * not tested
+	 * @moroclash
+	 * 
+	 * @param notify : this is a notification that will added in notificationBox
+	 * @return : true if notification added or false if not
+	 * 
+	 * @post : this function will update this object in database
+	 */
 	public boolean addNotification(Notification notify) {
 		//this try to check if Notification list is assigend to object or not
 		try{
