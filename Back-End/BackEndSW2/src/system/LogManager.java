@@ -45,7 +45,7 @@ public class LogManager {
 	 */
 	public static void Log(String Massage)
 	{
-		log.info(Massage);
+		log.fatal(Massage);
 	}
 	
 	

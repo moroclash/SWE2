@@ -38,11 +38,15 @@ public class BackEndSW2 {
 	public static void main(String[] args) {
 		Session s;
 		try {
-//			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
 		} catch (Exception e) {
-			 
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
 		}
-		s = databaseManager.SessionsManager.getSessionFactory().openSession();
+		
 		System.out.println("sssss");
 		s.close();
 		

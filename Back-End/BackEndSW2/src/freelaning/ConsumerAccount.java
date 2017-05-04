@@ -154,9 +154,8 @@ public abstract class ConsumerAccount extends Account {
 	 */
 	public abstract boolean register();
 
-	/**
-	 * @return
-	 */
+	
+
 	public boolean addNotification(Notification notify) {
 		//this try to check if Notification list is assigend to object or not
 		try{
@@ -171,6 +170,9 @@ public abstract class ConsumerAccount extends Account {
 		    
 		    //update data in DB
 		    Session se ;
+		    //to check if get current session or open new session 
+		    // use to check if close session or not
+		    boolean flage =false;
 		    try{
 			    //if exist session 
 			    se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
@@ -178,6 +180,7 @@ public abstract class ConsumerAccount extends Account {
 		    {
 			    // if not exist session
 			    se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			    flage = true;
 		    }   
 		    se.getTransaction().begin();
 		    try{
@@ -185,8 +188,12 @@ public abstract class ConsumerAccount extends Account {
 			     se.getTransaction().commit();
 		    }catch(Exception exp){
 			    se.getTransaction().rollback();
+			    return false;
 		    }finally{
-			    se.close();
+			    //check if he open a new session to close it 
+			    if(flage)
+				    //close the new session
+				    se.close();
 		    }
 		}
 		return true;
