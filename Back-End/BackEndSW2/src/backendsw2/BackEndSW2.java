@@ -36,6 +36,10 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
+
+
+
+		/* @Umar
 		Session s;
 		try {
 			System.out.println("1");
@@ -49,6 +53,7 @@ public class BackEndSW2 {
 		
 		System.out.println("sssss");
 		s.close();
+		*/
 		
 	}
 
