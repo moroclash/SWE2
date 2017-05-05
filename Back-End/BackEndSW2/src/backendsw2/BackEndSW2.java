@@ -5,6 +5,7 @@
  */
 package backendsw2;
 
+import freelaning.Account;
 import freelaning.AdminAccount;
 import freelaning.Counter;
 import freelaning.Employer;
@@ -53,6 +54,23 @@ public class BackEndSW2 {
 
 
 
+		/*
+		 * @TahaMagdy: Adding a dummy Account for testing
+
+		// Making a dummy account
+		Account dummyAccount = new Account();
+		dummyAccount.setId(12);
+		
+		// Preparing a DB session
+		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		// Inserting dummyAccount into DB
+		session.save(dummyAccount);
+		session.getTransaction().commit();
+
+		session.close();
+		*/
 
 
 
