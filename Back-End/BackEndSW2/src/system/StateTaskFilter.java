@@ -58,12 +58,12 @@ public class StateTaskFilter implements Cariteria{
 		}
 
 		@Override
-		public Set getAll() {
+		public List getAll() {
 			return null;
 		}
 
 		@Override
-		public Set Clone() {
+		public List Clone() {
 			return null;
 		}
 

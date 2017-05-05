@@ -1,5 +1,6 @@
 // Done @moroclash
 package freelaning;
+import java.util.List;
 import java.util.Set;
 import system.Iterator;
 
@@ -108,12 +109,12 @@ public class Freelancer extends ConsumerAccount {
 		}
 
 		@Override
-		public Set getAll() {
+		public List getAll() {
 			return null;
 		}
 
 		@Override
-		public Set Clone() {
+		public List Clone() {
 			return null;
 		}
 

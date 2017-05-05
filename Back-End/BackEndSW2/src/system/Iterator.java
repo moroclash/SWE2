@@ -20,7 +20,7 @@ public interface Iterator {
 	public boolean hasNext();
 	public int getSize();
 	public Object getIndx(int index);
-	public Set getAll();
-	public Set Clone();
+	public List getAll();
+	public List Clone();
 	public boolean removeIndex(int Index);
 }
