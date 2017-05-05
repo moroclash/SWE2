@@ -33,14 +33,20 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		omar();
+
+
+
+
+
+		
 	} // end main
 
 	
 	
 	
 	public static void omar() {
-		
+	
+	
 	}
 	
 	
@@ -50,32 +56,39 @@ public class BackEndSW2 {
 		 * @TahaMagdy: Complaint Class testting...
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 		session.getTransaction().begin();
-
 		// Fetching complaint id = 2
 		Complaint complaintDB = (Complaint) session.get(Complaint.class,2);
-
 		System.out.println("complaintDB Testring: OK ->" + complaintDB.getMessage() );
-
 		if ( !complaintDB.isSeen() ) {
 			System.out.println("It is not seen" );
 		}
-
-
-
 		session.close();
 		 */
+
+		/* @TahaMagdy: getTask testing
+ 		OurSystem sys = OurSystem.getInstance();
+ 		Task task = sys.getTask(1);
+ 		System.out.print( "main,, Fetched category >> " +task.getCategory() );
+ 		*/
+ 		
+ 		/* @TahaMagdy: getOffer testing
+ 		OurSystem sys = OurSystem.getInstance();
+ 		Offer offer = sys.getOffer(2);
+ 		System.out.println("offer description " + offer.getDescription());
+		*/
+
+
+		
  /*
 		 * @TahaMagdy: testing AccountFactory
 		 * http 200 -> DONE
 		AccountFactory facto = new AccountFactory();
-
 		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
 		free.setBalance(1234);
 		System.out.println(free.getBalance());
 		 */
  /*
 		 * @TahaMagdy: Adding a dummy Account for testing
-
 		// Making a dummy account
 		Account dummyAccount = new Account();
 		dummyAccount.setId(12);
@@ -83,11 +96,9 @@ public class BackEndSW2 {
 		// Preparing a DB session
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 		session.getTransaction().begin();
-
 		// Inserting dummyAccount into DB
 		session.save(dummyAccount);
 		session.getTransaction().commit();
-
 		session.close();
 		 */
 	} // end taha()
