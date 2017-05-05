@@ -279,7 +279,7 @@ public abstract class ConsumerAccount extends Account {
 	public abstract boolean register();
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
