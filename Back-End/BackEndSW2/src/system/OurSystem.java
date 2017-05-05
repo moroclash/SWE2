@@ -4,6 +4,7 @@ import freelaning.Complaint;
 import freelaning.ConsumerAccount;
 import freelaning.Freelancer;
 import freelaning.AccNotification;
+import freelaning.Employer;
 import freelaning.Offer;
 import freelaning.Task;
 import java.util.ArrayList;
@@ -187,6 +188,36 @@ private Freelancer getFreelancerAccountBy_id( int id ){
     } // end getBalancgetFreelancerAccountBy_id()
 
 
+// @TahaMagdy: helper Function (getAccount)
+private Employer getEmployerAccountBy_id ( int id ){
+
+
+	// Setting session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	Employer emp = new Employer();
+
+	try{
+	// getting Freelancer Account By ID
+	emp = (Employer) session.get(Employer.class, id);
+
+	System.out.println("getAccount >> " + emp.getFirstName());
+	System.out.println("getAccount >> " + emp.getProfile().getDescription());
+	}
+	catch (Exception e ){
+		session.getTransaction().rollback();
+	}
+	finally{
+	session.close();
+	}
+
+
+	
+	return emp;
+
+
+} // end getEmployerAccountBy_id()
 
 
 
