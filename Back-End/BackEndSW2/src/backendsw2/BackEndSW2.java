@@ -5,14 +5,19 @@
  */
 package backendsw2;
 
+import freelaning.AdminAccount;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
+import freelaning.Experience;
 import freelaning.Feedback;
+import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
 import freelaning.Rate;
+import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.Session;
 
 /**
@@ -54,18 +59,6 @@ public class BackEndSW2 {
 		// Please, Comment Any testing block of yours
 
 
-
-
-
-
-
-		
-
-
-
-
-
-		
 		/*
 		@Umar
 		Session s;
@@ -83,7 +76,7 @@ public class BackEndSW2 {
 		s.close();
 		*/
 		
-	}
+	} // end main
 
 
 public static void taha(){
@@ -137,7 +130,7 @@ public static void taha(){
 
 		session.close();
 		*/
-<<<<<<< HEAD
+
 	
 } // end taha()
 	
@@ -147,9 +140,6 @@ public static void taha(){
 	
 	
 	
-	public static void select()
-	{
-||||||| merged common ancestors
 
 
 
@@ -172,7 +162,6 @@ public static void taha(){
 		s.close();
 		*/
 		
-	}
 
 	
 	
@@ -181,13 +170,6 @@ public static void taha(){
 	
 	
 	
-	public static void select()
-	{
-=======
-
-
-
-
 		
 		/*
 		@Umar
@@ -220,9 +202,9 @@ public static void taha(){
 //		n.forEach(e->{System.out.println(e.getMessage());});
 		se.close();
 	}
+	*/
 
-	public static void select() {
->>>>>>> 7024a0e75d17ab2475d4fbefc1b607121a1ad74c
+public static void select() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Experience e1 = (Experience) se.get(Experience.class, 1);
@@ -236,7 +218,7 @@ public static void taha(){
 		se.close();
 	}
 
-	public static void init() {
+public static void init() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 
@@ -415,4 +397,4 @@ public static void taha(){
 		se.close();
 	}
 
-}
+} // end class
