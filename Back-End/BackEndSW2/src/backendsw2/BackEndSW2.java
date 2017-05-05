@@ -19,8 +19,10 @@ import freelaning.Rate;
 import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -33,12 +35,37 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		omar();
+		//omar();
+                
+                boda();
 		
 	} // end main
 
 	
-	
+	public static  void boda()
+        {
+          Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		Employer emp = new Employer();
+                emp.setId(2);
+               System.out.println( emp.showAllFreelancers().toString());
+//               Task task = new Task();
+//               task.setEmployer(emp);
+//               task.setCategory("zdxf");
+//               emp.createTask(task);
+//               
+                 Offer offer =  (Offer) se.get(Offer.class, 2);
+              //  emp.acceptFinishedTask(offer);
+                //System.out.println(offer.getId());
+              // emp.rejectFinishedTask(offer);
+               Feedback f = new Feedback();
+               f.setDate(LocalDateTime.MAX);
+               f.setDescription("this is the test ");
+               f.setOffer(offer);
+               f.setRateValue(3);
+               //emp.makeFeedback(f ,offer);
+              // emp.rejectOffer(offer);
+              //emp.acceptFinishedTask(offer);
+        }
 	
 	public static void omar() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
