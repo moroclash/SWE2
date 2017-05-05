@@ -5,19 +5,25 @@
  */
 package backendsw2;
 
+<<<<<<< HEAD
 import freelaning.Complaint;
+||||||| merged common ancestors
+=======
+import freelaning.AdminAccount;
+>>>>>>> 1527dcb1ed8c1617223c901bb4723b2ef60f5486
 import freelaning.Employer;
 import freelaning.EmployerProfile;
+import freelaning.Experience;
 import freelaning.Feedback;
 import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
 import freelaning.Rate;
+import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
+
 
 /**
  *
@@ -46,8 +52,55 @@ public class BackEndSW2 {
 		se.close();
 		
 
-		
+//		EmployerProfile ep1 = new EmployerProfile();
+//		ep1.setDescription("dsadsadsaas");
+//		ep1.setNumberOfTasks(15);
+//		ep1.setPicture("llllllllllllllll");
+//		ep1.setTotalMoney(121212121212d);
+//		Employer em1 = new Employer();
+//		em1.setBirthDate("12/12/12");
+//		em1.setBlockState(false);
+//		em1.setCountry("llllllllll");
+//		em1.setDate(LocalDateTime.now());
+//		em1.setFirstName("mohadsamed");
+//		em1.setNotifications(new HashSet<>());
+//		em1.setPassword("daslkd;lsakd;lsa");
+//		em1.setPhone("1222222222222");
+//		em1.setProfile(ep1);
+//		em1.setUserName("daskdjlaskjd");
+//		em1.setVisaNumber("12345113312145121");
+//
+//		int e2 = (int) se.save(em1);
+//		System.out.println( e2);
 
+
+		// Here is some testing blocks
+		// Please, Comment Any testing block of yours
+
+
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+		
+		System.out.println("sssss");
+		s.close();
+		*/
+>>>>>>> 1527dcb1ed8c1617223c901bb4723b2ef60f5486
+		
+	} // end main
+
+
+public static void taha(){
+	
 		/*
 		 * @TahaMagdy: Complaint Class testting...
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
@@ -98,9 +151,45 @@ public class BackEndSW2 {
 		session.close();
 		*/
 
+	
+} // end taha()
+	
+	
+	
+	
+	
+	
+	
 
 
 
+
+		
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+		
+		System.out.println("sssss");
+		s.close();
+		*/
+		
+
+	
+	
+	
+	
+	
+	
+	
 		
 		/*
 		@Umar
@@ -133,8 +222,9 @@ public class BackEndSW2 {
 //		n.forEach(e->{System.out.println(e.getMessage());});
 		se.close();
 	}
+	*/
 
-	public static void select() {
+public static void select() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Experience e1 = (Experience) se.get(Experience.class, 1);
@@ -148,7 +238,7 @@ public class BackEndSW2 {
 		se.close();
 	}
 
-	public static void init() {
+public static void init() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 
@@ -327,4 +417,4 @@ public class BackEndSW2 {
 		se.close();
 	}
 
-}
+} // end class
