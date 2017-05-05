@@ -6,6 +6,8 @@ package freelaning;
 import java.time.LocalDateTime;
 import java.util.Set;
 import org.hibernate.Session;
+import system.Log;
+import system.LogManager;
 
 /**
  *
@@ -157,8 +159,11 @@ public boolean isSeen() {
 		// checking...
 		
 
+	// Adding the log
+	LogManager.Log("Complaint " + this.id + " is seen");
+	
 	return flag == 0;
-} // end is see
+} // end is seen
 
 
 
