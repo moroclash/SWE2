@@ -137,14 +137,59 @@ System.out.println("getOffer is fired from OurSystem");
 
 
     /**
-     * @param searchKey 
-     * @param mode 
-     * @return
+     * @maintainer TahaMagdy
+     * @param mode: determines how do you want to search.
+     * 	0 id
+     * 	1 username
+     * 	3 phone
+     * @return a matching CONSUMER account not null
+     * YOU need to cast it to Freelancer or Employer
      */
-    public ConsumerAccount getAccount(String searchKey, int mode) {
-        // TODO implement here
-        return null;
-    }
+public Object getAccount(String searchKey, int mode) {
+
+
+	// swtich accourding to mode
+
+	
+	///////////////////////
+	    return null;
+	///////////////////////
+    } // end getAccount()
+
+
+// @TahaMagdy: helper Function (getAccount)
+private Freelancer getFreelancerAccountBy_id( int id ){
+
+	// Setting session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+
+	Freelancer freelancerDB = new Freelancer();
+
+
+	try {
+	// getting Freelancer Account By ID
+	 freelancerDB = (Freelancer) session.get(Freelancer.class,id);
+
+	System.out.println("getAccount >> " + freelancerDB.getBalance());
+	System.out.println("getAccount >> " + freelancerDB.getProfile().getAverageHourCost());
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+
+
+        return freelancerDB;
+    } // end getBalancgetFreelancerAccountBy_id()
+
+
+
+
+
 
     /**
      * @param notification 
