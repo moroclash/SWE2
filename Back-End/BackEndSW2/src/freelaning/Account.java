@@ -47,7 +47,7 @@ public class Account implements SystemAccess {
 	/**
 	 *
 	 */
-	private boolean blockState;
+	private int accountState;
 
 	/**
 	 *
@@ -98,12 +98,12 @@ public class Account implements SystemAccess {
 		this.userName = userName;
 	}
 
-	public boolean isBlockState() {
-		return blockState;
+	public int  isAccountState() {
+		return accountState;
 	}
 
-	public void setBlockState(boolean blockState) {
-		this.blockState = blockState;
+	public void setAccountState(int accountState) {
+		this.accountState = accountState;
 	}
 
 	public LocalDateTime getDate() {
@@ -118,7 +118,7 @@ public class Account implements SystemAccess {
 	 * @return
 	 */
 	public boolean block() {
-		// TODO implement here
+		this.accountState = 0;
 		return true;
 	}
 
@@ -126,7 +126,8 @@ public class Account implements SystemAccess {
 	 * @return
 	 */
 	public boolean unblock() {
-		// TODO implement here
+
+		this.accountState = 1;
 		return true;
 	}
 
@@ -134,7 +135,7 @@ public class Account implements SystemAccess {
 	 * @return
 	 */
 	public boolean remove() {
-		// TODO implement here
+		this.accountState = 3;
 		return true;
 	}
 
@@ -142,7 +143,7 @@ public class Account implements SystemAccess {
 	 * @return
 	 */
 	public boolean logout() {
-		// TODO implement here
+		this.accountState = 4;
 		return true;
 	}
 
