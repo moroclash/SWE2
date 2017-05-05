@@ -53,6 +53,7 @@ public class Account implements SystemAccess {
 	 *
 	 */
 	private LocalDateTime date;
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -76,10 +77,6 @@ public class Account implements SystemAccess {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public int getiD() {
-		return id;
 	}
 
 	public String getPassword() {

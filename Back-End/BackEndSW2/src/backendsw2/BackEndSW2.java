@@ -7,12 +7,14 @@ package backendsw2;
 
 import freelaning.AdminAccount;
 import freelaning.Complaint;
+import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
 import freelaning.Experience;
 import freelaning.Feedback;
 import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
+import freelaning.Offer;
 import freelaning.Rate;
 import freelaning.Skill;
 import freelaning.Task;
@@ -38,22 +40,9 @@ public class BackEndSW2 {
 	
 	
 	public static void omar() {
-		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		se.getTransaction().begin();
 		
-		Employer em = (Employer) se.get(Employer.class, 1);
-		Complaint com = new Complaint();
-		com.setDate(LocalDateTime.now());
-		com.setMessage("daskdjlaskjdlask");
-		com.setOwner(em);
-		HashSet<Complaint> has = new HashSet<>();
-		has.add((Complaint) se.get(Complaint.class, 1));
-		com.setReplies(has);
-		com.setSeenState(2);
-		se.save(com);
-		se.getTransaction().commit();
-		se.close();
 	}
+	
 	
 	public static void taha() {
 

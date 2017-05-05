@@ -222,12 +222,13 @@ public abstract class ConsumerAccount extends Account {
 			{
 				se.close();
 			}
+			LogManager.Log(this.getId() + " GetHisOffersHistory");
 			return iter;
 		}
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
@@ -270,6 +271,7 @@ public abstract class ConsumerAccount extends Account {
 			{
 				se.close();
 			}
+			LogManager.Log(this.getId() +" getHisComplaints" );
 			return Biter;
 		}
 	}
@@ -349,6 +351,7 @@ public abstract class ConsumerAccount extends Account {
 	 */
 	public boolean SendNotify(AccNotification notify, ConsumerAccount account) {
 		try {
+			LogManager.Log(this.getId() + " Notify " + account.getId()+notify + " NotifyID( "+notify.getId()+" ) ");
 			return account.addNotification(notify);
 		} catch (Exception ex) {
 			return false;
