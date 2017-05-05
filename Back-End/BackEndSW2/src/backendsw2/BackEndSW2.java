@@ -37,9 +37,29 @@ public class BackEndSW2 {
 	 */
 	public static void main(String[] args) {
 
+		// Here is some testing blocks
+		// Please, Comment Any testing block of yours
 
 
-		/* @Umar
+		/*
+		 * @TahaMagdy: testing AccountFactory
+		 * http 200 -> DONE
+		AccountFactory facto = new AccountFactory();
+
+		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
+		free.setBalance(1234);
+		System.out.println(free.getBalance());
+		*/
+
+
+
+
+
+
+
+		
+		/*
+		@Umar
 		Session s;
 		try {
 			System.out.println("1");
