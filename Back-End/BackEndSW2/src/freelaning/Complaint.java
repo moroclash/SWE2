@@ -154,15 +154,11 @@ public boolean isSeen() {
 	finally {
 		session.close();
 	}
+		// checking...
+		
 
-
-	// checking...
-	if (flag == 0) {
-		return true;
-	}
-
-	return false;
-} // end is seen
+	return flag == 0;
+} // end is see
 
 
 
