@@ -5,28 +5,15 @@
  */
 package backendsw2;
 
-import freelaning.Account;
-import freelaning.AdminAccount;
-import freelaning.Complaint;
-import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
-import freelaning.Experience;
 import freelaning.Feedback;
-import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
-import freelaning.Offer;
 import freelaning.Rate;
-import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import system.Constraints;
-import system.LogManager;
 
 /**
  *
@@ -38,6 +25,30 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
+		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		se.getTransaction().begin();
+
+//		EmployerProfile ep1 = new EmployerProfile();
+//		ep1.setDescription("dsadsadsaas");
+//		ep1.setNumberOfTasks(15);
+//		ep1.setPicture("llllllllllllllll");
+//		ep1.setTotalMoney(121212121212d);
+//		Employer em1 = new Employer();
+//		em1.setBirthDate("12/12/12");
+//		em1.setBlockState(false);
+//		em1.setCountry("llllllllll");
+//		em1.setDate(LocalDateTime.now());
+//		em1.setFirstName("mohadsamed");
+//		em1.setNotifications(new HashSet<>());
+//		em1.setPassword("daslkd;lsakd;lsa");
+//		em1.setPhone("1222222222222");
+//		em1.setProfile(ep1);
+//		em1.setUserName("daskdjlaskjd");
+//		em1.setVisaNumber("12345113312145121");
+//
+//		int e2 = (int) se.save(em1);
+//		System.out.println( e2);
+
 
 		// Here is some testing blocks
 		// Please, Comment Any testing block of yours
@@ -126,6 +137,7 @@ public static void taha(){
 
 		session.close();
 		*/
+<<<<<<< HEAD
 	
 } // end taha()
 	
@@ -137,9 +149,83 @@ public static void taha(){
 	
 	public static void select()
 	{
+||||||| merged common ancestors
+
+
+
+
+		
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+		
+		System.out.println("sssss");
+		s.close();
+		*/
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	public static void select()
+	{
+=======
+
+
+
+
+		
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+		
+		Employer em1 = (Employer) se.get(Employer.class, 1);
+		Employer to = (Employer) se.get(Employer.class, 2);
+		AccNotification noti = new AccNotification();
+		noti.setDate(LocalDateTime.now());
+		noti.setFromAccount_id(em1);
+		noti.setMassage("fucj");
+		noti.setState(false);
+		noti.setToAccount_id(to);
+//		se.save(noti);
+		boolean b = em1.SendNotify(noti, to);
+		System.out.println(b);
+//		se.getTransaction().commit();
+		
+//		Query q = se.createQuery("from Notification");
+//		List<Notification> n= q.list();
+//		n.forEach(e->{System.out.println(e.getMessage());});
+		se.close();
+	}
+
+	public static void select() {
+>>>>>>> 7024a0e75d17ab2475d4fbefc1b607121a1ad74c
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
-		Experience e1 = (Experience) se.get(Experience.class,1);
+		Experience e1 = (Experience) se.get(Experience.class, 1);
 		System.out.println(e1.getId());
 		System.out.println(e1.getLink());
 		System.out.println(e1.getPicture());
@@ -149,19 +235,16 @@ public static void taha(){
 		se.getTransaction().commit();
 		se.close();
 	}
-	
 
 	public static void init() {
-				Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
-		
-		
+
 		Skill s1 = new Skill("C++");
 		Skill s2 = new Skill("java");
 		Skill s3 = new Skill("Rouy");
 		Skill s4 = new Skill("C");
 
-		
 		Experience e1 = new Experience();
 		e1.setLink("www.google.com");
 		e1.setPicture("llllllllllllllllllllllllllllllll");
@@ -171,18 +254,16 @@ public static void taha(){
 		Hs1.add(s2);
 		Hs1.add(s3);
 		e1.setTechnologies(Hs1);
-		
+
 		Experience e2 = new Experience();
 		e2.setLink("www.yahoo.com");
 		e2.setPicture("yaaahooooooooooooooooooo");
 		e2.setSummary("yahhhhhhhhhhhhhhhhhhhhhhhhhhhhoooooooooooooooooooo");
-		HashSet<Skill> Hs2 = new HashSet<>();		
+		HashSet<Skill> Hs2 = new HashSet<>();
 		Hs2.add(s1);
 		Hs2.add(s4);
 		e2.setTechnologies(Hs2);
-		
-		
-		
+
 		AdminAccount adAcc = new AdminAccount();
 		adAcc.setBlockState(false);
 		adAcc.setDate(LocalDateTime.now());
@@ -191,11 +272,9 @@ public static void taha(){
 		adAcc.setPassword("moroclash132");
 		adAcc.setPhone("01123111546");
 		adAcc.setUserName("moroclash");
-		
+
 		se.save(adAcc);
-		
-		
-		
+
 		Freelancer fAcc = new Freelancer();
 		fAcc.setBalance(2014.12);
 		fAcc.setBirthDate("12-13-2014");
@@ -208,22 +287,32 @@ public static void taha(){
 		fAcc.setExperience(ss);
 		fAcc.setFirstName("moroclash");
 		fAcc.setLastName("clash");
-		/************************/
-		fAcc.setNotifications(new HashSet<>());
-		/***********************/
-		fAcc.setPassword("moroclash");
-		fAcc.setPhone("010112311154");
-		/*******************************/
+		/**
+		 * *********************
+		 */
+//		fAcc.setNotifications(new HashSet<>());
+		/**
+		 * ********************
+		 */
+//		fAcc.setPassword("moroclash");
+//		fAcc.setPhone("010112311154");
+		/**
+		 * ****************************
+		 */
 		FreelancerProfile fPro = new FreelancerProfile();
 		fPro.setAverageHourCost(12);
 		fPro.setDescription("lsadklaskdlaskdjgffjlajlsafjl jldjsald");
 		fPro.setNumberOfTasks(12);
 		fPro.setPicture("/dasd/dasdas/ewq/rtere");
-		/***********************/
+		/**
+		 * ********************
+		 */
 		Rate rate = new Rate();
 		rate.setTheRate(145);
 		fPro.setRate(rate);
-		/**************************/
+		/**
+		 * ***********************
+		 */
 		Feedback f1 = new Feedback();
 		f1.setDate(LocalDateTime.now());
 		f1.setDescription("dasdm nmdhjsahd hjsdhkasd hkjdsa");
@@ -233,7 +322,7 @@ public static void taha(){
 		task.setDate(LocalDateTime.now());
 		Employer empAcc = new Employer();
 		empAcc.setBirthDate("12454512");
-		empAcc.setBlockState(true);
+//		empAcc.setBlockState(true);
 		empAcc.setCountry("cairo");
 		empAcc.setDate(LocalDateTime.now());
 		empAcc.setFirstName("Emp1");
@@ -260,34 +349,38 @@ public static void taha(){
 		task.setTechnologies(new HashSet<>());
 		task.setTimeTaken(22);
 		se.save(task);
-		ss = new HashSet();
-		fPro.setReviews(ss);
-		/****************************/
+//		ss = new HashSet();
+//		fPro.setReviews(ss);
+		/**
+		 * *************************
+		 */
 		fPro.setTotalMoney(15454.124);
-		fAcc.setProfile(fPro);
-		/*********************************/
-		ss=new HashSet();
-		ss.add(s1);
-		ss.add(s2);
-		ss.add(s3);
-		ss.add(s4);
-		fAcc.setSkills(ss);
-		/*******************************/
-		fAcc.setUserName("mloroclash");
-		fAcc.setVisaNumber("124545451212145");
-		se.save(fAcc);
-		
-		
+//		fAcc.setProfile(fPro);
+//		/**
+//		 * ******************************
+//		 */
+//		ss = new HashSet();
+//		ss.add(s1);
+//		ss.add(s2);
+//		ss.add(s3);
+//		ss.add(s4);
+//		fAcc.setSkills(ss);
+//		/**
+//		 * ****************************
+//		 */
+//		fAcc.setUserName("mloroclash");
+//		fAcc.setVisaNumber("124545451212145");
+//		se.save(fAcc);
+
 //
 		se.getTransaction().commit();
 		se.close();
 	}
-	
+
 	public static void insert() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
-		
-		
+
 //		Counter c1 = new Counter();
 //		c1.setDeadline(LocalDateTime.now());
 //		
@@ -312,19 +405,12 @@ public static void taha(){
 //		for(Offer of : t1.getOffers())
 //			System.out.print(of.getId() + "   ");
 //
-
 //		Feedback fee = new Feedback();
 //		fee.setDate(LocalDateTime.now());
 //		fee.setDescription("dasdkj kjkl jl jl kjalskdjl jl ");
 //		fee.setOffer((Offer) se.get(Offer.class, 1));
 //		fee.setRateValue(12);
 //		se.save(fee);
-
-
-		
-
-
-
 		se.getTransaction().commit();
 		se.close();
 	}

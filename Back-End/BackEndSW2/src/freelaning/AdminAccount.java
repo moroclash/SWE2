@@ -1,9 +1,7 @@
 package freelaning;
 
-import system.Logs;
 import java.util.ArrayList;
 import java.util.Set;
-import system.Log;
 import system.Statistics;
 
 
@@ -14,7 +12,7 @@ import system.Statistics;
 /**
  * 
  */
-public class AdminAccount extends Account implements Logs {
+public class AdminAccount extends Account {
 
     /**
      * Default constructor
@@ -70,7 +68,7 @@ public class AdminAccount extends Account implements Logs {
     /**
      * @return
      */
-    public Set<Log> getLog() {
+    public Set<String> getLog() {
         // TODO implement here
         return null;
     }

@@ -6,7 +6,6 @@ package freelaning;
 import java.time.LocalDateTime;
 import java.util.Set;
 import org.hibernate.Session;
-import system.Log;
 import system.LogManager;
 
 /**
