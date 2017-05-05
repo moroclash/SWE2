@@ -53,35 +53,38 @@ public class Complaint {
 
 	
 	/**
-	 *
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
 public boolean seen() {
 
 	// Setting a Session
-	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
-	session.getTransaction().begin();
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
 
 	
-	try {
+//	try {
 		// Fetching complaint
-		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
-		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
 
 		// Updating seen State
-		complaintDB.seenState = 0;
+//		complaintDB.seenState = 0;
 
 		// Updating Complaint
-		session.update(complaintDB);
-		session.getTransaction().commit();
+//		session.update(complaintDB);
+//		session.getTransaction().commit();
 		
-	} 
-	catch (Exception e) {
-		session.getTransaction().rollback();
-	} 
-	finally {
-		session.close();
-	}
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
 
+
+	this.seenState = 0;
 	// Adding the log
 	LogManager.Log("Complaint " + this.id + " is seen");
 
@@ -91,34 +94,37 @@ public boolean seen() {
 } // end seen()
 
 	/**
-	 *
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
 public boolean unseen() {
 
 	// Setting a Session
-	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
-	session.getTransaction().begin();
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
 
 	
-	try {
+//	try {
 		// Fetching complaint
-		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
-		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
 
 		// Updating seen State
-		complaintDB.seenState = 1;
+//		complaintDB.seenState = 1;
 
 		// Updating Complaint
-		session.update(complaintDB);
-		session.getTransaction().commit();
+//		session.update(complaintDB);
+//		session.getTransaction().commit();
 		
-	} 
-	catch (Exception e) {
-		session.getTransaction().rollback();
-	} 
-	finally {
-		session.close();
-	}
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
+	
+	this.seenState = 1;
 
 
 
@@ -133,36 +139,39 @@ public boolean unseen() {
 
 	/**
 	 * @return: returns true if complaint is seen, otherwise false
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
 public boolean isSeen() {
 
 
 	// Setting a Session
-	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
-	session.getTransaction().begin();
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
 
 	
-	int flag = -1;
+//	int flag = -1;
 
-	try {
+//	try {
 		// Fetching complaint
-		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
-		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
 		
-		flag = complaintDB.seenState;		
-	} 
-	catch (Exception e) {
-		session.getTransaction().rollback();
-	} 
-	finally {
-		session.close();
-	}
+//		flag = complaintDB.seenState;		
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
 		// checking...
 		
 
 
 	
-	return flag == 0;
+//	return flag == 0;
+return this.seenState ==0;
 } // end is seen
 
 
