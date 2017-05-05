@@ -5,6 +5,7 @@ package freelaning;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import org.hibernate.Session;
 
 /**
  *
@@ -53,9 +54,30 @@ public class Complaint {
 	 *
 	 */
 	public boolean seen() {
-		// TODO implement here
-		return false;
-	}
+
+		// Setting a Session
+		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		
+		// Fetching complaint
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+
+		// Updating seen State
+		complaintDB.seenState = 0;
+
+		// Updating Complaint
+		session.update(complaintDB);
+		session.getTransaction().commit();
+		session.close();
+
+
+
+		///////////////
+		return true;
+		///////////////
+	} // end seen()
 
 	/**
 	 *
