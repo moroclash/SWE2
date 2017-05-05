@@ -5,6 +5,7 @@
  */
 package backendsw2;
 
+import freelaning.AccNotification;
 import freelaning.Account;
 import freelaning.AdminAccount;
 import freelaning.Complaint;
@@ -23,7 +24,9 @@ import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Session;
+import system.OurSystem;
 
 /**
  *
@@ -37,10 +40,6 @@ public class BackEndSW2 {
 public static void main(String[] args) {
 
 
-
-
-	
-	
 
 	} // end main
 
@@ -56,6 +55,15 @@ public static void main(String[] args) {
 	
 	public static void taha() {
 
+
+	/*
+	OurSystem sys = OurSystem.getInstance();
+	Freelancer free =  (Freelancer) sys.getAccount("asd", 0);
+	System.out.println("main >> " + free.getBalance());
+	System.out.println("main >> " + free.getProfile().getAverageHourCost());
+	*/
+
+		
 	/* @TahaMagdy: for insert 
 	EmployerProfile empPro = new EmployerProfile();
 	empPro.setId(3);
