@@ -30,8 +30,8 @@
             
             <!--his notifications-->
             <set name="notifications" cascade="save-update , delete">
-                <key column="to"/>
-                <one-to-many class="freelaning.Notification"/>
+                <key column="ToAccount_id"/>
+                <one-to-many class="freelaning.AccNotification"/>
             </set>
             <!--end of his notification-->
             
@@ -115,6 +115,20 @@
         
     </class>
     <!--end profile mapping-->
+       
+    
+    <!--AccNotification mapping-->
+    <class name="freelaning.AccNotification">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="date"/>
+        <property name="massage" type="string"/>
+        <property name="state" type="boolean"/>
+        <many-to-one name="FromAccount_id" class="freelaning.Account" not-null="true" unique="false"/>
+        <many-to-one name="ToAccount_id" class="freelaning.ConsumerAccount" not-null="true" unique="false"/>
+    </class>
+    <!--end AccNotification mapping-->    
     
     
     <!--rate mapping-->
@@ -125,21 +139,6 @@
         <property name="theRate" type="integer"/>
     </class>
     <!--end rate mapping-->
-    
-    <!--notification mapping-->
-    <class name="freelaning.Notification">
-        <id name="id">
-            <generator class="increment"/>
-        </id>
-        <property name="date"/>
-        <property name="message" type="string"/>
-        <property name="state" type="boolean"/>
-        <!--sent to account-->
-        <many-to-one name="to" class="freelaning.Account" not-null="true" unique="false"/>
-        <!--from account-->
-        <many-to-one name="from" class="freelaning.Account" not-null="true" unique="false" />
-    </class>
-    <!--end notification mapping-->
     
     
     <!--experiance mapping-->
@@ -310,5 +309,7 @@
         <many-to-one name="offer" class="freelaning.Offer" not-null="true"/>
     </class>
     <!--end invoice mapping--> 
+    
+    
     
 </hibernate-mapping>

@@ -3,8 +3,6 @@ package root;
 import freelaning.AdminAccount;
 import java.util.ArrayList;
 import system.Constraints;
-import system.Log;
-import system.Logs;
 import freelaning.SystemAccess;
 import java.util.Set;
 // @TahaMagdy: DONE
@@ -12,21 +10,21 @@ import java.util.Set;
 //        (Change it if you're implementing it)
 
 /**
- * 
+ *
  */
-public class Root implements SystemAccess, Logs {
+public class Root implements SystemAccess {
 
-    /**
-     * Default constructor
-     */
-    public Root() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Root() {
+	}
 
-    /**
-     * 
-     */
-    private String password;
-    private int id;
+	/**
+	 *
+	 */
+	private String password;
+	private int id;
 
 	public String getPassword() {
 		return password;
@@ -44,52 +42,49 @@ public class Root implements SystemAccess, Logs {
 		this.id = id;
 	}
 
+	/**
+	 * @param admin
+	 */
+	public void createAdmin(AdminAccount admin) {
+		// TODO implement here
+	}
 
+	/**
+	 * @param constraints
+	 */
+	public void specifyPenalties(Constraints constraints) {
+		// TODO implement here
+	}
 
+	/**
+	 * @return
+	 */
+	public ArrayList<AdminAccount> getBlockedAdims() {
+		// TODO implement here
+		return null;
+	}
 
-    /**
-     * @param admin
-     */
-    public void createAdmin(AdminAccount admin) {
-        // TODO implement here
-    }
+	/**
+	 * @return
+	 */
+	public boolean logout() {
+		// TODO implement here
+		return false;
+	}
 
-    /**
-     * @param constraints
-     */
-    public void specifyPenalties(Constraints constraints) {
-        // TODO implement here
-    }
+	/**
+	 *
+	 */
+	public void updateProfile() {
+		// TODO implement here
+	}
 
-    /**
-     * @return
-     */
-    public ArrayList<AdminAccount> getBlockedAdims() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public boolean logout() {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * 
-     */
-    public void updateProfile() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Set<Log> getLog() {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @return
+	 */
+	public Set<String> getLog() {
+		// TODO implement here
+		return null;
+	}
 
 }

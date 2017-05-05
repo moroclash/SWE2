@@ -3,7 +3,7 @@ package system;
 import freelaning.Complaint;
 import freelaning.ConsumerAccount;
 import freelaning.Freelancer;
-import freelaning.Notification;
+import freelaning.AccNotification;
 import freelaning.Offer;
 import freelaning.Task;
 import java.util.ArrayList;
@@ -84,7 +84,7 @@ public class System {
      * @param notification 
      * @return
      */
-    public boolean notifyAll(Notification notification) {
+    public boolean notifyAll(AccNotification notification) {
         // TODO implement here
         return false;
     }
