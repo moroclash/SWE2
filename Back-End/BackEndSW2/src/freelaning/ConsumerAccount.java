@@ -81,7 +81,7 @@ public abstract class ConsumerAccount extends Account {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
@@ -105,6 +105,7 @@ public abstract class ConsumerAccount extends Account {
 		se.getTransaction().begin();
 		try {
 			se.save(complaint);
+			se.getTransaction().commit();
 		} catch (Exception exp) {
 			se.getTransaction().rollback();
 			se.close();
@@ -181,7 +182,7 @@ public abstract class ConsumerAccount extends Account {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *

@@ -33,11 +33,7 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-
-
-
-
-
+		omar();
 		
 	} // end main
 
@@ -45,10 +41,11 @@ public class BackEndSW2 {
 	
 	
 	public static void omar() {
-	
-	
+		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		se.getTransaction().begin();
+
+		se.close();
 	}
-	
 	
 	public static void taha() {
 
