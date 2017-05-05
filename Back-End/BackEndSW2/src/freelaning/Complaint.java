@@ -82,7 +82,8 @@ public boolean seen() {
 		session.close();
 	}
 
-
+	// Adding the log
+	LogManager.Log("Complaint " + this.id + " is seen");
 
 	///////////////
 	return true;
@@ -159,8 +160,7 @@ public boolean isSeen() {
 		// checking...
 		
 
-	// Adding the log
-	LogManager.Log("Complaint " + this.id + " is seen");
+
 	
 	return flag == 0;
 } // end is seen
