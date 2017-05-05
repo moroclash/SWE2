@@ -70,20 +70,20 @@ public class OurSystem {
      * @param id 
      * @return
      */
-    public Task getTask(int id) {
+public Task getTask(int id) {
+System.out.println("getTask is fired from OurSystem");
 
-	// Setting a Session
+	// Setting session
 	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 	session.getTransaction().begin();
 
-	// Empty Task
-	Task returnedTask = new Task();
-	
+	Task taskDB = new Task();
+
 	try {
 		// Fetching Task
-		returnedTask = (Task) session.get(Complaint.class, id);
-
-		
+		taskDB = (Task) session.get(Task.class, id);
+		System.out.println("This is TaskID -> " + taskDB.getId());
+		System.out.println("This is TaskCaegory -> " + taskDB.getCategory() );
 	} 
 	catch (Exception e) {
 		session.getTransaction().rollback();
@@ -93,10 +93,8 @@ public class OurSystem {
 	}
 
 
-
-
-        return returnedTask;
-    }
+        return taskDB;
+    } // end getTask()
 
     /**
      * @param id 
