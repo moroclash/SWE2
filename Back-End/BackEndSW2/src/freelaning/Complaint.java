@@ -124,14 +124,49 @@ public boolean unseen() {
 	///////////////
 	}
 
-	/**
-	 *
-	 */
-	public boolean isSeen() {
-		// TODO implement here
 
-		return false;
+
+
+
+	/**
+	 * @return: returns true if complaint is seen, otherwise false
+	 */
+public boolean isSeen() {
+
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	
+	int flag = -1;
+
+	try {
+		// Fetching complaint
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+		
+		flag = complaintDB.seenState;		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
 	}
+
+
+	// checking...
+	if (flag == 0) {
+		return true;
+	}
+
+	return false;
+} // end is seen
+
+
+
+
 
 	public int getId() {
 		return id;
