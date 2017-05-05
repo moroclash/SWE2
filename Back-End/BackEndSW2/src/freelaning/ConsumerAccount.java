@@ -149,13 +149,51 @@ public abstract class ConsumerAccount extends Account {
 	}
 
 	/**
-	 * @return
+	 * not tested
+	 * @moroclash
+	 * 
+	 * @return BeIterator object that have list of All Offer that fetched from DB
+	 * @return BeIterator object that have Empty List of Offers if exist exiption
 	 */
 	public system.Iterator getOfferHistoryIterator() {
-		// TODO implement here
-		return null;
+		BeIterator iter = new BeIterator(new ArrayList<Offer>());
+		//update data in DB
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			// cariteria to Complain Class 
+			Criteria cri = se.createCriteria(Offer.class);
+			//make max results is 50
+			cri.setMaxResults(50);
+			//get All Offer that applied by this emploier
+			List OfferList = cri.add(Restrictions.eq("owner", this)).list();
+			iter= new BeIterator(OfferList);
+			
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return iter;
+		}
 	}
 
+	
+	
 	/**
 	 * not tested
 	 * @moroclash
@@ -164,7 +202,7 @@ public abstract class ConsumerAccount extends Account {
 	 * @return : BeItrrator object that have empty list if exist exiptions
 	 */
 	public system.Iterator getComplainsIterator() {
-		BeIterator Biter = new BeIterator(new ArrayList<>());
+		BeIterator Biter = new BeIterator(new ArrayList<Complaint>());
 		//update data in DB
 		Session se;
 		//to check if get current session or open new session 
@@ -182,8 +220,8 @@ public abstract class ConsumerAccount extends Account {
 		try {
 			// cariteria to Complain Class 
 			Criteria cri = se.createCriteria(Complaint.class);
-			//filter to get Complain that have stat == 1
-			Criterion statCri =Restrictions.eq("seenState", 1);
+			//filter to get Complain that have stat == 2 that have replaied
+			Criterion statCri =Restrictions.eq("seenState", 2);
 			//filter to get Complain owned by Account
 			Criterion senderCri =Restrictions.eq("owner", this);
 			//add Logical expretion and
