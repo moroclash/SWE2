@@ -76,6 +76,21 @@ public class BackEndSW2 {
 		}
 		session.close();
 		 */
+
+		/* @TahaMagdy: getTask testing
+ 		OurSystem sys = OurSystem.getInstance();
+ 		Task task = sys.getTask(1);
+ 		System.out.print( "main,, Fetched category >> " +task.getCategory() );
+ 		*/
+ 		
+ 		/* @TahaMagdy: getOffer testing
+ 		OurSystem sys = OurSystem.getInstance();
+ 		Offer offer = sys.getOffer(2);
+ 		System.out.println("offer description " + offer.getDescription());
+		*/
+
+
+		
  /*
 		 * @TahaMagdy: testing AccountFactory
 		 * http 200 -> DONE
