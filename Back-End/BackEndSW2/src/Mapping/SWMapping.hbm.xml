@@ -14,7 +14,7 @@
         </id>
         
         <property name="date"/>
-        <property name="blockState" type="boolean"/>
+        <property name="accountState" type="integer"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>
         <property name="password" type="string"/>
