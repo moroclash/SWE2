@@ -16,6 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `AccNotification`
+--
+
+DROP TABLE IF EXISTS `AccNotification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AccNotification` (
+  `id` int(11) NOT NULL,
+  `date` tinyblob,
+  `massage` varchar(255) DEFAULT NULL,
+  `state` bit(1) DEFAULT NULL,
+  `FromAccount_id` int(11) NOT NULL,
+  `ToAccount_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_2ktcnlkox8v1sh0djd47fekag` (`FromAccount_id`),
+  KEY `FK_djbtnhgwaabfqihmbgkbfbsxr` (`ToAccount_id`),
+  CONSTRAINT `FK_2ktcnlkox8v1sh0djd47fekag` FOREIGN KEY (`FromAccount_id`) REFERENCES `Accounts` (`id`),
+  CONSTRAINT `FK_djbtnhgwaabfqihmbgkbfbsxr` FOREIGN KEY (`ToAccount_id`) REFERENCES `ConsumerAccount` (`Account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AccNotification`
+--
+
+LOCK TABLES `AccNotification` WRITE;
+/*!40000 ALTER TABLE `AccNotification` DISABLE KEYS */;
+INSERT INTO `AccNotification` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·\0∑\0x','fucj','\0',1,2),(2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·6˚\0x','fucj','\0',1,2),(3,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·∫ºÄx','fucj','\0',1,2);
+/*!40000 ALTER TABLE `AccNotification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Accounts`
 --
 
@@ -25,12 +57,12 @@ DROP TABLE IF EXISTS `Accounts`;
 CREATE TABLE `Accounts` (
   `id` int(11) NOT NULL,
   `date` tinyblob,
-  `blockState` bit(1) DEFAULT NULL,
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `userName` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
+  `accountState` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +73,7 @@ CREATE TABLE `Accounts` (
 
 LOCK TABLES `Accounts` WRITE;
 /*!40000 ALTER TABLE `Accounts` DISABLE KEYS */;
-INSERT INTO `Accounts` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·+âèÄx','\0','moroclash','mohamed','moroclash132','moroclash','01123111546'),(2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·+&Î˝@x','','Emp1','loolooo','lalalallalal','alallalslsalsa','0121245121'),(3,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·+&Î˝@x','\0','moroclash','clash','moroclash','mloroclash','010112311154');
+INSERT INTO `Accounts` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·)ê4Äx','mohadsamed',NULL,'moroclash','moroclash','dasd',1),(2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·): ©—\0x','mohadsamed',NULL,'daslkd;lsakd;lsa','daskdjlaskjd','1222222222222',1);
 /*!40000 ALTER TABLE `Accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +97,6 @@ CREATE TABLE `AdminAccount` (
 
 LOCK TABLES `AdminAccount` WRITE;
 /*!40000 ALTER TABLE `AdminAccount` DISABLE KEYS */;
-INSERT INTO `AdminAccount` VALUES (1);
 /*!40000 ALTER TABLE `AdminAccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +127,6 @@ CREATE TABLE `Constraints` (
 
 LOCK TABLES `Constraints` WRITE;
 /*!40000 ALTER TABLE `Constraints` DISABLE KEYS */;
-INSERT INTO `Constraints` VALUES (1,12,14,15,15,104,12,14,15);
 /*!40000 ALTER TABLE `Constraints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +153,7 @@ CREATE TABLE `ConsumerAccount` (
 
 LOCK TABLES `ConsumerAccount` WRITE;
 /*!40000 ALTER TABLE `ConsumerAccount` DISABLE KEYS */;
-INSERT INTO `ConsumerAccount` VALUES (2,'12454512','cairo','1241215412154'),(3,'12-13-2014','cairo','124545451212145');
+INSERT INTO `ConsumerAccount` VALUES (1,'12/12/12','Cairo','12345113312145121'),(2,'12/12/12','llllllllll','12345113312145121');
 /*!40000 ALTER TABLE `ConsumerAccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +177,6 @@ CREATE TABLE `Counter` (
 
 LOCK TABLES `Counter` WRITE;
 /*!40000 ALTER TABLE `Counter` DISABLE KEYS */;
-INSERT INTO `Counter` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·,9Ñª@x'),(2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·24¢…@x');
 /*!40000 ALTER TABLE `Counter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +203,7 @@ CREATE TABLE `Employer` (
 
 LOCK TABLES `Employer` WRITE;
 /*!40000 ALTER TABLE `Employer` DISABLE KEYS */;
-INSERT INTO `Employer` VALUES (2,1);
+INSERT INTO `Employer` VALUES (1,1),(2,2);
 /*!40000 ALTER TABLE `Employer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +227,7 @@ CREATE TABLE `EmployerProfile` (
 
 LOCK TABLES `EmployerProfile` WRITE;
 /*!40000 ALTER TABLE `EmployerProfile` DISABLE KEYS */;
-INSERT INTO `EmployerProfile` VALUES (1);
+INSERT INTO `EmployerProfile` VALUES (1),(2);
 /*!40000 ALTER TABLE `EmployerProfile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +256,6 @@ CREATE TABLE `Experience` (
 
 LOCK TABLES `Experience` WRITE;
 /*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
-INSERT INTO `Experience` VALUES (1,'www.yahoo.com','yaaahooooooooooooooooooo','yahhhhhhhhhhhhhhhhhhhhhhhhhhhhoooooooooooooooooooo',3),(2,'www.google.com','llllllllllllllllllllllllllllllll','lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll',3);
 /*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,7 +282,6 @@ CREATE TABLE `Experience_technologies` (
 
 LOCK TABLES `Experience_technologies` WRITE;
 /*!40000 ALTER TABLE `Experience_technologies` DISABLE KEYS */;
-INSERT INTO `Experience_technologies` VALUES (1,1),(1,2),(2,1),(2,3),(2,4);
 /*!40000 ALTER TABLE `Experience_technologies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +313,6 @@ CREATE TABLE `Feedback` (
 
 LOCK TABLES `Feedback` WRITE;
 /*!40000 ALTER TABLE `Feedback` DISABLE KEYS */;
-INSERT INTO `Feedback` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·9≠#Äx','dasdkj kjkl jl jl kjalskdjl jl ',12,1,NULL);
 /*!40000 ALTER TABLE `Feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +340,6 @@ CREATE TABLE `Freelancer` (
 
 LOCK TABLES `Freelancer` WRITE;
 /*!40000 ALTER TABLE `Freelancer` DISABLE KEYS */;
-INSERT INTO `Freelancer` VALUES (3,2014.12,2);
 /*!40000 ALTER TABLE `Freelancer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +364,6 @@ CREATE TABLE `FreelancerProfile` (
 
 LOCK TABLES `FreelancerProfile` WRITE;
 /*!40000 ALTER TABLE `FreelancerProfile` DISABLE KEYS */;
-INSERT INTO `FreelancerProfile` VALUES (2,12);
 /*!40000 ALTER TABLE `FreelancerProfile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +390,6 @@ CREATE TABLE `Freelancer_skills` (
 
 LOCK TABLES `Freelancer_skills` WRITE;
 /*!40000 ALTER TABLE `Freelancer_skills` DISABLE KEYS */;
-INSERT INTO `Freelancer_skills` VALUES (3,1),(3,2),(3,3),(3,4);
 /*!40000 ALTER TABLE `Freelancer_skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -454,7 +477,6 @@ CREATE TABLE `Offer` (
 
 LOCK TABLES `Offer` WRITE;
 /*!40000 ALTER TABLE `Offer` DISABLE KEYS */;
-INSERT INTO `Offer` VALUES (1,1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·,9ì˝Äx','dasdasd mdkaslkdklaskdl;ksald;kas;ldk;',12,12,3,1,12,1),(2,2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·24≤Äx','dasdasd mdkaslkdklaskdl;ksald;kas;ldk;',12,12,3,1,12,1);
 /*!40000 ALTER TABLE `Offer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -484,7 +506,7 @@ CREATE TABLE `Profile` (
 
 LOCK TABLES `Profile` WRITE;
 /*!40000 ALTER TABLE `Profile` DISABLE KEYS */;
-INSERT INTO `Profile` VALUES (1,'dasd kdjsalk kljdsjal jlkjdlaskjd',12,'dasdsadasd ',124.1245,1),(2,'lsadklaskdlaskdjgffjlajlsafjl jldjsald',12,'/dasd/dasdas/ewq/rtere',15454.124,2);
+INSERT INTO `Profile` VALUES (1,'dsadsadsaas',15,'moroclashmoroclashmoroclash',121212121212,NULL),(2,'dsadsadsaas',15,'llllllllllllllll',121212121212,NULL);
 /*!40000 ALTER TABLE `Profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,7 +530,6 @@ CREATE TABLE `Rate` (
 
 LOCK TABLES `Rate` WRITE;
 /*!40000 ALTER TABLE `Rate` DISABLE KEYS */;
-INSERT INTO `Rate` VALUES (1,0),(2,145);
 /*!40000 ALTER TABLE `Rate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -555,7 +576,6 @@ CREATE TABLE `Skill` (
 
 LOCK TABLES `Skill` WRITE;
 /*!40000 ALTER TABLE `Skill` DISABLE KEYS */;
-INSERT INTO `Skill` VALUES (1,'C++'),(2,'C'),(3,'Rouy'),(4,'java');
 /*!40000 ALTER TABLE `Skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -618,7 +638,6 @@ CREATE TABLE `Task` (
 
 LOCK TABLES `Task` WRITE;
 /*!40000 ALTER TABLE `Task` DISABLE KEYS */;
-INSERT INTO `Task` VALUES (1,'loca','¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·+&Î˝@x',2,1,'dasdasd',22);
 /*!40000 ALTER TABLE `Task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -673,6 +692,7 @@ CREATE TABLE `complaints` (
 
 LOCK TABLES `complaints` WRITE;
 /*!40000 ALTER TABLE `complaints` DISABLE KEYS */;
+INSERT INTO `complaints` VALUES (1,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·3(0ìÈ¿x',1,'daskdjlaskjdlask',2),(2,'¨Ì\0sr\0\rjava.time.Serï]Ñ∫\"H≤\0\0xpw\0\0·76L¡¿x',1,'daskdjlaskjdlask',2);
 /*!40000 ALTER TABLE `complaints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -699,6 +719,7 @@ CREATE TABLE `complaints_replies` (
 
 LOCK TABLES `complaints_replies` WRITE;
 /*!40000 ALTER TABLE `complaints_replies` DISABLE KEYS */;
+INSERT INTO `complaints_replies` VALUES (2,1);
 /*!40000 ALTER TABLE `complaints_replies` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -711,4 +732,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-05  0:45:20
+-- Dump completed on 2017-05-05 16:59:55
