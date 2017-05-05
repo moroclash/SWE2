@@ -7,6 +7,7 @@ package backendsw2;
 
 import freelaning.Account;
 import freelaning.AdminAccount;
+import freelaning.Complaint;
 import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
@@ -42,6 +43,33 @@ public class BackEndSW2 {
 		// Please, Comment Any testing block of yours
 
 
+
+
+
+
+
+		
+
+		/*
+		 * @TahaMagdy: Complaint Class testting...
+		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		// Fetching complaint id = 2
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,2);
+
+		System.out.println("complaintDB Testring: OK ->" + complaintDB.getMessage() );
+
+		if ( !complaintDB.isSeen() ) {
+			System.out.println("It is not seen" );
+		}
+
+
+
+		session.close();
+		*/
+
+		
 		/*
 		 * @TahaMagdy: testing AccountFactory
 		 * http 200 -> DONE
