@@ -96,14 +96,45 @@ System.out.println("getTask is fired from OurSystem");
         return taskDB;
     } // end getTask()
 
+
+
+
+
+
     /**
      * @param id 
      * @return
      */
-    public Offer getOffer(int id) {
-        // TODO implement here
-        return null;
-    }
+public Offer getOffer(int id) {
+System.out.println("getOffer is fired from OurSystem");
+
+	// Setting session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	Offer offerDB = new Offer();
+
+	try {
+		// Fetching TasOfferk
+		offerDB = (Offer) session.get(Offer.class, id);
+		System.out.println("This is offerID-> " + offerDB.getId());
+		System.out.println("This is offerDescription -> " + offerDB.getDescription());
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+
+
+        return offerDB;
+    } // end getOffer
+
+
+
+
+
 
     /**
      * @param searchKey 
