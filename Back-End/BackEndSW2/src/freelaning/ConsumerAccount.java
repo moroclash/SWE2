@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Restrictions;
+import system.LogManager;
 
 /**
  *
@@ -309,7 +310,6 @@ public abstract class ConsumerAccount extends Account {
 			//if exist session 
 			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
 		} catch (Exception exp) {
-			System.err.println(exp.fillInStackTrace());
 			// if not exist session
 			se = databaseManager.SessionsManager.getSessionFactory().openSession();
 			flage = true;
@@ -332,6 +332,8 @@ public abstract class ConsumerAccount extends Account {
 			}
 			return end;
 		}
+
+		
 	}
 
 	/**

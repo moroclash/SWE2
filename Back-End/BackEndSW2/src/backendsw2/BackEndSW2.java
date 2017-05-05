@@ -5,14 +5,18 @@
  */
 package backendsw2;
 
+import freelaning.Complaint;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
 import freelaning.Feedback;
+import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
 import freelaning.Rate;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -27,37 +31,20 @@ public class BackEndSW2 {
 	public static void main(String[] args) {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
-
-//		EmployerProfile ep1 = new EmployerProfile();
-//		ep1.setDescription("dsadsadsaas");
-//		ep1.setNumberOfTasks(15);
-//		ep1.setPicture("llllllllllllllll");
-//		ep1.setTotalMoney(121212121212d);
-//		Employer em1 = new Employer();
-//		em1.setBirthDate("12/12/12");
-//		em1.setBlockState(false);
-//		em1.setCountry("llllllllll");
-//		em1.setDate(LocalDateTime.now());
-//		em1.setFirstName("mohadsamed");
-//		em1.setNotifications(new HashSet<>());
-//		em1.setPassword("daslkd;lsakd;lsa");
-//		em1.setPhone("1222222222222");
-//		em1.setProfile(ep1);
-//		em1.setUserName("daskdjlaskjd");
-//		em1.setVisaNumber("12345113312145121");
-//
-//		int e2 = (int) se.save(em1);
-//		System.out.println( e2);
-
-
-		// Here is some testing blocks
-		// Please, Comment Any testing block of yours
-
-
-
-
-
-
+		
+		Employer em = (Employer) se.get(Employer.class, 1);
+		Complaint com = new Complaint();
+		com.setDate(LocalDateTime.now());
+		com.setMessage("daskdjlaskjdlask");
+		com.setOwner(em);
+		HashSet<Complaint> has = new HashSet<>();
+		has.add((Complaint) se.get(Complaint.class, 1));
+		com.setReplies(has);
+		com.setSeenState(2);
+		se.save(com);
+		se.getTransaction().commit();
+		se.close();
+		
 
 		
 
@@ -224,82 +211,82 @@ public class BackEndSW2 {
 		/**
 		 * ****************************
 		 */
-		FreelancerProfile fPro = new FreelancerProfile();
-		fPro.setAverageHourCost(12);
-		fPro.setDescription("lsadklaskdlaskdjgffjlajlsafjl jldjsald");
-		fPro.setNumberOfTasks(12);
-		fPro.setPicture("/dasd/dasdas/ewq/rtere");
-		/**
-		 * ********************
-		 */
-		Rate rate = new Rate();
-		rate.setTheRate(145);
-		fPro.setRate(rate);
-		/**
-		 * ***********************
-		 */
-		Feedback f1 = new Feedback();
-		f1.setDate(LocalDateTime.now());
-		f1.setDescription("dasdm nmdhjsahd hjsdhkasd hkjdsa");
-		f1.setRateValue(12);
-		Task task = new Task();
-		task.setCategory("loca");
-		task.setDate(LocalDateTime.now());
-		Employer empAcc = new Employer();
-		empAcc.setBirthDate("12454512");
-//		empAcc.setBlockState(true);
-		empAcc.setCountry("cairo");
-		empAcc.setDate(LocalDateTime.now());
-		empAcc.setFirstName("Emp1");
-		empAcc.setLastName("loolooo");
-		empAcc.setNotifications(new HashSet<>());
-		empAcc.setPassword("lalalallalal");
-		empAcc.setPhone("0121245121");
-		freelaning.EmployerProfile empPro = new EmployerProfile();
-		empPro.setDescription("dasd kdjsalk kljdsjal jlkjdlaskjd");
-		empPro.setNumberOfTasks(12);
-		empPro.setPicture("dasdsadasd ");
-		Rate rate2 = new Rate();
-		rate2.setTheRate(0);
-		empPro.setRate(rate2);
-		empPro.setTotalMoney(124.1245);
-		empAcc.setProfile(empPro);
-		empAcc.setUserName("alallalslsalsa");
-		empAcc.setVisaNumber("1241215412154");
-		se.save(empAcc);
-		task.setEmployer(empAcc);
-		task.setState(1);
-		task.setOffers(new HashSet<>());
-		task.setTask("dasdasd");
-		task.setTechnologies(new HashSet<>());
-		task.setTimeTaken(22);
-		se.save(task);
-//		ss = new HashSet();
-//		fPro.setReviews(ss);
-		/**
-		 * *************************
-		 */
-		fPro.setTotalMoney(15454.124);
-//		fAcc.setProfile(fPro);
+//		FreelancerProfile fPro = new FreelancerProfile();
+//		fPro.setAverageHourCost(12);
+//		fPro.setDescription("lsadklaskdlaskdjgffjlajlsafjl jldjsald");
+//		fPro.setNumberOfTasks(12);
+//		fPro.setPicture("/dasd/dasdas/ewq/rtere");
 //		/**
-//		 * ******************************
+//		 * ********************
 //		 */
-//		ss = new HashSet();
-//		ss.add(s1);
-//		ss.add(s2);
-//		ss.add(s3);
-//		ss.add(s4);
-//		fAcc.setSkills(ss);
+//		Rate rate = new Rate();
+//		rate.setTheRate(145);
+//		fPro.setRate(rate);
 //		/**
-//		 * ****************************
+//		 * ***********************
 //		 */
-//		fAcc.setUserName("mloroclash");
-//		fAcc.setVisaNumber("124545451212145");
-//		se.save(fAcc);
-
+//		Feedback f1 = new Feedback();
+//		f1.setDate(LocalDateTime.now());
+//		f1.setDescription("dasdm nmdhjsahd hjsdhkasd hkjdsa");
+//		f1.setRateValue(12);
+//		Task task = new Task();
+//		task.setCategory("loca");
+//		task.setDate(LocalDateTime.now());
+//		Employer empAcc = new Employer();
+//		empAcc.setBirthDate("12454512");
+////		empAcc.setBlockState(true);
+//		empAcc.setCountry("cairo");
+//		empAcc.setDate(LocalDateTime.now());
+//		empAcc.setFirstName("Emp1");
+//		empAcc.setLastName("loolooo");
+//		empAcc.setNotifications(new HashSet<>());
+//		empAcc.setPassword("lalalallalal");
+//		empAcc.setPhone("0121245121");
+//		freelaning.EmployerProfile empPro = new EmployerProfile();
+//		empPro.setDescription("dasd kdjsalk kljdsjal jlkjdlaskjd");
+//		empPro.setNumberOfTasks(12);
+//		empPro.setPicture("dasdsadasd ");
+//		Rate rate2 = new Rate();
+//		rate2.setTheRate(0);
+//		empPro.setRate(rate2);
+//		empPro.setTotalMoney(124.1245);
+//		empAcc.setProfile(empPro);
+//		empAcc.setUserName("alallalslsalsa");
+//		empAcc.setVisaNumber("1241215412154");
+//		se.save(empAcc);
+//		task.setEmployer(empAcc);
+//		task.setState(1);
+//		task.setOffers(new HashSet<>());
+//		task.setTask("dasdasd");
+//		task.setTechnologies(new HashSet<>());
+//		task.setTimeTaken(22);
+//		se.save(task);
+////		ss = new HashSet();
+////		fPro.setReviews(ss);
+//		/**
+//		 * *************************
+//		 */
+//		fPro.setTotalMoney(15454.124);
+////		fAcc.setProfile(fPro);
+////		/**
+////		 * ******************************
+////		 */
+////		ss = new HashSet();
+////		ss.add(s1);
+////		ss.add(s2);
+////		ss.add(s3);
+////		ss.add(s4);
+////		fAcc.setSkills(ss);
+////		/**
+////		 * ****************************
+////		 */
+////		fAcc.setUserName("mloroclash");
+////		fAcc.setVisaNumber("124545451212145");
+////		se.save(fAcc);
 //
-		se.getTransaction().commit();
-		se.close();
+////
+//		se.getTransaction().commit();
+//		se.close();
 	}
 
 	public static void insert() {

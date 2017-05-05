@@ -98,6 +98,11 @@ public class Account implements SystemAccess {
 		this.userName = userName;
 	}
 
+	public int getAccountState() {
+		return accountState;
+	}
+
+	
 	public int  isAccountState() {
 		return accountState;
 	}
