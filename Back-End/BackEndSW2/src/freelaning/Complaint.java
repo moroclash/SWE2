@@ -90,9 +90,38 @@ public boolean seen() {
 	/**
 	 *
 	 */
-	public boolean unseen() {
-		// TODO implement here
-		return false;
+public boolean unseen() {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	
+	try {
+		// Fetching complaint
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+
+		// Updating seen State
+		complaintDB.seenState = 1;
+
+		// Updating Complaint
+		session.update(complaintDB);
+		session.getTransaction().commit();
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+
+
+
+	///////////////
+	return true;
+	///////////////
 	}
 
 	/**
