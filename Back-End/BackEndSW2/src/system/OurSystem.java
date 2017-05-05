@@ -7,6 +7,7 @@ import freelaning.AccNotification;
 import freelaning.Offer;
 import freelaning.Task;
 import java.util.ArrayList;
+import org.hibernate.Session;
 
 
 
@@ -21,13 +22,29 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class System {
+public class OurSystem {
 
     /**
-     * Default constructor
+     *  Singleton
      */
-    public System() {
+    private OurSystem() {
     }
+
+
+
+    /**
+     * 
+     */
+    static private OurSystem sysInstance = new OurSystem();
+
+    /**
+     * @return
+     */
+    public static OurSystem getInstance() {
+
+        return sysInstance; 
+    }
+
 
     /**
      * 
@@ -44,21 +61,41 @@ public class System {
      */
     private Statistics statistics;
 
-    /**
-     * 
-     */
-    static private System sys;
 
 
 
 
     /**
+     * @maintainer TahaMagdy
      * @param id 
      * @return
      */
     public Task getTask(int id) {
-        // TODO implement here
-        return null;
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	// Empty Task
+	Task returnedTask = new Task();
+	
+	try {
+		// Fetching Task
+		returnedTask = (Task) session.get(Complaint.class, id);
+
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+
+
+
+
+        return returnedTask;
     }
 
     /**
@@ -188,21 +225,6 @@ public class System {
     public Object getAccess(String userName, String passwd) {
         // TODO implement here
         return false;
-    }
-
-    /**
-     * @return
-     */
-    public System GetInstance() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    private void System() {
-        // TODO implement here
     }
 
 }
