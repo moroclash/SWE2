@@ -5,8 +5,14 @@
  */
 package backendsw2;
 
+<<<<<<< HEAD
 import freelaning.AccNotification;
+||||||| merged common ancestors
+=======
+import freelaning.Account;
+>>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
 import freelaning.AdminAccount;
+import freelaning.Complaint;
 import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
@@ -37,6 +43,7 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 
@@ -60,7 +67,99 @@ public class BackEndSW2 {
 //
 //		int e2 = (int) se.save(em1);
 //		System.out.println( e2);
+||||||| merged common ancestors
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+=======
+
+		// Here is some testing blocks
+		// Please, Comment Any testing block of yours
+
+
+
+
+
+
+
 		
+
+		/*
+		 * @TahaMagdy: Complaint Class testting...
+		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		// Fetching complaint id = 2
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,2);
+
+		System.out.println("complaintDB Testring: OK ->" + complaintDB.getMessage() );
+
+		if ( !complaintDB.isSeen() ) {
+			System.out.println("It is not seen" );
+		}
+
+
+
+		session.close();
+		*/
+
+		
+		/*
+		 * @TahaMagdy: testing AccountFactory
+		 * http 200 -> DONE
+		AccountFactory facto = new AccountFactory();
+
+		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
+		free.setBalance(1234);
+		System.out.println(free.getBalance());
+		*/
+
+
+
+		/*
+		 * @TahaMagdy: Adding a dummy Account for testing
+
+		// Making a dummy account
+		Account dummyAccount = new Account();
+		dummyAccount.setId(12);
+		
+		// Preparing a DB session
+		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		// Inserting dummyAccount into DB
+		session.save(dummyAccount);
+		session.getTransaction().commit();
+
+		session.close();
+		*/
+
+
+
+
+		
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+>>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
+		
+<<<<<<< HEAD
 		Employer em1 = (Employer) se.get(Employer.class, 1);
 		Employer to = (Employer) se.get(Employer.class, 2);
 		AccNotification noti = new AccNotification();
@@ -73,6 +172,14 @@ public class BackEndSW2 {
 		boolean b = em1.SendNotify(noti, to);
 		System.out.println(b);
 //		se.getTransaction().commit();
+||||||| merged common ancestors
+		System.out.println("sssss");
+		s.close();
+=======
+		System.out.println("sssss");
+		s.close();
+		*/
+>>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
 		
 //		Query q = se.createQuery("from Notification");
 //		List<Notification> n= q.list();

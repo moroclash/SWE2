@@ -5,6 +5,9 @@ package freelaning;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import org.hibernate.Session;
+import system.Log;
+import system.LogManager;
 
 /**
  *
@@ -50,29 +53,130 @@ public class Complaint {
 
 	
 	/**
-	 *
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
-	public boolean seen() {
-		// TODO implement here
-		return false;
-	}
+public boolean seen() {
+
+	// Setting a Session
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
+
+	
+//	try {
+		// Fetching complaint
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+
+		// Updating seen State
+//		complaintDB.seenState = 0;
+
+		// Updating Complaint
+//		session.update(complaintDB);
+//		session.getTransaction().commit();
+		
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
+
+
+	this.seenState = 0;
+	// Adding the log
+	LogManager.Log("Complaint " + this.id + " is seen");
+
+	///////////////
+	return true;
+	///////////////
+} // end seen()
 
 	/**
-	 *
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
-	public boolean unseen() {
-		// TODO implement here
-		return false;
+public boolean unseen() {
+
+	// Setting a Session
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
+
+	
+//	try {
+		// Fetching complaint
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+
+		// Updating seen State
+//		complaintDB.seenState = 1;
+
+		// Updating Complaint
+//		session.update(complaintDB);
+//		session.getTransaction().commit();
+		
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
+	
+	this.seenState = 1;
+
+
+
+	///////////////
+	return true;
+	///////////////
 	}
+
+
+
+
 
 	/**
-	 *
+	 * @return: returns true if complaint is seen, otherwise false
+	 * I've found that we don't need to interact with DB in here
+	 * Because this is filled by DB operation firstly.
 	 */
-	public boolean isSeen() {
-		// TODO implement here
+public boolean isSeen() {
 
-		return false;
-	}
+
+	// Setting a Session
+//	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+//	session.getTransaction().begin();
+
+	
+//	int flag = -1;
+
+//	try {
+		// Fetching complaint
+//		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+		
+//		flag = complaintDB.seenState;		
+//	} 
+//	catch (Exception e) {
+//		session.getTransaction().rollback();
+//	} 
+//	finally {
+//		session.close();
+//	}
+		// checking...
+		
+
+
+	
+//	return flag == 0;
+return this.seenState ==0;
+} // end is seen
+
+
+
+
 
 	public int getId() {
 		return id;

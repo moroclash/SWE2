@@ -18,12 +18,36 @@ public class AccountFactory {
     
     
     /**
-     * @param name 
-     * @return
+	 * 
+     * @maintain: TahaMagdy
+     * @param accountTypeName
+     *     # This parameter can be one of these 
+     *     {Employer, Freelancer, Account, AdminAccount}
+     * @description
+     * 	   # This Function takes the Account name and returns the corresponding
+     *     Object.
+     * @return : You have to cast the returning object.
      */
-    public Account GetAccount(String name) {
-        // TODO implement here
-        return null;
-    }
+    public Object getAccount(String accountTypeName) {
 
-}
+	switch (accountTypeName) {
+		case "Employer":
+			System.out.println("");
+			return new Employer();
+		case "Freelancer":
+			return new Freelancer();
+		case "Account":
+			return new Account();
+		case "AdminAccount":
+			return new AdminAccount();
+		default:
+			break;
+	} // end switch
+
+	return new Object();
+    } // end getAccount();
+
+
+
+
+} // end class
