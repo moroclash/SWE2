@@ -5,33 +5,15 @@
  */
 package backendsw2;
 
-<<<<<<< HEAD
-import freelaning.AccNotification;
-||||||| merged common ancestors
-=======
-import freelaning.Account;
->>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
-import freelaning.AdminAccount;
-import freelaning.Complaint;
-import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
-import freelaning.Experience;
 import freelaning.Feedback;
-import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
-import freelaning.Offer;
 import freelaning.Rate;
-import freelaning.Skill;
 import freelaning.Task;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import system.Constraints;
-import system.LogManager;
 
 /**
  *
@@ -43,7 +25,6 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 
@@ -67,18 +48,7 @@ public class BackEndSW2 {
 //
 //		int e2 = (int) se.save(em1);
 //		System.out.println( e2);
-||||||| merged common ancestors
-		Session s;
-		try {
-			System.out.println("1");
-			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-			 System.out.println("2");
-		} catch (Exception e) {
-			System.out.println("3");
-			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
-			 System.out.println("4");
-		}
-=======
+
 
 		// Here is some testing blocks
 		// Please, Comment Any testing block of yours
@@ -157,9 +127,7 @@ public class BackEndSW2 {
 			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
 			 System.out.println("4");
 		}
->>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
 		
-<<<<<<< HEAD
 		Employer em1 = (Employer) se.get(Employer.class, 1);
 		Employer to = (Employer) se.get(Employer.class, 2);
 		AccNotification noti = new AccNotification();
@@ -172,14 +140,6 @@ public class BackEndSW2 {
 		boolean b = em1.SendNotify(noti, to);
 		System.out.println(b);
 //		se.getTransaction().commit();
-||||||| merged common ancestors
-		System.out.println("sssss");
-		s.close();
-=======
-		System.out.println("sssss");
-		s.close();
-		*/
->>>>>>> a2bc69e49b53d183d044c989bc84f6f97d1ca26a
 		
 //		Query q = se.createQuery("from Notification");
 //		List<Notification> n= q.list();
@@ -255,12 +215,12 @@ public class BackEndSW2 {
 		/**
 		 * *********************
 		 */
-		fAcc.setNotifications(new HashSet<>());
+//		fAcc.setNotifications(new HashSet<>());
 		/**
 		 * ********************
 		 */
-		fAcc.setPassword("moroclash");
-		fAcc.setPhone("010112311154");
+//		fAcc.setPassword("moroclash");
+//		fAcc.setPhone("010112311154");
 		/**
 		 * ****************************
 		 */
@@ -287,7 +247,7 @@ public class BackEndSW2 {
 		task.setDate(LocalDateTime.now());
 		Employer empAcc = new Employer();
 		empAcc.setBirthDate("12454512");
-		empAcc.setBlockState(true);
+//		empAcc.setBlockState(true);
 		empAcc.setCountry("cairo");
 		empAcc.setDate(LocalDateTime.now());
 		empAcc.setFirstName("Emp1");
@@ -314,28 +274,28 @@ public class BackEndSW2 {
 		task.setTechnologies(new HashSet<>());
 		task.setTimeTaken(22);
 		se.save(task);
-		ss = new HashSet();
-		fPro.setReviews(ss);
+//		ss = new HashSet();
+//		fPro.setReviews(ss);
 		/**
 		 * *************************
 		 */
 		fPro.setTotalMoney(15454.124);
-		fAcc.setProfile(fPro);
-		/**
-		 * ******************************
-		 */
-		ss = new HashSet();
-		ss.add(s1);
-		ss.add(s2);
-		ss.add(s3);
-		ss.add(s4);
-		fAcc.setSkills(ss);
-		/**
-		 * ****************************
-		 */
-		fAcc.setUserName("mloroclash");
-		fAcc.setVisaNumber("124545451212145");
-		se.save(fAcc);
+//		fAcc.setProfile(fPro);
+//		/**
+//		 * ******************************
+//		 */
+//		ss = new HashSet();
+//		ss.add(s1);
+//		ss.add(s2);
+//		ss.add(s3);
+//		ss.add(s4);
+//		fAcc.setSkills(ss);
+//		/**
+//		 * ****************************
+//		 */
+//		fAcc.setUserName("mloroclash");
+//		fAcc.setVisaNumber("124545451212145");
+//		se.save(fAcc);
 
 //
 		se.getTransaction().commit();
