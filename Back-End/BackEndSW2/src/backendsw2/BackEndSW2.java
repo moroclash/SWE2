@@ -12,6 +12,7 @@ import freelaning.Experience;
 import freelaning.Feedback;
 import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
+import freelaning.Offer;
 import freelaning.Rate;
 import freelaning.Skill;
 import freelaning.Task;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.Session;
+import system.OurSystem;
 
 /**
  *
@@ -30,8 +32,8 @@ public class BackEndSW2 {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		se.getTransaction().begin();
+//		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+//		se.getTransaction().begin();
 
 //		EmployerProfile ep1 = new EmployerProfile();
 //		ep1.setDescription("dsadsadsaas");
@@ -52,7 +54,8 @@ public class BackEndSW2 {
 //		em1.setVisaNumber("12345113312145121");
 //
 //		int e2 = (int) se.save(em1);
-//		System.out.println( e2);
+//		OurSystem.out.println( e2);
+
 
 
 		// Here is some testing blocks
@@ -63,16 +66,16 @@ public class BackEndSW2 {
 		@Umar
 		Session s;
 		try {
-			System.out.println("1");
+			OurSystem.out.println("1");
 			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-			 System.out.println("2");
+			 OurSystem.out.println("2");
 		} catch (Exception e) {
-			System.out.println("3");
+			OurSystem.out.println("3");
 			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
-			 System.out.println("4");
+			 OurSystem.out.println("4");
 		}
 		
-		System.out.println("sssss");
+		OurSystem.out.println("sssss");
 		s.close();
 		*/
 		
@@ -89,16 +92,29 @@ public static void taha(){
 		// Fetching complaint id = 2
 		Complaint complaintDB = (Complaint) session.get(Complaint.class,2);
 
-		System.out.println("complaintDB Testring: OK ->" + complaintDB.getMessage() );
+		OurSystem.out.println("complaintDB Testring: OK ->" + complaintDB.getMessage() );
 
 		if ( !complaintDB.isSeen() ) {
-			System.out.println("It is not seen" );
+			OurSystem.out.println("It is not seen" );
 		}
 
 
 
 		session.close();
 		*/
+
+		/* @TahaMagdy: getTask testing
+		OurSystem sys = OurSystem.getInstance();
+		Task task = sys.getTask(1);
+		System.out.print( "main,, Fetched category >> " +task.getCategory() );
+		*/
+		
+		/* @TahaMagdy: getOffer testing
+		OurSystem sys = OurSystem.getInstance();
+		Offer offer = sys.getOffer(2);
+		System.out.println("offer description " + offer.getDescription());
+		*/
+
 
 		
 		/*
@@ -108,7 +124,7 @@ public static void taha(){
 
 		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
 		free.setBalance(1234);
-		System.out.println(free.getBalance());
+		OurSystem.out.println(free.getBalance());
 		*/
 
 
@@ -149,16 +165,16 @@ public static void taha(){
 		@Umar
 		Session s;
 		try {
-			System.out.println("1");
+			OurSystem.out.println("1");
 			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-			 System.out.println("2");
+			 OurSystem.out.println("2");
 		} catch (Exception e) {
-			System.out.println("3");
+			OurSystem.out.println("3");
 			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
-			 System.out.println("4");
+			 OurSystem.out.println("4");
 		}
 		
-		System.out.println("sssss");
+		OurSystem.out.println("sssss");
 		s.close();
 		*/
 		
@@ -175,13 +191,13 @@ public static void taha(){
 		@Umar
 		Session s;
 		try {
-			System.out.println("1");
+			OurSystem.out.println("1");
 			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-			 System.out.println("2");
+			 OurSystem.out.println("2");
 		} catch (Exception e) {
-			System.out.println("3");
+			OurSystem.out.println("3");
 			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
-			 System.out.println("4");
+			 OurSystem.out.println("4");
 		}
 		
 		Employer em1 = (Employer) se.get(Employer.class, 1);
@@ -194,12 +210,12 @@ public static void taha(){
 		noti.setToAccount_id(to);
 //		se.save(noti);
 		boolean b = em1.SendNotify(noti, to);
-		System.out.println(b);
+		OurSystem.out.println(b);
 //		se.getTransaction().commit();
 		
 //		Query q = se.createQuery("from Notification");
 //		List<Notification> n= q.list();
-//		n.forEach(e->{System.out.println(e.getMessage());});
+//		n.forEach(e->{OurSystem.out.println(e.getMessage());});
 		se.close();
 	}
 	*/
@@ -380,12 +396,12 @@ public static void init() {
 //
 //		se.save(of);
 //		Task t1 = (Task) se.get(Task.class, 1);
-//		System.out.println(t1.getCategory());
+//		OurSystem.out.println(t1.getCategory());
 //		for(Skill e : t1.getTechnologies())
-//			System.out.print(e.getName()+"   ");
+//			OurSystem.out.print(e.getName()+"   ");
 //		
 //		for(Offer of : t1.getOffers())
-//			System.out.print(of.getId() + "   ");
+//			OurSystem.out.print(of.getId() + "   ");
 //
 //		Feedback fee = new Feedback();
 //		fee.setDate(LocalDateTime.now());
