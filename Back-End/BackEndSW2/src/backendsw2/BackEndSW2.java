@@ -50,6 +50,33 @@ public class BackEndSW2 {
 
 		
 
+
+
+
+
+		
+		/*
+		@Umar
+		Session s;
+		try {
+			System.out.println("1");
+			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+			 System.out.println("2");
+		} catch (Exception e) {
+			System.out.println("3");
+			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
+			 System.out.println("4");
+		}
+		
+		System.out.println("sssss");
+		s.close();
+		*/
+		
+	}
+
+
+public static void taha(){
+	
 		/*
 		 * @TahaMagdy: Complaint Class testting...
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
@@ -99,30 +126,8 @@ public class BackEndSW2 {
 
 		session.close();
 		*/
-
-
-
-
-		
-		/*
-		@Umar
-		Session s;
-		try {
-			System.out.println("1");
-			 s = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-			 System.out.println("2");
-		} catch (Exception e) {
-			System.out.println("3");
-			 s = databaseManager.SessionsManager.getSessionFactory().openSession();
-			 System.out.println("4");
-		}
-		
-		System.out.println("sssss");
-		s.close();
-		*/
-		
-	}
-
+	
+} // end taha()
 	
 	
 	
