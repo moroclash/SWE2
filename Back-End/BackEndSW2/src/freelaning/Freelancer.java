@@ -1,10 +1,14 @@
 // Done @moroclash
 package freelaning;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import system.Iterator;
-
-
 
 /**
  *
@@ -36,8 +40,6 @@ public class Freelancer extends ConsumerAccount {
 	 *
 	 */
 	private FreelancerProfile profile;
-	
-	
 
 	public Set<Skill> getSkills() {
 		return skills;
@@ -71,17 +73,11 @@ public class Freelancer extends ConsumerAccount {
 		this.profile = profile;
 	}
 
-	
-	
-	
-	
 	/**
-	 * 
+	 *
 	 * private iterator class
 	 */
-	
-	private class BeIterator implements Iterator
-	{
+	private class BeIterator implements Iterator {
 
 		@Override
 		public Object next() {
@@ -123,8 +119,7 @@ public class Freelancer extends ConsumerAccount {
 			return true;
 		}
 	}
-	
-	
+
 	/**
 	 * @param task
 	 * @param offer
@@ -193,30 +188,165 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * @param skill
+	 * Not Tested
+	 * @moroclash
+	 * 
+	 * @param skill : this is Skill that will added
+	 *		  if Skill found in DB it will create relationship between them 
+	 *		  if not it will add it in DB and create RelationShip
+	 * 
+	 * @return True if Skill Added Sucssesfully Or False if Not  
 	 */
-	public void addSkill(String skill) {
-		// TODO implement here
+	public boolean addSkill(String skill) {
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false, end = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			//this is the skill object that will added
+			Skill MySkill;
+			//criteria to get skill object from DB
+			Criteria cri = se.createCriteria(Skill.class);
+			List<Skill> ListSk = cri.add(Restrictions.eq("name", skill)).list();
+			//check if List empty to check if Skill is found or not
+			if (ListSk.size() == 0) {
+				//if empty it will save new object in DB
+				MySkill = new Skill();
+				MySkill.setName(skill);
+				se.save(MySkill);
+			} else {
+				//if exist in DB will retrive it
+				MySkill = ListSk.get(0);
+			}
+			//add SKill in Skill Set
+			try {
+				//add skill in set if Set Assiend
+				this.skills.add(MySkill);
+			} catch(Exception exp) {
+				//if List don't assiend to object it will declear new HashSet to set
+				this.skills = new HashSet<>();
+				this.skills.add(MySkill);
+			}
+			//add new relation ship between new SKill and this FreeLancer Account
+			SQLQuery sql = se.createSQLQuery("INSERT INTO Freelancer_skills (account_id,Skill_id) VALUES (?,?)");
+			sql.setInteger(0, this.getId());
+			sql.setInteger(1, MySkill.getId());
+			//execute Queary 
+			sql.executeUpdate();
+			//commit saving
+			se.getTransaction().commit();
+			end = true;
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
+		}
 	}
 
 	/**
-	 * @param skill
-	 */
-	public void deleteSkill(String skill) {
-		// TODO implement here
-	}
-
-	/**
+	 * not tested
 	 *
+	 * @moroclash
+	 *
+	 * @param skill : this skill that will deleted
+	 * @return true if skill deleted or False if not Deleted
+	 */
+	public boolean deleteSkill(String skill) {
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false, end = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			this.skills.remove(skill);
+			Criteria cri = se.createCriteria(Skill.class);
+			Skill sk = (Skill) cri.add(Restrictions.eq("name", skill)).list().get(0);
+			SQLQuery sql = se.createSQLQuery("DELETE FROM Freelancer_skills WHERE account_id=? AND Skill_id=?");
+			sql.setInteger(0, this.getId());
+			sql.setInteger(1, sk.getId());
+			sql.executeUpdate();
+			end = true;
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
+		}
+	}
+
+	/**
+	 * ??????????????? ask
 	 */
 	public void listTasks() {
 		// TODO implement here
 	}
 
+	/**
+	 * not tested
+	 *
+	 * @moroclash
+	 *
+	 * this save object in DB
+	 * @return : True if Object saved in DB , false if exist exiption
+	 */
 	@Override
 	public boolean register() {
-	     return true;
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			se.save(this);
+			se.getTransaction().commit();
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+			se.close();
+			return false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return true;
+		}
 	}
 
 }
- 
