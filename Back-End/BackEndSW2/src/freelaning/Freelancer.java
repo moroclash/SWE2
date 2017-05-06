@@ -3,6 +3,7 @@ package freelaning;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -89,13 +90,12 @@ public class Freelancer extends ConsumerAccount {
 		private List lis;
 		private java.util.ListIterator iterator;
 
-		public BeIterator(List lis) {
-			this.lis = lis;
+		public void setCollection(Collection set) {
+			if(set instanceof List)
+				this.lis = (List) set;
+			else
+				this.lis = new ArrayList(set);
 			this.iterator = lis.listIterator();
-		}
-
-		public void setLis(List lis) {
-			this.lis = lis;
 		}
 
 		@Override
@@ -141,6 +141,23 @@ public class Freelancer extends ConsumerAccount {
 			} catch (Exception e) {
 				return false;
 			}
+		}
+		
+		public void test()
+		{
+			while(hasNext())
+			{
+				Task t = (Task) next();
+				System.out.println(t.getId());
+			}
+			
+			
+			for(Object t : this.lis)
+			{
+				Task tt = (Task) t;
+				System.err.println(tt.getId());
+			}
+				
 		}
 	}
 
@@ -413,7 +430,7 @@ public class Freelancer extends ConsumerAccount {
 	 * @return BeIterator class that implement system.Iterator interface
 	 */
 	private BeIterator getOffersWithMood(Set<Integer> mood) {
-		BeIterator BeIte = new BeIterator(new ArrayList<>());;
+		BeIterator BeIte = new BeIterator();;
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
@@ -434,7 +451,7 @@ public class Freelancer extends ConsumerAccount {
 			LogicalExpression lox = Restrictions.and(samID, OFmood);
 			cri.add(lox);
 			List<Offer> OffList = cri.list();
-			BeIte.setLis(OffList);
+			BeIte.setCollection(OffList);
 
 		} catch (Exception exp) {
 			se.getTransaction().rollback();
@@ -581,13 +598,13 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 * @morocash
 	 * 
 	 * return List of all Taskes
 	 */
 	public Iterator listTasks() {
-		BeIterator BeIte = new BeIterator(new ArrayList<>());;
+		BeIterator BeIte = new BeIterator();;
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
@@ -603,15 +620,16 @@ public class Freelancer extends ConsumerAccount {
 		se.getTransaction().begin();
 		try {
 			Criteria cri = se.createCriteria(Offer.class);
-			cri.add(Restrictions.eq("owner", this.getId()));
-			List<Task> liTask = new ArrayList<>();
+			cri.add(Restrictions.eq("owner", this));
+			Set<Task> liTask = new HashSet<>();
 			List<Offer> OffList = cri.list();
 			OffList.forEach(e -> {
 				liTask.add(e.getTask());
 			});
-			BeIte.setLis(liTask);
+			BeIte.setCollection(liTask);
 		} catch (Exception exp) {
 			se.getTransaction().rollback();
+			System.err.println(exp.fillInStackTrace());
 		} finally {
 			//check if he open a new session to close it 
 			if (flage) //close the new session
@@ -623,7 +641,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *

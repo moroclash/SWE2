@@ -29,9 +29,11 @@ import java.util.List;
 import org.hibernate.Query;
 
 import java.util.Set;
+import org.hibernate.Criteria;
 
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import system.OurSystem;
 
 /**
@@ -78,38 +80,21 @@ public class BackEndSW2 {
               //emp.acceptFinishedTask(offer);
         }
 	
-	//admin id : 6   freelancer : 7
+	//admin id : 6   freelancer : 7   task : 1
 	public static void omar() {
-		FreelancerProfile fp = new FreelancerProfile();
-		fp.setAverageHourCost(12);
-		fp.setDescription("testetstetstet");
-		fp.setNumberOfTasks(13);
-		fp.setPicture("check/chekc");
-		Rate r = new Rate();
-		r.setTheRate(70);
-		fp.setRate(r);
-		fp.setReviews(new HashSet<>());
-		fp.setTotalMoney(11111100022222d);
-		
-		Freelancer free = new Freelancer();
-		free.setAccountState(0);
-		free.setBalance(11120000000d);
-		free.setBirthDate("13131313");
-		free.setCountry("cairto");
-		free.setDate(LocalDateTime.now());
-		free.setExperience(new HashSet<>());
-		free.setFirstName("moro");
-		free.setLastName("ckas");
-		free.setNotifications(new HashSet<>());
-		free.setPassword("dsadasdasdas");
-		free.setPhone("12121212121");
-		free.setProfile(fp);
-		free.setSkills(new HashSet<>());
-		free.setUserName("sossoso");
-		free.setVisaNumber("1210212021");
-		
-		boolean b= free.register();
-		System.out.println(b);
+		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		se.getTransaction().begin();
+		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
+		system.Iterator itr = free.listTasks();
+		while(itr.hasNext())
+		{
+			Task t = (Task) itr.next();
+			System.out.println(t.getId());
+		}
+
+
+			
+		se.close();
 		
 	}
 	
