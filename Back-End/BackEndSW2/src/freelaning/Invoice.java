@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
  *
  */
 public class Invoice {
-
+      
+        
 	/**
 	 * Default constructor
 	 */
@@ -37,7 +38,7 @@ public class Invoice {
 	private Double price;
 
 	private int id;
-
+       
 	public Offer getOffer() {
 		return offer;
 	}
@@ -79,11 +80,24 @@ public class Invoice {
 	}
 
 	/**
+     * @param offer
+     * @param emp
 	 * @return
 	 */
-	public boolean pay() {
-		// TODO implement here
-		return false;
+       
+	public boolean pay(Offer offer , Employer emp  ) {
+	 price = (double) offer.getHourCost()*offer.getNumberOfHours();
+         
+         // add money to freelancer
+         offer.getOwner().setBalance(offer.getOwner().getBalance()+price);
+         
+         // add money to System
+         // اضيفها فيييين 
+         
+
+          
+         return true ;
+         
 	}
 
 }
