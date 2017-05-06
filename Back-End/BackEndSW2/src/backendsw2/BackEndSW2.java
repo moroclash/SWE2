@@ -83,7 +83,11 @@ public class BackEndSW2 {
 	public static void omar() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
-
+		Skill s = new Skill();
+		s.setName("lolo");
+		se.save(s);
+		System.out.println(s.getId());
+		se.getTransaction().commit();
 		se.close();
 	}
 	
