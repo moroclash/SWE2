@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import system.OurSystem;
 
@@ -39,6 +40,22 @@ public class BackEndSW2 {
  */
 public static void main(String[] args) {
 
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+	
+	// Fetching complaint id = 2
+	Query selectWherePhone_q = session.createQuery("from Account where phone =?");
+	selectWherePhone_q.setString(0, "dasd");
+
+
+	List list = selectWherePhone_q.list();
+
+	System.out.println(list.size());
+	Account acc = (Account) list.get(0);
+
+	System.out.println("id of phone " + acc.getId());
+
+	session.close();
 
 
 	} // end main
