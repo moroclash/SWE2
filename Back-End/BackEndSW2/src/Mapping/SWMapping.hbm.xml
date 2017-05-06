@@ -310,6 +310,17 @@
     </class>
     <!--end invoice mapping--> 
     
-    
+    <!--Over Time reqest mapping-->
+    <class name="freelaning.OverTimeRequest">
+        <id name="id">
+            <generator class="increment"/>
+        </id>
+        <property name="date"/>
+        <property name="description" type="string"/>
+        <property name="hoursNeeded" type="integer"/>
+        <property name="state" type="integer"/>
+        <many-to-one name="offer" class="freelaning.Offer" not-null="true" unique="false"/>
+    </class>
+    <!--end of over time requist mapping-->
     
 </hibernate-mapping>

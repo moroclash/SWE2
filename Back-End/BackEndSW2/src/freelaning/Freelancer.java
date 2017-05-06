@@ -17,6 +17,7 @@ import org.hibernate.criterion.Restrictions;
 import system.Iterator;
 import system.LogManager;
 import system.Statistics;
+import system.Constraints;
 
 /**
  *
@@ -279,7 +280,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not Tested
+	 * Done Tested
 	 *
 	 * @moroclash
 	 *
@@ -288,7 +289,8 @@ public class Freelancer extends ConsumerAccount {
 	 *
 	 * @return True if requested or False if not
 	 */
-	public boolean requestOverTime(Offer offer, OverTimeRequest request) {
+	public boolean requestOverTime(OverTimeRequest request) {
+		Offer offer = request.getOffer();
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
@@ -305,24 +307,37 @@ public class Freelancer extends ConsumerAccount {
 		try {
 			//set state of OverTimed
 			offer.setState(6);
-			Rate FreelancerRate = offer.getOwner().getProfile().getRate();
-			system.Constraints constrains = system.Constraints.GetInstance();
+			Rate FreelancerRate = this.getProfile().getRate();
+//			system.Constraints constrains = system.Constraints.GetInstance();
+			system.Constraints constrains = (system.Constraints) se.get(Constraints.class, 1);
 			FreelancerRate.setTheRate(FreelancerRate.getTheRate()- constrains.getFr_overtimePenalty());
-			se.update(offer);
+			if(flage)
+			{
+				se.update(FreelancerRate);
+				se.update(offer);
+			}
+			else
+			{
+				se.merge(FreelancerRate);
+				se.merge(offer);
+			}
 			se.save(request);
 			se.getTransaction().commit();
-			end = true;
 			//notification that will send to Freelancer
 			AccNotification notifi = new AccNotification();
 			notifi.setDate(LocalDateTime.now());
-			notifi.setFromAccount_id((ConsumerAccount) se.get(AdminAccount.class, 1));
+			notifi.setFromAccount_id(offer.getTask().getEmployer());
 			notifi.setState(false);
-			notifi.setToAccount_id(offer.getOwner());
-			notifi.setMassage("Bad News make OverTimeRequist on Offer "+offer.getId()+ " and we applied penalty on your Rate -"+constrains.getFr_overtimePenalty()+"%, thanx");
+			notifi.setToAccount_id(this);
+			notifi.setMassage("Bad News you make OverTimeRequist on Offer "+offer.getId()+ " and we applied penalty on your Rate -"+constrains.getFr_overtimePenalty()+"%, thanx");
 			//add notification in notificationBox
 			offer.getOwner().addNotification(notifi);
+			
+			end = true;
 			LogManager.Log(offer.getOwner().getId() +" freelancer apply OverTimeRequist to offer : " + offer.getId());
 		} catch (Exception exp) {
+			System.err.println(exp.getMessage());
+			System.err.println(exp.fillInStackTrace());
 			se.getTransaction().rollback();
 			end = false;
 		} finally {

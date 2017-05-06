@@ -1,25 +1,45 @@
 package freelaning;
 
 // @TahaMagdy: DONE
-
 import java.time.LocalDateTime;
 
-
 /**
- * 
+ *
  */
 public class OverTimeRequest {
 
-    /**
-     * Default constructor
-     */
-    public OverTimeRequest() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public OverTimeRequest() {
+	}
 
-    /**
-     * 
-     */
-    private int hoursNeeded;
+	/**
+	 *
+	 */
+	private int hoursNeeded;
+
+	/**
+	 *
+	 */
+	private Offer offer;
+
+	/**
+	 *
+	 */
+	private String description;
+
+	/**
+	 *
+	 */
+	private int state;
+
+	/**
+	 *
+	 */
+	private LocalDateTime date;
+
+	private int id;
 
 	public int getHoursNeeded() {
 		return hoursNeeded;
@@ -61,26 +81,12 @@ public class OverTimeRequest {
 		this.date = date;
 	}
 
-    /**
-     * 
-     */
-    private Offer offer;
+	public int getId() {
+		return id;
+	}
 
-    /**
-     * 
-     */
-    private String description;
-
-    /**
-     * 
-     */
-    private int state;
-
-    /**
-     * 
-     */
-    private LocalDateTime date;
-
-
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }
