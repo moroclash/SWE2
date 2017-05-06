@@ -175,29 +175,94 @@ public class Freelancer extends ConsumerAccount {
 		return true;
 	}
 
+	
 	/**
-	 * @param offer
-	 * @param rateValue
+	 * not Tested
+	 * @moroclash
+	 * 
+	 * @param offer   : this offer that have task that have Employer that he will rated     
+	 * @param rateValue : this is the rate you want 
+	 * 
+	 * @return : True if Employer Rated or False if not "exist exception"
 	 */
 	public boolean rateEmployer(Offer offer, int rateValue) {
-		// TODO implement here
-		return true;
+		Rate rate = offer.getTask().getEmployer().getProfile().getRate();
+		int value=rate.getTheRate();
+		if(value==0)
+		{
+			rate.setTheRate(rateValue);
+		}
+		else if(value==100 && rateValue>=100)
+		{
+			rate.setTheRate(value);
+		}
+		else
+		{
+			if (rateValue==50)
+			{
+				rate.setTheRate(value);
+			}
+			else if(rateValue<50)
+			{
+				rate.setTheRate(value-((100-rateValue)/10));
+			}
+			else
+			{
+				rate.setTheRate(value+(rateValue/10));
+			}
+		}
+		
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false,end=false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			se.save(rate);
+			se.getTransaction().commit();
+			end = true;
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+			end=false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
+		}
 	}
 
+	
 	/**
 	 * @return
 	 */
 	public BeIterator getWaitingOffersIterator() {
-		// TODO implement here
-		return null;
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(0);
+		moods.add(1);
+		moods.add(2);
+		return getOffersWithMood(moods);
 	}
 
 	/**
-	 * @return
+	 * @return system.Iterator interface that have All CompleateTaskes
 	 */
-	public BeIterator getCompletedTasksIterator() {
-		// TODO implement here
-		return null;
+	public system.Iterator getCompletedTasksIterator() {
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(7);
+		moods.add(8);
+		moods.add(9);
+		return getOffersWithMood(moods);
 	}
 
 	/**
@@ -257,9 +322,6 @@ public class Freelancer extends ConsumerAccount {
 		HashSet<Integer> moods = new HashSet<>();
 		moods.add(3);
 		moods.add(6);
-		moods.add(7);
-		moods.add(8);
-		moods.add(9);
 		return getOffersWithMood(moods);
 	}
 
