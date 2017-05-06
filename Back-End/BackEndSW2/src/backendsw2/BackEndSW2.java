@@ -30,6 +30,7 @@ import org.hibernate.Query;
 
 import java.util.Set;
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 
 
 import org.hibernate.Session;
@@ -85,17 +86,10 @@ public class BackEndSW2 {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		system.Iterator itr = free.listTasks();
-		while(itr.hasNext())
-		{
-			Task t = (Task) itr.next();
-			System.out.println(t.getId());
-		}
+		boolean b =free.addSkill("bobo");
+		System.out.println(b);
 
-
-			
 		se.close();
-		
 	}
 	
 	public static void taha() {

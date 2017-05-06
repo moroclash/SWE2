@@ -480,7 +480,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * Not Tested
+	 * Done Tested
 	 *
 	 * @moroclash
 	 *
@@ -516,6 +516,9 @@ public class Freelancer extends ConsumerAccount {
 				MySkill = new Skill();
 				MySkill.setName(skill);
 				se.save(MySkill);
+				se.getTransaction().commit();
+				se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+				se.getTransaction().begin();
 			} else {
 				//if exist in DB will retrive it
 				MySkill = ListSk.get(0);
@@ -531,8 +534,8 @@ public class Freelancer extends ConsumerAccount {
 			}
 			//add new relation ship between new SKill and this FreeLancer Account
 			SQLQuery sql = se.createSQLQuery("INSERT INTO Freelancer_skills (account_id,Skill_id) VALUES (?,?)");
-			sql.setInteger(0, this.getId());
-			sql.setInteger(1, MySkill.getId());
+			sql.setParameter(0, this.getId());
+			sql.setParameter(1, MySkill.getId());
 			//execute Queary 
 			sql.executeUpdate();
 			//commit saving
@@ -540,6 +543,7 @@ public class Freelancer extends ConsumerAccount {
 			end = true;
 			LogManager.Log(this.getId() + " add new Skill");
 		} catch (Exception exp) {
+			System.err.println(exp.getMessage() + " becouse Doubleaction");
 			se.getTransaction().rollback();
 			end = false;
 		} finally {
