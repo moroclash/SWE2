@@ -1,6 +1,7 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.hibernate.Session;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
@@ -154,13 +155,42 @@ public class Offer {
 	/**
 	 *
 	 */
-	public void cancelOffer() {
-		// TODO implement here
+	public void cancelOffer(Account account ) {
+            if(account instanceof  Employer)
+            {
+                if(this.state == 0)
+                this.state = 2;
+                else 
+                    this.state = 5;
+                
+                        
+            }
+            else if(account instanceof Freelancer) 
+            {
+                this.state = 4;
+            }
+            Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        try {
+            se.beginTransaction();
+            se.update(this);
+            se.getTransaction().commit();
+
+        } catch (Exception e) {
+            se.getTransaction().rollback();
+        } finally {
+            se.close();
+        }
+
+            
+              
+            
+		
 	}
 
 	/**
 	 *
 	 */
+        // 
 	public void acceptOffer() {
 		// TODO implement here
 	}
@@ -168,8 +198,20 @@ public class Offer {
 	/**
 	 * @return
 	 */
-	public boolean editOffer() {
-		// TODO implement here
+	public boolean editOffer(Offer offer) {
+            
+	Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        try {
+            se.beginTransaction();
+            se.update(offer);
+            se.getTransaction().commit();
+
+        } catch (Exception e) {
+            se.getTransaction().rollback();
+        } finally {
+            se.close();
+        }
+
 		return false;
 	}
 
