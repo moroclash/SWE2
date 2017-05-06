@@ -635,15 +635,9 @@ public class Freelancer extends ConsumerAccount {
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
-		boolean flage = false,end=false;
-		try {
-			//if exist session 
-			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-		} catch (Exception exp) {
-			// if not exist session
-			se = databaseManager.SessionsManager.getSessionFactory().openSession();
-			flage = true;
-		}
+		boolean end=false;
+		se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		System.out.println("open");
 		se.getTransaction().begin();
 		try {
 			se.save(this);
@@ -652,22 +646,20 @@ public class Freelancer extends ConsumerAccount {
 			//wellcom massage
 			AccNotification notifi = new AccNotification();
 			notifi.setDate(LocalDateTime.now());
-			notifi.setFromAccount_id((Account) se.get(AdminAccount.class, 1));
+			notifi.setFromAccount_id(this);
 			notifi.setMassage("Wellcom "+this.getUserName()+" in our freelancing system");
 			notifi.setState(false);
 			notifi.setToAccount_id(this);
 			this.addNotification(notifi);
 			end = true;
 		} catch (Exception exp) {
+			System.err.println(exp.fillInStackTrace());
 			se.getTransaction().rollback();
 			end=false;
 		} finally {
-			//check if he open a new session to close it 
-			if (flage) //close the new session
-			{
-				se.close();
-			}
-			return true;
+			//close session
+			se.close();
+			return end;
 		}
 	}
 }
