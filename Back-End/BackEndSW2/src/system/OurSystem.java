@@ -227,7 +227,8 @@ private Employer getEmployerAccountBy_id ( int id ){
 
 // @TahaMagdy: helper Function (getAccount)
 // Return -1 if phone number is not existing
-private int get_ID_FromPhone ( String username){
+// otherwise returns id of th phone
+private int get_ID_FromPhone ( String phone ){
 
 	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 	session.getTransaction().begin();
@@ -235,7 +236,7 @@ private int get_ID_FromPhone ( String username){
 	try {
 	// Fetching complaint id = 2
 	Query selectWherePhone_q = session.createQuery("from Account where phone =?");
-	selectWherePhone_q.setString(0, "dasd");
+	selectWherePhone_q.setString(0, phone);
 
 
 	List list = selectWherePhone_q.list();
