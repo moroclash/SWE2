@@ -336,7 +336,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not Tested
+	 * Done Tested
 	 *
 	 * @moroclash
 	 *
@@ -351,8 +351,8 @@ public class Freelancer extends ConsumerAccount {
 		int value = rate.getTheRate();
 		if (value == 0) {
 			rate.setTheRate(rateValue);
-		} else if (value == 100 && rateValue >= 100) {
-			rate.setTheRate(value);
+		} else if (rateValue > 50 && value >= 100) {
+			rate.setTheRate(100);
 		} else if (rateValue == 50) {
 			rate.setTheRate(value);
 		} else if (rateValue < 50) {
@@ -375,11 +375,14 @@ public class Freelancer extends ConsumerAccount {
 		}
 		se.getTransaction().begin();
 		try {
-			se.update(rate);
-			se.getTransaction().commit();
+			if(flage)
+				se.update(rate);
+			else
+				se.merge(rate);
 			end = true;
 			LogManager.Log(this.getId() + " Rate Emplyeer " + offer.getTask().getEmployer().getId());
 		} catch (Exception exp) {
+			System.out.println(exp.fillInStackTrace());
 			se.getTransaction().rollback();
 			end = false;
 		} finally {

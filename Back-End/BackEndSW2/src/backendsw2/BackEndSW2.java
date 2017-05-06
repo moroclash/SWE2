@@ -81,19 +81,19 @@ public class BackEndSW2 {
               //emp.acceptFinishedTask(offer);
         }
 	
-	//admin id : 6   freelancer : 7   task : 1
+	//admin id : 6   freelancer : 7   task : 1    Employer : 8 rate 70 task:3 offer:4
 	public static void omar() {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		system.Iterator itr= free.getWaitingOffersIterator();
-		while(itr.hasNext())
-		{
-			Offer of = (Offer) itr.next();
-			System.out.println(of.getId());
-		}
+		boolean id = free.rateEmployer((Offer) se.get(Offer.class, 4),70);
 		
-
+		Employer em = (Employer) se.get(Employer.class, 8);
+		System.out.println("rate : " + em.getProfile().getRate().getTheRate());
+		
+		System.out.println(id);
+		se.getTransaction().commit();
+		
 		se.close();
 	}
 	
