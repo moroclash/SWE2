@@ -162,4 +162,13 @@ public class Task {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param offer
+	 * @return 
+	 */
+	public boolean addOffer(Offer offer)
+	{
+		return true;
+	}
 }

@@ -144,22 +144,23 @@ public class Freelancer extends ConsumerAccount {
 		}
 	}
 
+	
 	/**
-	 * @param task
-	 * @param offer
+	 * not tested
+	 * @moroclash
+	 * 
+	 * @param task : this task that will receive Offer
+	 * @param offer : this Offer that will applied
+	 * 
+	 * @return True if Offer Applied , False if Not
 	 */
 	public boolean applyTask(Task task, Offer offer) {
-		// TODO implement here
-		return true;
+		task.addOffer(offer);
+		boolean end = task.uploadTask();
+		return end;
 	}
 
-	/**
-	 * @param task
-	 */
-	public boolean apologizeForTask(Task task) {
-		// TODO implement here
-		return true;
-	}
+	
 
 	/**
 	 * not tested 
@@ -194,7 +195,6 @@ public class Freelancer extends ConsumerAccount {
 
 				//change Task state to cancel during work
 				task.setState(4);
-				
 				//notification that will send to Freelancer
 				AccNotification notifi = new AccNotification();
 				notifi.setDate(LocalDateTime.now());
