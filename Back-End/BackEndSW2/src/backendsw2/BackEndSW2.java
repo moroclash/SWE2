@@ -86,7 +86,7 @@ public class BackEndSW2 {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		boolean b =free.addSkill("bobo");
+		boolean b =free.deleteSkill("bobo");
 		System.out.println(b);
 
 		se.close();

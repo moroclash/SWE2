@@ -557,7 +557,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
@@ -586,6 +586,7 @@ public class Freelancer extends ConsumerAccount {
 			sql.setInteger(0, this.getId());
 			sql.setInteger(1, sk.getId());
 			sql.executeUpdate();
+			se.getTransaction().commit();
 			end = true;
 			LogManager.Log(this.getId() + " delete exist Skill");
 		} catch (Exception exp) {
