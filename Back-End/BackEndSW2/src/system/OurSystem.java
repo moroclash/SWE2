@@ -4,10 +4,13 @@ import freelaning.Complaint;
 import freelaning.ConsumerAccount;
 import freelaning.Freelancer;
 import freelaning.AccNotification;
+import freelaning.Account;
 import freelaning.Employer;
 import freelaning.Offer;
 import freelaning.Task;
 import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 
@@ -140,9 +143,9 @@ System.out.println("getOffer is fired from OurSystem");
     /**
      * @maintainer TahaMagdy
      * @param mode: determines how do you want to search.
-     * 	0 id
-     * 	1 username
-     * 	3 phone
+     * 	0 id DONE
+     * 	1 username 
+     * 	3 phone DONE (get ID from Phone)
      * @return a matching CONSUMER account not null
      * YOU need to cast it to Freelancer or Employer
      */
@@ -220,6 +223,43 @@ private Employer getEmployerAccountBy_id ( int id ){
 } // end getEmployerAccountBy_id()
 
 
+
+
+// @TahaMagdy: helper Function (getAccount)
+// Return -1 if phone number is not existing
+private int get_ID_FromPhone ( String username){
+
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+	
+	try {
+	// Fetching complaint id = 2
+	Query selectWherePhone_q = session.createQuery("from Account where phone =?");
+	selectWherePhone_q.setString(0, "dasd");
+
+
+	List list = selectWherePhone_q.list();
+
+	System.out.println(list.size());
+	Account acc = (Account) list.get(0);
+
+	System.out.println("id of phone " + acc.getId());
+
+	return acc.getId();
+	
+	}
+	catch (Exception e){
+		session.getTransaction().rollback();
+	}
+
+	finally {
+	session.close();
+	}
+
+
+
+	return -1;
+}
 
 
     /**
