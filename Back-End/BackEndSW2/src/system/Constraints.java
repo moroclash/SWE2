@@ -66,7 +66,7 @@ public class Constraints {
 	/**
 	 * @return
 	 */
-	public Constraints GetInstance() {
+	public static Constraints GetInstance() {
 		// TODO implement here
 		return null;
 	}

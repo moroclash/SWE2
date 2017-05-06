@@ -14,7 +14,6 @@ public class Statistics {
 	 */
 	private double totalMoney;
 
-
 	/**
 	 *
 	 */
@@ -66,7 +65,7 @@ public class Statistics {
 	private static Statistics statistics;
 
 	private int id;
-	
+
 	/**
 	 *
 	 */
@@ -78,9 +77,17 @@ public class Statistics {
 	 * @return
 	 */
 	// أحا يا ياسر، أكتب أول حرف صغير مش كبير
-	public Statistics getInstance() {
+	public static Statistics getInstance() {
 		// TODO implement here
 		return null;
+	}
+
+	/**
+	 * this function is update current class from DB
+	 * يعني تسيف للكلاس دة في الداتا بيز يا ياسر عشان لو حصل تغيير فية نستخدم الفانكشن دي
+	 */
+	public void updateStatistics() {
+
 	}
 
 	public double getTotalMoney() {
@@ -171,5 +178,4 @@ public class Statistics {
 		this.id = id;
 	}
 
-	
 }
