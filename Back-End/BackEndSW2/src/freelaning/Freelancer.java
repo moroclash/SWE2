@@ -407,12 +407,12 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 * @moroclash
 	 * 
 	 * @return system.Iterator interface that have All CompleateTaskes
 	 */
-	public system.Iterator getCompletedTasksIterator() {
+	public system.Iterator getCompletedOffersIterator() {
 		HashSet<Integer> moods = new HashSet<>();
 		moods.add(7);
 		moods.add(8);

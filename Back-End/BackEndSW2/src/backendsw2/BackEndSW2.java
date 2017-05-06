@@ -86,7 +86,7 @@ public class BackEndSW2 {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		system.Iterator itr= free.getAcceptedOffersIterator();
+		system.Iterator itr= free.getCompletedOffersIterator();
 		while(itr.hasNext())
 		{
 			Offer of = (Offer) itr.next();
