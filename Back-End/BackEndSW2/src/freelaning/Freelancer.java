@@ -393,7 +393,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 * @moroclash
 	 * 
 	 * @return : all waiting Offers
