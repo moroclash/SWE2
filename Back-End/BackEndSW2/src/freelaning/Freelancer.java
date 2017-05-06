@@ -1,12 +1,16 @@
 // Done @moroclash
 package freelaning;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Restrictions;
 import system.Iterator;
 
@@ -79,44 +83,61 @@ public class Freelancer extends ConsumerAccount {
 	 */
 	private class BeIterator implements Iterator {
 
+		private List lis;
+		private java.util.ListIterator iterator;
+
+		public BeIterator(List lis) {
+			this.lis = lis;
+			this.iterator = lis.listIterator();
+		}
+
+		public void setLis(List lis) {
+			this.lis = lis;
+		}
+
 		@Override
 		public Object next() {
-			return null;
+			return this.iterator.next();
 		}
 
 		@Override
 		public Object previous() {
-			return null;
+			return this.iterator.previous();
 		}
 
 		@Override
 		public boolean hasNext() {
-			return true;
+			return this.iterator.hasNext();
 		}
 
 		@Override
 		public int getSize() {
-			return 1;
+			return this.lis.size();
 		}
 
 		@Override
 		public Object getIndx(int index) {
-			return null;
+			return this.lis.get(index);
 		}
 
 		@Override
 		public List getAll() {
-			return null;
+			return this.lis;
 		}
 
 		@Override
 		public List Clone() {
-			return null;
+			return new ArrayList<>(this.lis);
 		}
 
 		@Override
 		public boolean removeIndex(int Index) {
-			return true;
+			try {
+				this.lis.remove(Index);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
 		}
 	}
 
@@ -180,22 +201,78 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * @return
+	 * not Tested
+	 *
+	 * @moroclash
+	 *
+	 * Helper Function
+	 *
+	 * @param mood : this collection that have all state that you want
+	 * you can set any State you want from 0-9
+	 * @return BeIterator class that implement system.Iterator interface
 	 */
-	public BeIterator getAcceptedTasksIterator() {
-		// TODO implement here
-		return null;
+	private BeIterator getOffersWithMood(Set<Integer> mood) {
+		BeIterator BeIte = new BeIterator(new ArrayList<>());;
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			Criteria cri = se.createCriteria(Offer.class);
+			Criterion samID = Restrictions.eq("owner", this.getId());
+			Criterion OFmood = Restrictions.in("state", mood);
+			LogicalExpression lox = Restrictions.and(samID, OFmood);
+			cri.add(lox);
+			List<Offer> OffList = cri.list();
+			BeIte.setLis(OffList);
+
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return BeIte;
+		}
+	}
+
+	/**
+	 * not tested
+	 * @moroclash
+	 * 
+	 * @return Iterator interface that will have all Accepted Offers
+	 */
+	public system.Iterator getAcceptedOffersIterator() {
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(3);
+		moods.add(6);
+		moods.add(7);
+		moods.add(8);
+		moods.add(9);
+		return getOffersWithMood(moods);
 	}
 
 	/**
 	 * Not Tested
+	 *
 	 * @moroclash
-	 * 
-	 * @param skill : this is Skill that will added
-	 *		  if Skill found in DB it will create relationship between them 
-	 *		  if not it will add it in DB and create RelationShip
-	 * 
-	 * @return True if Skill Added Sucssesfully Or False if Not  
+	 *
+	 * @param skill : this is Skill that will added if Skill found in DB it
+	 * will create relationship between them if not it will add it in DB and
+	 * create RelationShip
+	 *
+	 * @return True if Skill Added Sucssesfully Or False if Not
 	 */
 	public boolean addSkill(String skill) {
 		Session se;
@@ -231,7 +308,7 @@ public class Freelancer extends ConsumerAccount {
 			try {
 				//add skill in set if Set Assiend
 				this.skills.add(MySkill);
-			} catch(Exception exp) {
+			} catch (Exception exp) {
 				//if List don't assiend to object it will declear new HashSet to set
 				this.skills = new HashSet<>();
 				this.skills.add(MySkill);
@@ -303,10 +380,42 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * ??????????????? ask
+	 * return List of all Taskes
 	 */
-	public void listTasks() {
-		// TODO implement here
+	public Iterator listTasks() {
+		BeIterator BeIte = new BeIterator(new ArrayList<>());;
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			Criteria cri = se.createCriteria(Offer.class);
+			cri.add(Restrictions.eq("owner", this.getId()));
+			List<Task> liTask = new ArrayList<>();
+			List<Offer> OffList = cri.list();
+			OffList.forEach(e -> {
+				liTask.add(e.getTask());
+			});
+			BeIte.setLis(liTask);
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return BeIte;
+		}
 	}
 
 	/**
@@ -348,5 +457,4 @@ public class Freelancer extends ConsumerAccount {
 			return true;
 		}
 	}
-
 }
