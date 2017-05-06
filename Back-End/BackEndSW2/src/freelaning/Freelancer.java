@@ -92,7 +92,9 @@ public class Freelancer extends ConsumerAccount {
 
 		public void setCollection(Collection set) {
 			if(set instanceof List)
+			{
 				this.lis = (List) set;
+			}
 			else
 				this.lis = new ArrayList(set);
 			this.iterator = lis.listIterator();
@@ -446,7 +448,7 @@ public class Freelancer extends ConsumerAccount {
 		se.getTransaction().begin();
 		try {
 			Criteria cri = se.createCriteria(Offer.class);
-			Criterion samID = Restrictions.eq("owner", this.getId());
+			Criterion samID = Restrictions.eq("owner", this);
 			Criterion OFmood = Restrictions.in("state", mood);
 			LogicalExpression lox = Restrictions.and(samID, OFmood);
 			cri.add(lox);
@@ -466,7 +468,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
