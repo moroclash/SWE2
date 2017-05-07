@@ -166,7 +166,7 @@ public class Freelancer extends ConsumerAccount {
 
 	
 	/**
-	 * not tested
+	 * Done tested
 	 * @moroclash
 	 * 
 	 * @param task : this task that will receive Offer
@@ -183,7 +183,7 @@ public class Freelancer extends ConsumerAccount {
 	
 
 	/**
-	 * not tested 
+	 * Done tested 
 	 * @moroclash
 	 * 
 	 * this function cancel offer and change states and apply penalties
