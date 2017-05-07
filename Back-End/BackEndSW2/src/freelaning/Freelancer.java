@@ -175,9 +175,9 @@ public class Freelancer extends ConsumerAccount {
 	 * @return True if Offer Applied , False if Not
 	 */
 	public boolean applyTask(Task task, Offer offer) {
-		task.addOffer(offer);
-		boolean end = task.uploadTask();
+		boolean end = task.addOffer(offer);
 		return end;
+		
 	}
 
 	
@@ -196,6 +196,8 @@ public class Freelancer extends ConsumerAccount {
 		Task task = offer.getTask();
 		//Employeer to retrive his mony
 		Employer emp = task.getEmployer();
+		//to check if cas 0 or 3 is choised
+		boolean SwCheck = false;
 		//check state of Offer to apply penelty
 		switch(offer.getState())
 		{
@@ -203,13 +205,14 @@ public class Freelancer extends ConsumerAccount {
 			case 0:
 				//set offer state that offer canceled 
 				offer.setState(2);
+				SwCheck = true;
 				break;
 			//if offer applied and accepted 
 			// apply applay penelty on freelancer
 			// retrive mony to Emploier
 			case 3:
 				//get Rate Of employeer to apply penelty
-		                Rate FreeLancerRate = offer.getOwner().getProfile().getRate();
+		                Rate FreeLancerRate = this.getProfile().getRate();
 				//apply penelty
 				FreeLancerRate.setTheRate(FreeLancerRate.getTheRate()-system.Constraints.GetInstance().getFr_cancelingTaskPenalty());
 
@@ -260,10 +263,35 @@ public class Freelancer extends ConsumerAccount {
 		}
 		se.getTransaction().begin();
 		try {
-			se.update(offer);
-			se.update(offer.getOwner().getProfile().getRate());
-			se.update(offer.getTask());
-			se.getTransaction().commit();
+			if(SwCheck)
+			{
+				if(flage)
+				{
+					se.update(offer);
+				}
+				else
+				{
+					se.merge(offer);
+					se.getTransaction().commit();
+				}
+			}
+			else
+			{
+				if(flage)
+				{
+					se.update(offer);
+					se.update(offer.getOwner().getProfile().getRate());
+					se.update(offer.getTask());
+				}
+				else
+				{
+					se.merge(offer);
+					se.merge(offer.getOwner().getProfile().getRate());
+					se.merge(offer.getTask());
+					se.getTransaction().commit();
+				}
+			}
+			
 			end=true;
 			LogManager.Log(offer.getOwner().getId() +" freelancer cancel offer : " + offer.getId());
 		} catch (Exception exp) {

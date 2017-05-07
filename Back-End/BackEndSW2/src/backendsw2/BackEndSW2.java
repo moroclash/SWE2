@@ -38,6 +38,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import system.Constraints;
 import system.OurSystem;
+import system.Statistics;
 
 /**
  *
@@ -88,21 +89,16 @@ public class BackEndSW2 {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		System.err.println("rate : " +free.getProfile().getRate().getTheRate());
+		Offer of= (Offer) se.get(Offer.class, 4);
+		Statistics stat = (Statistics) se.get(Statistics.class, 1);
+		boolean b = free.cancelOffer(of);
+		System.out.println("freeLncer rate :" + free.getProfile().getRate().getTheRate());
+		System.out.println("task state:" + of.getTask().getState());
+		System.out.println("total mony :" + stat.getTotalMoney());
 		
-		OverTimeRequest o = new OverTimeRequest();
-		o.setDate(LocalDateTime.now());
-		o.setDescription("daskjdlaskjdklj");
-		o.setHoursNeeded(122);
-		o.setOffer((Offer) se.get(Offer.class, 4));
-		o.setState(0);
-		
-		boolean test = free.requestOverTime(o);
-		System.err.println("Rate2:  " + free.getProfile().getRate().getTheRate());
-		
-		Offer of = (Offer) se.get(Offer.class, 4);
-		System.out.println(of.getState());
-		System.out.println(test);
+		System.out.println("offer state : " + of.getState());
+		System.out.println(b);
+
 		se.close();
 	}
 	
