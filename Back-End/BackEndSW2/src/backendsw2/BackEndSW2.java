@@ -54,12 +54,8 @@ public class BackEndSW2 {
 
 	ConsumerAccount cons = (ConsumerAccount) sys.getAccount("1", 0);
 
-<<<<<<< HEAD
 	System.out.println("main>> " + cons.getFirstName());
-||||||| merged common ancestors
-=======
     } // end main
->>>>>>> 4d830df2860aa476328eb9990b9d6b4c6427b357
 
     public static void boda() {
         Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
