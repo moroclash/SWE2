@@ -30,10 +30,14 @@ import java.util.List;
 import org.hibernate.Query;
 
 import java.util.Set;
-
+import org.hibernate.SQLQuery;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
+import root.Root;
+import system.Constraints;
 import system.OurSystem;
+import system.Statistics;
 
 /**
  *
@@ -41,73 +45,67 @@ import system.OurSystem;
  */
 public class BackEndSW2 {
 
-
-	
-		
-
-/**
- * @param args the command line arguments
- */
- public static void main(String[] args) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
 
 	OurSystem sys = OurSystem.getInstance();
 
 	ConsumerAccount cons = (ConsumerAccount) sys.getAccount("1", 0);
 
+<<<<<<< HEAD
 	System.out.println("main>> " + cons.getFirstName());
+||||||| merged common ancestors
+=======
+    } // end main
+>>>>>>> 4d830df2860aa476328eb9990b9d6b4c6427b357
 
-
-	} // end main
-
-	
-	public static  void boda()
-        {
-          Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		Employer emp = new Employer();
-                emp.setId(2);
-               System.out.println( emp.showAllFreelancers().toString());
+    public static void boda() {
+        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        Employer emp = new Employer();
+        emp.setId(2);
+        System.out.println(emp.showAllFreelancers().toString());
 //               Task task = new Task();
 //               task.setEmployer(emp);
 //               task.setCategory("zdxf");
 //               emp.createTask(task);
 //               
-                 Offer offer =  (Offer) se.get(Offer.class, 2);
-              //  emp.acceptFinishedTask(offer);
-                //System.out.println(offer.getId());
-              // emp.rejectFinishedTask(offer);
-               Feedback f = new Feedback();
-               f.setDate(LocalDateTime.MAX);
-               f.setDescription("this is the test ");
-               f.setOffer(offer);
-               f.setRateValue(3);
-               //emp.makeFeedback(f ,offer);
-              // emp.rejectOffer(offer);
-              //emp.acceptFinishedTask(offer);
-        }
-	
-	public static void omar() {
-		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		se.getTransaction().begin();
-		Skill s = new Skill();
-		s.setName("lolo");
-		se.save(s);
-		System.out.println(s.getId());
-		se.getTransaction().commit();
-		se.close();
-	}
-	
-	public static void taha() {
+        Offer offer = (Offer) se.get(Offer.class, 2);
+        //  emp.acceptFinishedTask(offer);
+        //System.out.println(offer.getId());
+        // emp.rejectFinishedTask(offer);
+        Feedback f = new Feedback();
+        f.setDate(LocalDateTime.MAX);
+        f.setDescription("this is the test ");
+        f.setOffer(offer);
+        f.setRateValue(3);
+        //emp.makeFeedback(f ,offer);
+        // emp.rejectOffer(offer);
+        //emp.acceptFinishedTask(offer);
+    }
+
+    public static void omar() {
+        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        se.getTransaction().begin();
+        Skill s = new Skill();
+        s.setName("lolo");
+        se.save(s);
+        System.out.println(s.getId());
+        se.getTransaction().commit();
+        se.close();
+    }
+
+    public static void taha() {
 
 
-	/*
+        /*
 	OurSystem sys = OurSystem.getInstance();
 	Freelancer free =  (Freelancer) sys.getAccount("asd", 0);
 	System.out.println("main >> " + free.getBalance());
 	System.out.println("main >> " + free.getProfile().getAverageHourCost());
-	*/
-
-		
-	/* @TahaMagdy: for insert 
+         */
+ /* @TahaMagdy: for insert 
 	EmployerProfile empPro = new EmployerProfile();
 	empPro.setId(3);
 	empPro.setNumberOfTasks(3);
@@ -140,8 +138,8 @@ public class BackEndSW2 {
 		session.getTransaction().commit();
 		
 		session.close();
-	*/
-		/*
+         */
+ /*
 		 * @TahaMagdy: Complaint Class testting...
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 		session.getTransaction().begin();
@@ -152,22 +150,18 @@ public class BackEndSW2 {
 			System.out.println("It is not seen" );
 		}
 		session.close();
-		 */
+         */
 
-		/* @TahaMagdy: getTask testing
+ /* @TahaMagdy: getTask testing
  		OurSystem sys = OurSystem.getInstance();
  		Task task = sys.getTask(1);
  		System.out.print( "main,, Fetched category >> " +task.getCategory() );
- 		*/
- 		
- 		/* @TahaMagdy: getOffer testing
+         */
+ /* @TahaMagdy: getOffer testing
  		OurSystem sys = OurSystem.getInstance();
  		Offer offer = sys.getOffer(2);
  		System.out.println("offer description " + offer.getDescription());
-		*/
-
-
-		
+         */
  /*
 		 * @TahaMagdy: testing AccountFactory
 		 * http 200 -> DONE
@@ -175,7 +169,7 @@ public class BackEndSW2 {
 		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
 		free.setBalance(1234);
 		System.out.println(free.getBalance());
-		 */
+         */
  /*
 		 * @TahaMagdy: Adding a dummy Account for testing
 		// Making a dummy account
@@ -189,7 +183,73 @@ public class BackEndSW2 {
 		session.save(dummyAccount);
 		session.getTransaction().commit();
 		session.close();
-		 */
-	} // end taha()
+         */
+    } // end taha()
+    
+    
+    /**
+     TEST Yaser METHODS  3aaaaaaaaaaaaaaaaaaaaa
+     **/
+/*
+    public static void yaser() {
+        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        se.getTransaction().begin();
+        Root s = new Root();
+        s.setId(1);
+        s.setPassword("kod");
+        AdminAccount admin = new AdminAccount();
+        admin.setAccountState(0);
+        admin.setDate(LocalDateTime.MAX);
+        admin.setFirstName("yaser");
+        admin.setId(1);
+        admin.setLastName("shaban");
+        admin.setPassword("123456");
+        admin.setPhone("01143891426");
+        admin.setUserName("yasoo");
 
+        s.createAdmin(admin);
+        ArrayList<AdminAccount> results;
+
+        results = s.getBlockedAdims();
+        for (AdminAccount b : results) {
+            System.out.println(b.getUserName());
+        }
+
+        Constraints c = new Constraints();
+        c.setOurProfit(2);
+        c.setEm_cancelRunningTaskBudgetPenalty(4);
+        c.setEm_cancelRunningTaskPenalty(5);
+        c.setEm_rejectFinishedTaskBudgetPenalty(3);
+        c.setEm_rejectFinishedTaskPenalty(6);
+        c.setFr_overtimePenalty(8);
+        c.setFr_cancelingTaskPenalty(44);
+        c.setFr_timeoutPenalty(11);
+        c.setId(1);
+        s.specifyPenalties(c);
+        s.logout();
+        s.setPassword("0000");
+        System.out.println("" + s.getId());
+        System.out.println("" + s.getPassword());
+        s.updateProfile();
+        List<Object[]> re;
+
+        re = s.getLog();
+        for (Object[] row : re) {
+
+            System.out.println("" + row[0] + row[1]);
+        }
+        Statistics stat =  system.Statistics.getInstance();
+        stat.setId(1);
+        stat.setNumberOfAcceptedTasks(20);
+        stat.setNumberOfAdmins(30);
+        stat.setNumberOfAllTasks(40);
+        stat.setNumberOfBlockedPeople(50);
+        stat.setNumberOfComplaints(60);
+        stat.setNumberOfComplaints(70);
+        stat.updateStatistics();
+        
+        se.close();
+
+    }
+ */
 } // end class

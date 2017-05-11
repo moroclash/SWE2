@@ -1,7 +1,9 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import system.Constraints;
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
 //        (Change it if you're implementing it)
@@ -156,23 +158,79 @@ public class Offer {
 	 *
 	 */
 	public void cancelOffer(Account account ) {
-            if(account instanceof  Employer)
+          
+           
+           
+            //getRate
+            int rate =  ((Employer) account).getProfile().getRate().getTheRate();
+           
+          
+             Session se = databaseManager.SessionsManager.getSessionFactory().openSession(); 
+        try {
+             //open session
+           
+            Query hq ;
+            String q  = ""; 
+            se.beginTransaction();
+            
+            // case of Employer
+              if(account instanceof  Employer)
             {
+                // case of that offer is created on a task, but not assigned
                 if(this.state == 0)
-                this.state = 2;
-                else 
-                    this.state = 5;
+                {
+                 q = "Update Offer set state = 2  where id = :offerId" ;
+                 hq = se.createQuery(q);
+                 hq.setParameter("offerId", this.id);
+                 hq.executeUpdate();
+                }
+                // case of  cancelled by Employer during after assigning
+                else{ 
+                    //get constraints from database
+                Constraints constraints  = (Constraints) se.get(Constraints.class  ,1);
+                rate = rate - constraints.getEm_cancelRunningTaskPenalty();
+                
+                // update offer state
+                
+                 q = "Update Offer set state = 5  where id = :offerId" ;
+                 hq = se.createQuery(q);
+                 hq.setParameter("offerId", this.id);
+                 hq.executeUpdate();
+                 
+               // panlty Employer 
+               
+                   q = "Update Rate set theRate = :rate  where id = :rateId" ;
+                    hq = se.createQuery(q);
+                    hq.setParameter("rate", rate);
+                    hq.setParameter("rateId",((Employer) account).getProfile().getId() );
+                    hq.executeUpdate();
+                    
+                    
+                 // notify Employer
+                 AccNotification not = new AccNotification();
+                not.setFromAccount_id(this.getOwner());
+                not.setToAccount_id((Employer) account);
+                not.setMassage(" your rate is cosumed  to :D "+ rate);
+                not.setDate(LocalDateTime.MAX);
+                not.setState(true);
+                ((Employer)account).addNotification(not);
+                 
+                 
+                }
                 
                         
             }
+             //case of that the offer  cancelled by freelancer during after assigning
             else if(account instanceof Freelancer) 
             {
-                this.state = 4;
+                
+                 q = "Update Offer set state = 4  where id = :offerId" ;
+                 hq = se.createQuery(q);
+                 hq.setParameter("offerId", this.id);
+                 hq.executeUpdate();
             }
-            Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-        try {
-            se.beginTransaction();
-            se.update(this);
+            
+           
             se.getTransaction().commit();
 
         } catch (Exception e) {
@@ -192,7 +250,7 @@ public class Offer {
 	 */
         // 
 	public void acceptOffer() {
-		// TODO implement here
+		// TODO implement here استدعي في الامبلوير 
 	}
 
 	/**
@@ -203,7 +261,7 @@ public class Offer {
 	Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
             se.beginTransaction();
-            se.update(offer);
+            se.merge(offer);
             se.getTransaction().commit();
 
         } catch (Exception e) {

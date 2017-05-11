@@ -1,14 +1,23 @@
 // Done @moroclash
 package freelaning;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Restrictions;
 import system.Iterator;
+import system.LogManager;
+import system.Statistics;
+import system.Constraints;
 
 /**
  *
@@ -79,123 +88,455 @@ public class Freelancer extends ConsumerAccount {
 	 */
 	private class BeIterator implements Iterator {
 
+		private List lis;
+		private java.util.ListIterator iterator;
+
+		public void setCollection(Collection set) {
+			if(set instanceof List)
+			{
+				this.lis = (List) set;
+			}
+			else
+				this.lis = new ArrayList(set);
+			this.iterator = lis.listIterator();
+		}
+
 		@Override
 		public Object next() {
-			return null;
+			return this.iterator.next();
 		}
 
 		@Override
 		public Object previous() {
-			return null;
+			return this.iterator.previous();
 		}
 
 		@Override
 		public boolean hasNext() {
-			return true;
+			return this.iterator.hasNext();
 		}
 
 		@Override
 		public int getSize() {
-			return 1;
+			return this.lis.size();
 		}
 
 		@Override
 		public Object getIndx(int index) {
-			return null;
+			return this.lis.get(index);
 		}
 
 		@Override
 		public List getAll() {
-			return null;
+			return this.lis;
 		}
 
 		@Override
 		public List Clone() {
-			return null;
+			return new ArrayList<>(this.lis);
 		}
 
 		@Override
 		public boolean removeIndex(int Index) {
-			return true;
+			try {
+				this.lis.remove(Index);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		
+		public void test()
+		{
+			while(hasNext())
+			{
+				Task t = (Task) next();
+				System.out.println(t.getId());
+			}
+			
+			
+			for(Object t : this.lis)
+			{
+				Task tt = (Task) t;
+				System.err.println(tt.getId());
+			}
+				
+		}
+	}
+
+	
+	/**
+	 * Done tested
+	 * @moroclash
+	 * 
+	 * @param task : this task that will receive Offer
+	 * @param offer : this Offer that will applied
+	 * 
+	 * @return True if Offer Applied , False if Not
+	 */
+	public boolean applyTask(Task task, Offer offer) {
+		boolean end = task.addOffer(offer);
+		return end;
+		
+	}
+
+	
+
+	/**
+	 * Done tested 
+	 * @moroclash
+	 * 
+	 * this function cancel offer and change states and apply penalties
+	 * 
+	 * @param offer  : this is a offer that will be canceled
+	 * @return True if Offer Canceled or False if not
+	 */
+	public boolean cancelOffer(Offer offer) {
+		//to update his state
+		Task task = offer.getTask();
+		//Employeer to retrive his mony
+		Employer emp = task.getEmployer();
+		//to check if cas 0 or 3 is choised
+		boolean SwCheck = false;
+		//check state of Offer to apply penelty
+		switch(offer.getState())
+		{
+			//if Offer applied but not accepted
+			case 0:
+				//set offer state that offer canceled 
+				offer.setState(2);
+				SwCheck = true;
+				break;
+			//if offer applied and accepted 
+			// apply applay penelty on freelancer
+			// retrive mony to Emploier
+			case 3:
+				//get Rate Of employeer to apply penelty
+		                Rate FreeLancerRate = this.getProfile().getRate();
+				//apply penelty
+				FreeLancerRate.setTheRate(FreeLancerRate.getTheRate()-system.Constraints.GetInstance().getFr_cancelingTaskPenalty());
+
+				//change Task state to cancel during work
+				task.setState(4);
+				//notification that will send to Freelancer
+				AccNotification notifi = new AccNotification();
+				notifi.setDate(LocalDateTime.now());
+				notifi.setFromAccount_id(offer.getOwner());
+				notifi.setState(false);
+				notifi.setToAccount_id(emp);
+				notifi.setMassage("Bad News you are Canceled Offer "+offer.getId()+ " and we applied penalty on your Rate , thanx");
+				//notify FreeLancer
+				offer.getOwner().addNotification(notifi);
+			
+				//mony that will recive
+				int budget = offer.getNumberOfHours()*offer.getTimeNeeded();
+			
+				//cut budet from TotalMony
+				Statistics stat =  system.Statistics.getInstance();
+				stat.setTotalMoney(stat.getTotalMoney()-budget);
+				stat.updateStatistics();
+				
+				//notification that will send to Employeer
+				notifi = new AccNotification();
+				notifi.setDate(LocalDateTime.now());
+				notifi.setFromAccount_id(offer.getOwner());
+				notifi.setState(false);
+				notifi.setToAccount_id(emp);
+				notifi.setMassage("Bad News Offer "+offer.getId()+ " is Canceled by Freelancer \""+offer.getOwner().getUserName()+"\" and system applied penalty and your are retrive your mony :"+budget+" $ ,we are very sorry for your time");
+				emp.addNotification(notifi);
+				
+				//set offer state that offer canceled by freelancer after accepted 
+				offer.setState(4);
+				break;
+		}
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false, end = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			if(SwCheck)
+			{
+				if(flage)
+				{
+					se.update(offer);
+				}
+				else
+				{
+					se.merge(offer);
+					se.getTransaction().commit();
+				}
+			}
+			else
+			{
+				if(flage)
+				{
+					se.update(offer);
+					se.update(offer.getOwner().getProfile().getRate());
+					se.update(offer.getTask());
+				}
+				else
+				{
+					se.merge(offer);
+					se.merge(offer.getOwner().getProfile().getRate());
+					se.merge(offer.getTask());
+					se.getTransaction().commit();
+				}
+			}
+			
+			end=true;
+			LogManager.Log(offer.getOwner().getId() +" freelancer cancel offer : " + offer.getId());
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
 		}
 	}
 
 	/**
-	 * @param task
-	 * @param offer
+	 * Done Tested
+	 *
+	 * @moroclash
+	 *
+	 * @param offer : this is a offer that will be requested
+	 * @param request : your OverTimeReqest
+	 *
+	 * @return True if requested or False if not
 	 */
-	public boolean applyTask(Task task, Offer offer) {
-		// TODO implement here
-		return true;
+	public boolean requestOverTime(OverTimeRequest request) {
+		Offer offer = request.getOffer();
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false, end = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			//set state of OverTimed
+			offer.setState(6);
+			Rate FreelancerRate = this.getProfile().getRate();
+//			system.Constraints constrains = system.Constraints.GetInstance();
+			system.Constraints constrains = (system.Constraints) se.get(Constraints.class, 1);
+			FreelancerRate.setTheRate(FreelancerRate.getTheRate()- constrains.getFr_overtimePenalty());
+			if(flage)
+			{
+				se.update(FreelancerRate);
+				se.update(offer);
+			}
+			else
+			{
+				se.merge(FreelancerRate);
+				se.merge(offer);
+			}
+			se.save(request);
+			se.getTransaction().commit();
+			//notification that will send to Freelancer
+			AccNotification notifi = new AccNotification();
+			notifi.setDate(LocalDateTime.now());
+			notifi.setFromAccount_id(offer.getTask().getEmployer());
+			notifi.setState(false);
+			notifi.setToAccount_id(this);
+			notifi.setMassage("Bad News you make OverTimeRequist on Offer "+offer.getId()+ " and we applied penalty on your Rate -"+constrains.getFr_overtimePenalty()+"%, thanx");
+			//add notification in notificationBox
+			offer.getOwner().addNotification(notifi);
+			
+			end = true;
+			LogManager.Log(offer.getOwner().getId() +" freelancer apply OverTimeRequist to offer : " + offer.getId());
+		} catch (Exception exp) {
+			System.err.println(exp.getMessage());
+			System.err.println(exp.fillInStackTrace());
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
+		}
 	}
 
 	/**
-	 * @param task
-	 */
-	public boolean apologizeForTask(Task task) {
-		// TODO implement here
-		return true;
-	}
-
-	/**
-	 * @param task
-	 */
-	public boolean cancelOffer(Task task) {
-		// TODO implement here
-		return true;
-	}
-
-	/**
-	 * @param offer
-	 * @param hoursNeeded
-	 */
-	public boolean requestOverTime(Offer offer, int hoursNeeded) {
-		// TODO implement here
-		return true;
-	}
-
-	/**
-	 * @param offer
-	 * @param rateValue
+	 * Done Tested
+	 *
+	 * @moroclash
+	 *
+	 * @param offer : this offer that have task that have Employer that he
+	 * will rated
+	 * @param rateValue : this is the rate you want
+	 *
+	 * @return : True if Employer Rated or False if not "exist exception"
 	 */
 	public boolean rateEmployer(Offer offer, int rateValue) {
-		// TODO implement here
-		return true;
+		Rate rate = offer.getTask().getEmployer().getProfile().getRate();
+		int value = rate.getTheRate();
+		if (value == 0) {
+			rate.setTheRate(rateValue);
+		} else if (rateValue > 50 && value >= 100) {
+			rate.setTheRate(100);
+		} else if (rateValue == 50) {
+			rate.setTheRate(value);
+		} else if (rateValue < 50) {
+			rate.setTheRate(value - ((100 - rateValue) / 10));
+		} else {
+			rate.setTheRate(value + (rateValue / 10));
+		}
+
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false, end = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			if(flage)
+				se.update(rate);
+			else
+				se.merge(rate);
+			end = true;
+			LogManager.Log(this.getId() + " Rate Emplyeer " + offer.getTask().getEmployer().getId());
+		} catch (Exception exp) {
+			System.out.println(exp.fillInStackTrace());
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return end;
+		}
 	}
 
 	/**
-	 * @return
-	 */
-	public BeIterator getWaitingOffersIterator() {
-		// TODO implement here
-		return null;
-	}
-
-	/**
-	 * @return
-	 */
-	public BeIterator getCompletedTasksIterator() {
-		// TODO implement here
-		return null;
-	}
-
-	/**
-	 * @return
-	 */
-	public BeIterator getAcceptedTasksIterator() {
-		// TODO implement here
-		return null;
-	}
-
-	/**
-	 * Not Tested
+	 * Done tested
 	 * @moroclash
 	 * 
-	 * @param skill : this is Skill that will added
-	 *		  if Skill found in DB it will create relationship between them 
-	 *		  if not it will add it in DB and create RelationShip
+	 * @return : all waiting Offers
+	 */
+	public Iterator getWaitingOffersIterator() {
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(0);
+		moods.add(1);
+		moods.add(2);
+		return getOffersWithMood(moods);
+	}
+
+	/**
+	 * Done tested
+	 * @moroclash
 	 * 
-	 * @return True if Skill Added Sucssesfully Or False if Not  
+	 * @return system.Iterator interface that have All CompleateTaskes
+	 */
+	public system.Iterator getCompletedOffersIterator() {
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(7);
+		moods.add(8);
+		moods.add(9);
+		return getOffersWithMood(moods);
+	}
+
+	/**
+	 * not Tested
+	 *
+	 * @moroclash
+	 *
+	 * Helper Function
+	 *
+	 * @param mood : this collection that have all state that you want you
+	 * can set any State you want from 0-9
+	 * @return BeIterator class that implement system.Iterator interface
+	 */
+	private BeIterator getOffersWithMood(Set<Integer> mood) {
+		BeIterator BeIte = new BeIterator();;
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean flage = false;
+		try {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+		} catch (Exception exp) {
+			// if not exist session
+			se = databaseManager.SessionsManager.getSessionFactory().openSession();
+			flage = true;
+		}
+		se.getTransaction().begin();
+		try {
+			Criteria cri = se.createCriteria(Offer.class);
+			Criterion samID = Restrictions.eq("owner", this);
+			Criterion OFmood = Restrictions.in("state", mood);
+			LogicalExpression lox = Restrictions.and(samID, OFmood);
+			cri.add(lox);
+			List<Offer> OffList = cri.list();
+			BeIte.setCollection(OffList);
+
+		} catch (Exception exp) {
+			se.getTransaction().rollback();
+		} finally {
+			//check if he open a new session to close it 
+			if (flage) //close the new session
+			{
+				se.close();
+			}
+			return BeIte;
+		}
+	}
+
+	/**
+	 * Done tested
+	 *
+	 * @moroclash
+	 *
+	 * @return Iterator interface that will have all Accepted Offers
+	 */
+	public system.Iterator getAcceptedOffersIterator() {
+		HashSet<Integer> moods = new HashSet<>();
+		moods.add(3);
+		moods.add(6);
+		return getOffersWithMood(moods);
+	}
+
+	/**
+	 * Done Tested
+	 *
+	 * @moroclash
+	 *
+	 * @param skill : this is Skill that will added if Skill found in DB it
+	 * will create relationship between them if not it will add it in DB and
+	 * create RelationShip
+	 *
+	 * @return True if Skill Added Sucssesfully Or False if Not
 	 */
 	public boolean addSkill(String skill) {
 		Session se;
@@ -223,6 +564,9 @@ public class Freelancer extends ConsumerAccount {
 				MySkill = new Skill();
 				MySkill.setName(skill);
 				se.save(MySkill);
+				se.getTransaction().commit();
+				se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+				se.getTransaction().begin();
 			} else {
 				//if exist in DB will retrive it
 				MySkill = ListSk.get(0);
@@ -231,21 +575,23 @@ public class Freelancer extends ConsumerAccount {
 			try {
 				//add skill in set if Set Assiend
 				this.skills.add(MySkill);
-			} catch(Exception exp) {
+			} catch (Exception exp) {
 				//if List don't assiend to object it will declear new HashSet to set
 				this.skills = new HashSet<>();
 				this.skills.add(MySkill);
 			}
 			//add new relation ship between new SKill and this FreeLancer Account
 			SQLQuery sql = se.createSQLQuery("INSERT INTO Freelancer_skills (account_id,Skill_id) VALUES (?,?)");
-			sql.setInteger(0, this.getId());
-			sql.setInteger(1, MySkill.getId());
+			sql.setParameter(0, this.getId());
+			sql.setParameter(1, MySkill.getId());
 			//execute Queary 
 			sql.executeUpdate();
 			//commit saving
 			se.getTransaction().commit();
 			end = true;
+			LogManager.Log(this.getId() + " add new Skill");
 		} catch (Exception exp) {
+			System.err.println(exp.getMessage() + " becouse Doubleaction");
 			se.getTransaction().rollback();
 			end = false;
 		} finally {
@@ -259,7 +605,7 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
@@ -288,7 +634,9 @@ public class Freelancer extends ConsumerAccount {
 			sql.setInteger(0, this.getId());
 			sql.setInteger(1, sk.getId());
 			sql.executeUpdate();
+			se.getTransaction().commit();
 			end = true;
+			LogManager.Log(this.getId() + " delete exist Skill");
 		} catch (Exception exp) {
 			se.getTransaction().rollback();
 			end = false;
@@ -303,22 +651,13 @@ public class Freelancer extends ConsumerAccount {
 	}
 
 	/**
-	 * ??????????????? ask
+	 * Done tested
+	 * @morocash
+	 * 
+	 * return List of all Taskes
 	 */
-	public void listTasks() {
-		// TODO implement here
-	}
-
-	/**
-	 * not tested
-	 *
-	 * @moroclash
-	 *
-	 * this save object in DB
-	 * @return : True if Object saved in DB , false if exist exiption
-	 */
-	@Override
-	public boolean register() {
+	public Iterator listTasks() {
+		BeIterator BeIte = new BeIterator();;
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
@@ -333,20 +672,65 @@ public class Freelancer extends ConsumerAccount {
 		}
 		se.getTransaction().begin();
 		try {
-			se.save(this);
-			se.getTransaction().commit();
+			Criteria cri = se.createCriteria(Offer.class);
+			cri.add(Restrictions.eq("owner", this));
+			Set<Task> liTask = new HashSet<>();
+			List<Offer> OffList = cri.list();
+			OffList.forEach(e -> {
+				liTask.add(e.getTask());
+			});
+			BeIte.setCollection(liTask);
 		} catch (Exception exp) {
 			se.getTransaction().rollback();
-			se.close();
-			return false;
+			System.err.println(exp.fillInStackTrace());
 		} finally {
 			//check if he open a new session to close it 
 			if (flage) //close the new session
 			{
 				se.close();
 			}
-			return true;
+			return BeIte;
 		}
 	}
 
+	/**
+	 * Done tested
+	 *
+	 * @moroclash
+	 *
+	 * this save object in DB
+	 * @return : True if Object saved in DB , false if exist exiption
+	 */
+	@Override
+	public boolean register() {
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean end=false;
+		se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		System.out.println("open");
+		se.getTransaction().begin();
+		try {
+			se.save(this);
+			se.getTransaction().commit();
+			LogManager.Log(this.getId() + " make Registration");
+			//wellcom massage
+			AccNotification notifi = new AccNotification();
+			notifi.setDate(LocalDateTime.now());
+			notifi.setFromAccount_id(this);
+			notifi.setMassage("Wellcom "+this.getUserName()+" in our freelancing system");
+			notifi.setState(false);
+			notifi.setToAccount_id(this);
+			this.addNotification(notifi);
+			end = true;
+		} catch (Exception exp) {
+			System.err.println(exp.fillInStackTrace());
+			se.getTransaction().rollback();
+			end=false;
+		} finally {
+			//close session
+			se.close();
+			return end;
+		}
+	}
 }
