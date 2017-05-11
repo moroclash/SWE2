@@ -9,6 +9,7 @@ import freelaning.AccNotification;
 import freelaning.Account;
 import freelaning.AdminAccount;
 import freelaning.Complaint;
+import freelaning.ConsumerAccount;
 import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
@@ -49,7 +50,11 @@ public class BackEndSW2 {
  */
  public static void main(String[] args) {
 
+	OurSystem sys = OurSystem.getInstance();
 
+	ConsumerAccount cons = (ConsumerAccount) sys.getAccount("1", 0);
+
+	System.out.println("main>> " + cons.getFirstName());
 
 
 	} // end main

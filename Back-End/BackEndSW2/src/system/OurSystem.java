@@ -5,6 +5,7 @@ import freelaning.ConsumerAccount;
 import freelaning.Freelancer;
 import freelaning.AccNotification;
 import freelaning.Account;
+import freelaning.AdminAccount;
 import freelaning.Employer;
 import freelaning.Offer;
 import freelaning.Task;
@@ -144,18 +145,32 @@ System.out.println("getOffer is fired from OurSystem");
      * @maintainer TahaMagdy
      * @param mode: determines how do you want to search.
      * 	0 id DONE
-     * 	1 username 
-     * 	3 phone DONE (get ID from Phone)
+     * 	1 username DONE (get ID from username)
+     * 	2 phone DONE (get ID from Phone)
      * @return a matching CONSUMER account not null
      * YOU need to cast it to Freelancer or Employer
+     * 
+     * 
+     * @reminder Need some validation
      */
 public Object getAccount(String searchKey, int mode) {
 
 
 	// swtich accourding to mode
-
+	switch (mode) {
+		case 0:
+			int id = Integer.parseInt(searchKey);
+			return getFreelancerAccountBy_id(id);
+		case 1:
+			return get_ID_FromUsername(searchKey);
+		case 2:
+			return get_ID_FromPhone(searchKey);
+		default:
+			break;
+	} // end switch
 	
 	///////////////////////
+	// not found
 	    return null;
 	///////////////////////
     } // end getAccount()
@@ -185,6 +200,9 @@ private Freelancer getFreelancerAccountBy_id( int id ){
 	finally {
 		session.close();
 	}
+
+	if (freelancerDB == null )
+		return null;
 
 
         return freelancerDB;
@@ -264,6 +282,8 @@ private int get_ID_FromPhone ( String phone ){
 } // end get_ID_FromPhone()
 
 
+// Reminder; @TahaMagdy
+// I need to merge the two helpers into one
 
 
 
