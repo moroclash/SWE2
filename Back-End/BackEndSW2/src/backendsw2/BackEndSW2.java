@@ -50,12 +50,29 @@ public class BackEndSW2 {
      */
     public static void main(String[] args) {
 
-	OurSystem sys = OurSystem.getInstance();
+	    /// please, Keep the main clean.
 
-	ConsumerAccount cons = (ConsumerAccount) sys.getAccount("1", 0);
 
-	System.out.println("main>> " + cons.getFirstName());
     } // end main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void boda() {
         Session se = databaseManager.SessionsManager.getSessionFactory().openSession();

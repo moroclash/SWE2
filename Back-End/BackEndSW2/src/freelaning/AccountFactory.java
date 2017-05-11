@@ -19,9 +19,9 @@ public class AccountFactory {
     
     /**
 	 * 
-     * @maintain: TahaMagdy
+     * @maintainer: @TahaMagdy
      * @param accountTypeName
-     *     # This parameter can be one of these 
+     *     # This parameter can take one of these values;
      *     {Employer, Freelancer, Account, AdminAccount}
      * @description
      * 	   # This Function takes the Account name and returns the corresponding
