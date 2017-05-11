@@ -245,6 +245,38 @@ public void update() {
 } // end update
 
 
+// You should pass the owener !!
+public  void saveNewComplaint() {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	
+	try {
+		Complaint complaintDB = new Complaint();
+
+		complaintDB.setMessage(this.message);
+		complaintDB.setDate(LocalDateTime.MAX);
+		complaintDB.setSeenState(this.seenState);
+		complaintDB.setReplies(this.replies);
+		complaintDB.setOwner(this.owner);
+
+
+		// Updatting the database
+		session.save(complaintDB);
+		session.getTransaction().commit();
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+} // end saveNewObject()
+
+
 
 
 	public int getId() {
