@@ -159,52 +159,69 @@ public class Offer {
 	 */
 	public void cancelOffer(Account account ) {
           
-           
+           boolean flag = false ;
            
             //getRate
             int rate =  ((Employer) account).getProfile().getRate().getTheRate();
            
-          
-             Session se = databaseManager.SessionsManager.getSessionFactory().openSession(); 
+            
+        
+             Session se ;
+             try{
+                 se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+                 if(!se.isOpen())
+                 {
+                     System.out.println("انا في كارنت اف");
+                     se = databaseManager.SessionsManager.getSessionFactory().openSession();
+                 }
+                 System.out.println("في كارنت 5");
+             }
+             catch(Exception e)
+             {
+                 System.out.println(">>>>>>>>>>>... here no session");
+              se = databaseManager.SessionsManager.getSessionFactory().openSession();
+              flag = true;
+             }
         try {
-             //open session
+            
            
             Query hq ;
-            String q  = ""; 
-            se.beginTransaction();
+            String q  = "";         
+            se.getTransaction().begin();
             
-            // case of Employer
+            // case of Employer  is can celing task 
               if(account instanceof  Employer)
             {
                 // case of that offer is created on a task, but not assigned
                 if(this.state == 0)
                 {
-                 q = "Update Offer set state = 2  where id = :offerId" ;
-                 hq = se.createQuery(q);
-                 hq.setParameter("offerId", this.id);
-                 hq.executeUpdate();
+                 this.state =  2 ; 
+//                    q = "Update Offer set state = 2  where id = :offerId" ;
+//                    hq = se.createQuery(q);
+//                    hq.setParameter("offerId", this.id);
+//                    hq.executeUpdate();
                 }
                 // case of  cancelled by Employer during after assigning
                 else{ 
-                    //get constraints from database
+                //get constraints from database
                 Constraints constraints  = (Constraints) se.get(Constraints.class  ,1);
                 rate = rate - constraints.getEm_cancelRunningTaskPenalty();
                 
                 // update offer state
-                
-                 q = "Update Offer set state = 5  where id = :offerId" ;
-                 hq = se.createQuery(q);
-                 hq.setParameter("offerId", this.id);
-                 hq.executeUpdate();
+                 this.state = 5 ;
+//                 q = "Update Offer set state = 5  where id = :offerId " ;
+//                 hq = se.createQuery(q);
+//                 hq.setParameter("offerId", this.id);
+//                 hq.executeUpdate();
                  
                // panlty Employer 
-               
-                   q = "Update Rate set theRate = :rate  where id = :rateId" ;
-                    hq = se.createQuery(q);
-                    hq.setParameter("rate", rate);
-                    hq.setParameter("rateId",((Employer) account).getProfile().getId() );
-                    hq.executeUpdate();
-                    
+                  ((Employer) account).getProfile().getRate().setTheRate(rate);
+//                   q = "Update Rate set theRate = :rate  where id = :rateId" ;
+//                    hq = se.createQuery(q);
+//                    hq.setParameter("rate", rate);
+//                    hq.setParameter("rateId",((Employer) account).getProfile().getId() );
+//                    hq.executeUpdate();
+//                    
                     
                  // notify Employer
                  AccNotification not = new AccNotification();
@@ -214,28 +231,37 @@ public class Offer {
                 not.setDate(LocalDateTime.MAX);
                 not.setState(true);
                 ((Employer)account).addNotification(not);
-                 
+                  System.err.println("here am ia"); 
                  
                 }
                 
                         
-            }
-             //case of that the offer  cancelled by freelancer during after assigning
+            }//case of that the offer  cancelled by freelancer during after assigning
             else if(account instanceof Freelancer) 
             {
-                
-                 q = "Update Offer set state = 4  where id = :offerId" ;
-                 hq = se.createQuery(q);
-                 hq.setParameter("offerId", this.id);
-                 hq.executeUpdate();
+                   this.state = 4 ;
+//                 q = "Update Offer set state = 4  where id = :offerId" ;
+//                 hq = se.createQuery(q);
+//                 hq.setParameter("offerId", this.id);
+//                 hq.executeUpdate();
             }
-            
+           if(flag){
+               se.update(this);
+        //       se.update( ((Employer) account).getProfile().getRate());
+           } else 
+           {
+              se.merge(this);
+          //     se.merge(((Employer) account).getProfile().getRate()); 
+           }
+               
            
-            se.getTransaction().commit();
-
+           se.getTransaction().commit();
+        
         } catch (Exception e) {
+            System.err.println("dddd");
             se.getTransaction().rollback();
         } finally {
+            if(flag)
             se.close();
         }
 
@@ -251,26 +277,46 @@ public class Offer {
         // 
 	public void acceptOffer() {
 		// TODO implement here استدعي في الامبلوير 
+                
 	}
 
 	/**
+     * @param offer
 	 * @return
 	 */
 	public boolean editOffer(Offer offer) {
-            
-	Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+         
+        boolean flag = false , end =true;  
+        // open session
+	Session se ;
+        try{
+         se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();   
+        }
+        catch(Exception e )
+        {
+        se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        flag = true ; 
+        
+        }
         try {
             se.beginTransaction();
-            se.merge(offer);
+            if (flag) {
+                se.update(offer);
+            } else {
+                se.merge(offer);
+            }
+            
             se.getTransaction().commit();
 
         } catch (Exception e) {
             se.getTransaction().rollback();
+            end = false ;
         } finally {
+            if(flag)
             se.close();
         }
 
-		return false;
+		return end;
 	}
 
 }
