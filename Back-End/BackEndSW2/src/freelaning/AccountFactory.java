@@ -32,7 +32,7 @@ public class AccountFactory {
 
 	switch (accountTypeName) {
 		case "Employer":
-			System.out.println("");
+//			System.out.println("");
 			return new Employer();
 		case "Freelancer":
 			return new Freelancer();

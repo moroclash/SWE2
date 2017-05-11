@@ -7,6 +7,7 @@ package backendsw2;
 
 import freelaning.AccNotification;
 import freelaning.Account;
+import freelaning.AccountFactory;
 import freelaning.AdminAccount;
 import freelaning.Complaint;
 import freelaning.ConsumerAccount;
@@ -50,7 +51,8 @@ public class BackEndSW2 {
      */
     public static void main(String[] args) {
 
-	    /// please, Keep the main clean.
+	/// please, Keep the main clean.
+
 
 
     } // end main
@@ -111,6 +113,11 @@ public class BackEndSW2 {
 
     public static void taha() {
 
+
+	/* the second constructor
+	Complaint com = new Complaint(1);
+        System.out.println("main > " + com.getMessage());
+	*/
 
         /*
 	OurSystem sys = OurSystem.getInstance();

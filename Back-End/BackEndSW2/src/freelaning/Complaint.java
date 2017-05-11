@@ -16,8 +16,37 @@ public class Complaint {
 	/**
 	 * Default constructor
 	 */
-	public Complaint() {
+public Complaint() {
 	}
+
+
+// This to fetch a specific complaint.
+// This will fill the object.
+public Complaint( int _id) {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	try {
+		// Fetching complaint
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,_id);
+		System.out.println("constructor2; Complaint id: " +complaintDB.getId() + " is fetched");
+
+		// Update the current object
+		this.message   = complaintDB.message;
+		this.owner     = complaintDB.owner;
+		this.replies   = complaintDB.replies;
+		this.seenState = complaintDB.seenState;
+
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+} // Complaint(int id)
 
 	/**
 	 *
@@ -85,7 +114,7 @@ public boolean seen() {
 
 	this.seenState = 0;
 	// Adding the log
-	LogManager.Log("Complaint " + this.id + " is seen");
+//	LogManager.Log("Complaint " + this.id + " is seen");
 
 	///////////////
 	return true;
@@ -170,9 +199,46 @@ public boolean isSeen() {
 
 	
 //	return flag == 0;
-return this.seenState ==0;
+return this.seenState == 0;
 } // end is seen
 
+
+public void update() {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	System.out.println("com_id is :" + this.id);
+	System.out.println("newMessage is :" + this.message);
+	
+	try {
+		// Fetching complaint
+		Complaint complaintDB = (Complaint) session.get(Complaint.class,this.id);
+//		System.out.println("Complaint " +complaintDB.getId() + " is fetched");
+
+		// Updating Complaint Object
+		// issues;
+		// * should I update the id?!
+		// * Update the owner
+		// * Update the replies
+		complaintDB.setMessage(this.message);
+		complaintDB.setDate(LocalDateTime.MAX);
+		complaintDB.setSeenState(this.seenState);
+
+
+		// Updatting the database
+		session.update(complaintDB);
+		session.getTransaction().commit();
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+}
 
 
 
