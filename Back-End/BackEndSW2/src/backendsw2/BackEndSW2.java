@@ -55,6 +55,8 @@ public class BackEndSW2 {
 
 
 
+
+
     } // end main
 
 
@@ -113,6 +115,43 @@ public class BackEndSW2 {
 
     public static void taha() {
 
+
+	    /*
+	    	Account y = new Account(3);
+	System.out.println("main >> " + y.getFirstName() );
+	y.setFirstName("UpdateZ3bolla");
+	y.update();
+	    System.out.println("updated main >> "+ y.getFirstName());
+
+	    */
+
+	    /*
+	    	Account y = new Account(3);
+	System.out.println("main >> " + y.getFirstName() );
+
+	    */
+
+
+	    /*
+	    	Account newaccount =  new Account();
+
+	newaccount.setAccountState(1);
+	newaccount.setFirstName("Z3bola");
+	newaccount.setLastName("GON");
+	newaccount.setPassword("PP");
+	newaccount.setPhone("01148462144:^^:");
+	newaccount.setUserName("USERNAME");
+
+	newaccount.saveNewComplaint();
+	    */
+
+
+	    /*
+	Complaint x = new Complaint();
+	x.setId(3);
+	x.setMessage("NEWMESSAGE 3");
+	x.saveNewComplaint();
+	    */
 
 	/* the second constructor
 	Complaint com = new Complaint(1);

@@ -13,14 +13,14 @@ import system.LogManager;
  */
 public class Complaint {
 
-	/**
-	 * Default constructor
-	 */
+// This Constructor is for a new Complaints
+// a new id is generated
 public Complaint() {
 	}
 
 
 // This to fetch a specific complaint.
+// ** TO edit or view
 // This will fill the object.
 public Complaint( int _id) {
 
@@ -33,11 +33,12 @@ public Complaint( int _id) {
 		Complaint complaintDB = (Complaint) session.get(Complaint.class,_id);
 		System.out.println("constructor2; Complaint id: " +complaintDB.getId() + " is fetched");
 
-		// Update the current object
+		// Fillint the current object
 		this.message   = complaintDB.message;
 		this.owner     = complaintDB.owner;
 		this.replies   = complaintDB.replies;
 		this.seenState = complaintDB.seenState;
+		this.id	       = _id;
 
 	} 
 	catch (Exception e) {
@@ -203,13 +204,15 @@ return this.seenState == 0;
 } // end is seen
 
 
+// This is used to Update an existing complaint
+// A complaint that is instantiated with the second constructor
 public void update() {
 
 	// Setting a Session
 	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 	session.getTransaction().begin();
 
-	System.out.println("com_id is :" + this.id);
+	System.out.println("com_id is :"     + this.id);
 	System.out.println("newMessage is :" + this.message);
 	
 	try {
@@ -225,6 +228,8 @@ public void update() {
 		complaintDB.setMessage(this.message);
 		complaintDB.setDate(LocalDateTime.MAX);
 		complaintDB.setSeenState(this.seenState);
+		complaintDB.setReplies(this.replies);
+		complaintDB.setOwner(this.owner);
 
 
 		// Updatting the database
@@ -238,7 +243,39 @@ public void update() {
 	finally {
 		session.close();
 	}
-}
+} // end update
+
+
+// You should pass the owener !!
+public  void saveNewComplaint() {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	
+	try {
+		Complaint complaintDB = new Complaint();
+
+		complaintDB.setMessage(this.message);
+		complaintDB.setDate(LocalDateTime.MAX);
+		complaintDB.setSeenState(this.seenState);
+		complaintDB.setReplies(this.replies);
+		complaintDB.setOwner(this.owner);
+
+
+		// Updatting the database
+		session.save(complaintDB);
+		session.getTransaction().commit();
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+} // end saveNewObject()
 
 
 
