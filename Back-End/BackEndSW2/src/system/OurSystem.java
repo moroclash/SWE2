@@ -21,7 +21,13 @@ import org.hibernate.Session;
 //        (Change it if you're implementing it)il.*;
 
 
-// Singletone Pattern
+////////////////////////////////////////////////////////////////////////////////
+									      //
+			///////////////////////				      //
+			// Singletone Pattern //                              //
+			///////////////////////                               //
+									      //
+////////////////////////////////////////////////////////////////////////////////
 
 
 /**
@@ -75,22 +81,31 @@ public class OurSystem {
      * @param id 
      * @return
      */
-public Task getTask(int id) {
+public Task getTask(int _id) {
 System.out.println("getTask is fired from OurSystem");
 
-	// Setting session
+	// Setting a Session
 	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 	session.getTransaction().begin();
 
-	Task taskDB = new Task();
+
+	Task fetchedTask = new Task();
 
 	try {
-		// Fetching Task
-		taskDB = (Task) session.get(Task.class, id);
-		System.out.println("This is TaskID -> " + taskDB.getId());
-		System.out.println("This is TaskCaegory -> " + taskDB.getCategory() );
+		// Fetching complaint
+		// Problem; 
+		// * CANNOT READ A TASK
+		//
+		fetchedTask = (Task) session.get(Task.class,_id);
+
+
+
+
+
+		session.getTransaction().commit();
 	} 
 	catch (Exception e) {
+		System.out.println(">>>> " + e);
 		session.getTransaction().rollback();
 	} 
 	finally {
@@ -98,7 +113,7 @@ System.out.println("getTask is fired from OurSystem");
 	}
 
 
-        return taskDB;
+        return fetchedTask;
     } // end getTask()
 
 
