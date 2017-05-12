@@ -478,7 +478,7 @@ public class Freelancer extends ConsumerAccount {
 	 * @return BeIterator class that implement system.Iterator interface
 	 */
 	private BeIterator getOffersWithMood(Set<Integer> mood) {
-		BeIterator BeIte = new BeIterator();;
+		BeIterator BeIte = new BeIterator();
 		Session se;
 		//to check if get current session or open new session 
 		// use to check if close session or not
@@ -693,44 +693,4 @@ public class Freelancer extends ConsumerAccount {
 		}
 	}
 
-	/**
-	 * Done tested
-	 *
-	 * @moroclash
-	 *
-	 * this save object in DB
-	 * @return : True if Object saved in DB , false if exist exiption
-	 */
-	@Override
-	public boolean register() {
-		Session se;
-		//to check if get current session or open new session 
-		// use to check if close session or not
-		boolean end=false;
-		se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		System.out.println("open");
-		se.getTransaction().begin();
-		try {
-			se.save(this);
-			se.getTransaction().commit();
-			LogManager.Log(this.getId() + " make Registration");
-			//wellcom massage
-			AccNotification notifi = new AccNotification();
-			notifi.setDate(LocalDateTime.now());
-			notifi.setFromAccount_id(this);
-			notifi.setMassage("Wellcom "+this.getUserName()+" in our freelancing system");
-			notifi.setState(false);
-			notifi.setToAccount_id(this);
-			this.addNotification(notifi);
-			end = true;
-		} catch (Exception exp) {
-			System.err.println(exp.fillInStackTrace());
-			se.getTransaction().rollback();
-			end=false;
-		} finally {
-			//close session
-			se.close();
-			return end;
-		}
-	}
 }

@@ -217,6 +217,7 @@
         <property name="date"/>
         <many-to-one name="employer" class="freelaning.Employer" not-null="true"/>
         <property name="state" type="integer"/>
+        <property name="TaskPathinServer" type="string"/>
         
         <!--his applied offer-->
         <set name="offers" cascade="save-update,delete">

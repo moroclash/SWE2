@@ -5,6 +5,7 @@ import freelaning.Complaint;
 import freelaning.Account;
 import freelaning.AccNotification;
 import freelaning.Complaint;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -272,16 +273,53 @@ public abstract class ConsumerAccount extends Account {
 			{
 				se.close();
 			}
-			LogManager.Log(this.getId() +" getHisComplaints" );
+			LogManager.Log(this.getId() + " getHisComplaints");
 			return Biter;
 		}
 	}
 
+	
 	/**
-	 * @return
+	 * Done tested
+	 *
+	 * @moroclash
+	 *
+	 * this save object in DB
+	 * @return : True if Object saved in DB , false if exist exiption
 	 */
-	public abstract boolean register();
+	public boolean register() {
+		Session se;
+		//to check if get current session or open new session 
+		// use to check if close session or not
+		boolean end = false;
+		se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		System.out.println("open");
+		se.getTransaction().begin();
+		try {
+			se.save(this);
+			se.getTransaction().commit();
+			LogManager.Log(this.getId() + " make Registration");
+			//wellcom massage
+			AccNotification notifi = new AccNotification();
+			notifi.setDate(LocalDateTime.now());
+			notifi.setFromAccount_id(this);
+			notifi.setMassage("Wellcom " + this.getUserName() + " in our freelancing system");
+			notifi.setState(false);
+			notifi.setToAccount_id(this);
+			this.addNotification(notifi);
+			end = true;
+		} catch (Exception exp) {
+			System.err.println(exp.fillInStackTrace());
+			se.getTransaction().rollback();
+			end = false;
+		} finally {
+			//close session
+			se.close();
+			return end;
+		}
+	}
 
+	
 	/**
 	 * Done tested
 	 *
@@ -336,7 +374,6 @@ public abstract class ConsumerAccount extends Account {
 			return end;
 		}
 
-		
 	}
 
 	/**
@@ -352,7 +389,7 @@ public abstract class ConsumerAccount extends Account {
 	 */
 	public boolean SendNotify(AccNotification notify, ConsumerAccount account) {
 		try {
-			LogManager.Log(this.getId() + " Notify " + account.getId()+notify + " NotifyID( "+notify.getId()+" ) ");
+			LogManager.Log(this.getId() + " Notify " + account.getId() + notify + " NotifyID( " + notify.getId() + " ) ");
 			return account.addNotification(notify);
 		} catch (Exception ex) {
 			return false;

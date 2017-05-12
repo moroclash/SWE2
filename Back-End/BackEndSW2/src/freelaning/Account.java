@@ -2,6 +2,8 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.hibernate.Session;
+import system.LogManager;
 
 /**
  *
@@ -53,8 +55,7 @@ public class Account implements SystemAccess {
 	 *
 	 */
 	private LocalDateTime date;
-	
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -99,8 +100,7 @@ public class Account implements SystemAccess {
 		return accountState;
 	}
 
-	
-	public int  isAccountState() {
+	public int isAccountState() {
 		return accountState;
 	}
 
@@ -108,7 +108,6 @@ public class Account implements SystemAccess {
 		this.accountState = accountState;
 	}
 
-	
 	public LocalDateTime getDate() {
 		return date;
 	}
@@ -165,5 +164,4 @@ public class Account implements SystemAccess {
 		this.id = id;
 	}
 
-	
 }
