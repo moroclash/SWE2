@@ -38,6 +38,7 @@ public Complaint( int _id) {
 		this.owner     = complaintDB.owner;
 		this.replies   = complaintDB.replies;
 		this.seenState = complaintDB.seenState;
+		this.id	       = _id;
 
 	} 
 	catch (Exception e) {

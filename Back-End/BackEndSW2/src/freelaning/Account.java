@@ -9,51 +9,84 @@ import org.hibernate.Session;
  */
 public class Account implements SystemAccess {
 
-	/**
-	 * Default constructor
-	 */
-	public Account() {
+/**
+ * Default constructor
+ */
+public Account() {
+}
+
+public Account( int _id ) {
+
+	// Setting a Session
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	try {
+		// Fetching complaint
+		Account newaccount = (Account) session.get(Account.class,_id);
+		System.out.println("constructor2; account id: " +newaccount.getId() + " is fetched");
+
+		// Filling the current object
+		this.accountState = newaccount.getAccountState();
+		this.firstName = newaccount.getFirstName();
+		this.lastName = newaccount.lastName;
+		this.id = _id;
+		this.password = newaccount.getPassword();
+		this.phone = newaccount.getPhone();
+		this.userName = newaccount.getUserName();
+
+
+
+
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
 	}
 
-	/**
-	 *
-	 */
-	private String firstName;
+} // end second account
 
-	/**
-	 *
-	 */
-	private String lastName;
+/**
+ *
+ */
+private String firstName;
 
-	/**
-	 *
-	 */
-	private String phone;
+/**
+ *
+ */
+private String lastName;
 
-	/**
-	 *
-	 */
-	private int id;
+/**
+ *
+ */
+private String phone;
 
-	/**
-	 *
-	 */
-	private String password;
+/**
+ *
+ */
+private int id;
 
-	/**
-	 *
-	 */
-	private String userName;
+/**
+ *
+ */
+private String password;
 
-	/**
-	 *
-	 */
-	private int accountState;
+/**
+ *
+ */
+private String userName;
 
-	/**
-	 *
-	 */
-	private LocalDateTime date;
+/**
+ *
+ */
+private int accountState;
+
+/**
+ *
+ */
+private LocalDateTime date;
 
 
 
@@ -72,7 +105,6 @@ public  void saveNewComplaint() {
 
 		// Taking the data into the new account
 		// Issues;
-		// 1* Inserting the ID UMAR
 		// 2* Need to hash the password
 		// 3* Account State -> Umar I need you to update the database.
 		newaccount.setAccountState(this.accountState);

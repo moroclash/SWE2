@@ -116,6 +116,12 @@ public class BackEndSW2 {
     public static void taha() {
 
 
+	    /*
+	    	Account y = new Account(3);
+	System.out.println("main >> " + y.getFirstName() );
+
+	    */
+
 
 	    /*
 	    	Account newaccount =  new Account();
