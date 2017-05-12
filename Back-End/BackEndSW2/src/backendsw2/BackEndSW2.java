@@ -99,17 +99,8 @@ public class BackEndSW2 {
 //		System.out.println("offer state : " + of.getState());
 //		System.out.println(b);
 		Task t = (Task) se.get(Task.class, 1);
-		Offer of = new Offer();
-		of.setCounter(new Counter());
-		of.setDate(LocalDateTime.now());
-		of.setDescription("moroclash moroclash moroclash");
-		of.setHourCost(21);
-		of.setNumberOfHours(14);
-		of.setOwner(free);
-		of.setState(0);
-		of.setTask(t);
-		of.setTimeNeeded(12);
-		boolean tt = t.addOffer(of);
+		t.setTask("mmmmmmmmmmmmmmmmmmmmmm");
+		boolean tt = t.editTask();
 		System.out.println(tt);
 		se.close();
 	}

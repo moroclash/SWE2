@@ -255,8 +255,9 @@ public class Task {
 		}
 	}
 
+	
 	/**
-	 * not Tested
+	 * Done Tested
 	 *
 	 * @moroclash
 	 *
@@ -307,7 +308,7 @@ public class Task {
 	}
 
 	/**
-	 * Don't tested
+	 * Done tested
 	 *
 	 * @moroclash
 	 *
