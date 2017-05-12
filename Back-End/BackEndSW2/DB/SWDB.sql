@@ -43,7 +43,7 @@ CREATE TABLE `AccNotification` (
 
 LOCK TABLES `AccNotification` WRITE;
 /*!40000 ALTER TABLE `AccNotification` DISABLE KEYS */;
-INSERT INTO `AccNotification` VALUES (1,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\0·\0x','fucj','\0',1,2),(2,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á6û\0x','fucj','\0',1,2),(3,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0áº¼€x','fucj','\0',1,2),(4,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á	*s€Àx','Wellcom sossoso in our freelancing system','\0',7,7),(5,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\n3¼¡\0x','Bad News you make OverTimeRequist on Offer 4 and we applied penalty on your Rate -10%, thanx','\0',8,7),(6,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\rãL@x','Bad News you make OverTimeRequist on Offer 4 and we applied penalty on your Rate -10%, thanx','\0',8,7),(7,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\02\nœ€x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(8,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\nz\0x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(9,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á‡Ò€x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(10,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á+¿ó€x','Bad News Offer 4 is Canceled by Freelancer \"sossoso\" and system applied penalty and your are retrive your mony :196 $ ,we are very sorry for your time','\0',7,8);
+INSERT INTO `AccNotification` VALUES (1,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\0·\0x','fucj','\0',1,2),(2,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á6û\0x','fucj','\0',1,2),(3,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0áº¼€x','fucj','\0',1,2),(4,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á	*s€Àx','Wellcom sossoso in our freelancing system','\0',7,7),(5,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\n3¼¡\0x','Bad News you make OverTimeRequist on Offer 4 and we applied penalty on your Rate -10%, thanx','\0',8,7),(6,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\rãL@x','Bad News you make OverTimeRequist on Offer 4 and we applied penalty on your Rate -10%, thanx','\0',8,7),(7,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\02\nœ€x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(8,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\nz\0x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(9,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á‡Ò€x','Bad News you are Canceled Offer 4 and we applied penalty on your Rate , thanx','\0',7,8),(10,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á+¿ó€x','Bad News Offer 4 is Canceled by Freelancer \"sossoso\" and system applied penalty and your are retrive your mony :196 $ ,we are very sorry for your time','\0',7,8),(11,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0áÚÖ€x','new Offer on Task : dasdasd   Id: 1','\0',7,1),(12,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á+%1|\0x','new Offer on Task : dasdasd   Id: 1','\0',7,1),(13,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á(&ëý@x','new Offer on Task : dasdasd   Id: 1','\0',7,1),(14,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á75:@x','Task : mmmmmmmmmmmmmmmmmmmmmm   Id: 1 is uploaded \n thanks.','\0',1,1);
 /*!40000 ALTER TABLE `AccNotification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `Counter` (
 
 LOCK TABLES `Counter` WRITE;
 /*!40000 ALTER TABLE `Counter` DISABLE KEYS */;
-INSERT INTO `Counter` VALUES (1,NULL),(2,NULL),(3,NULL),(4,NULL);
+INSERT INTO `Counter` VALUES (1,NULL),(2,NULL),(3,NULL),(4,NULL),(5,NULL),(6,NULL),(7,NULL);
 /*!40000 ALTER TABLE `Counter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `LOGS` (
 
 LOCK TABLES `LOGS` WRITE;
 /*!40000 ALTER TABLE `LOGS` DISABLE KEYS */;
-INSERT INTO `LOGS` VALUES ('2017-05-05 18:41:09','3 GetHisOffersHistory'),('2017-05-06 15:22:11','5 make Registration'),('2017-05-06 16:09:42','7 make Registration'),('2017-05-06 17:34:11','7 add new Skill'),('2017-05-06 17:48:47','7 add new Skill'),('2017-05-06 17:48:59','7 add new Skill'),('2017-05-06 17:49:10','7 add new Skill'),('2017-05-06 17:50:12','7 add new Skill'),('2017-05-06 17:52:33','7 add new Skill'),('2017-05-06 18:04:04','7 add new Skill'),('2017-05-06 18:14:17','7 add new Skill'),('2017-05-06 18:17:49','7 add new Skill'),('2017-05-06 18:18:08','7 add new Skill'),('2017-05-06 18:31:48','7 delete exist Skill'),('2017-05-06 18:33:37','7 delete exist Skill'),('2017-05-06 19:19:26','7 Rate Emplyeer 8'),('2017-05-06 19:20:25','7 Rate Emplyeer 8'),('2017-05-06 20:29:10','7 freelancer apply OverTimeRequist to offer : 4'),('2017-05-06 20:29:29','7 freelancer apply OverTimeRequist to offer : 4'),('2017-05-07 04:44:53','7 freelancer cancel offer : 4'),('2017-05-07 04:46:32','7 freelancer cancel offer : 4'),('2017-05-07 04:47:30','7 freelancer cancel offer : 4'),('2017-05-07 05:04:08','7 freelancer cancel offer : 4');
+INSERT INTO `LOGS` VALUES ('2017-05-05 18:41:09','3 GetHisOffersHistory'),('2017-05-06 15:22:11','5 make Registration'),('2017-05-06 16:09:42','7 make Registration'),('2017-05-06 17:34:11','7 add new Skill'),('2017-05-06 17:48:47','7 add new Skill'),('2017-05-06 17:48:59','7 add new Skill'),('2017-05-06 17:49:10','7 add new Skill'),('2017-05-06 17:50:12','7 add new Skill'),('2017-05-06 17:52:33','7 add new Skill'),('2017-05-06 18:04:04','7 add new Skill'),('2017-05-06 18:14:17','7 add new Skill'),('2017-05-06 18:17:49','7 add new Skill'),('2017-05-06 18:18:08','7 add new Skill'),('2017-05-06 18:31:48','7 delete exist Skill'),('2017-05-06 18:33:37','7 delete exist Skill'),('2017-05-06 19:19:26','7 Rate Emplyeer 8'),('2017-05-06 19:20:25','7 Rate Emplyeer 8'),('2017-05-06 20:29:10','7 freelancer apply OverTimeRequist to offer : 4'),('2017-05-06 20:29:29','7 freelancer apply OverTimeRequist to offer : 4'),('2017-05-07 04:44:53','7 freelancer cancel offer : 4'),('2017-05-07 04:46:32','7 freelancer cancel offer : 4'),('2017-05-07 04:47:30','7 freelancer cancel offer : 4'),('2017-05-07 05:04:08','7 freelancer cancel offer : 4'),('2017-05-12 03:16:45','7  make Offer to Task : 1'),('2017-05-12 03:17:12','7  make Offer to Task : 1'),('2017-05-12 03:18:18','7  make Offer to Task : 1'),('2017-05-12 03:18:58','7  make Offer to Task : 1'),('2017-05-12 03:20:02','7  make Offer to Task : 1'),('2017-05-12 03:25:30','7  make Offer to Task : 1'),('2017-05-12 03:28:43','7  make Offer to Task : 1'),('2017-05-12 03:29:47','7  make Offer to Task : 1'),('2017-05-12 03:37:29','1 Employeer update Task : 1'),('2017-05-12 04:12:56','Task : 1 is uploaded');
 /*!40000 ALTER TABLE `LOGS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -484,7 +484,7 @@ CREATE TABLE `Offer` (
 
 LOCK TABLES `Offer` WRITE;
 /*!40000 ALTER TABLE `Offer` DISABLE KEYS */;
-INSERT INTO `Offer` VALUES (1,1,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á%7\"6‹€x','dasdhjkasjd',22,14,7,7,14,1),(2,2,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á&!‚¯@x','llllllllllllllllllll',22,14,7,1,14,1),(3,3,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á$5ŸvÀx','mogamoga',12,14,7,2,14,2),(4,4,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á	z%Àx','dasdjklv',12,14,7,4,14,3);
+INSERT INTO `Offer` VALUES (1,1,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á%7\"6‹€x','dasdhjkasjd',22,14,7,7,14,1),(2,2,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á&!‚¯@x','llllllllllllllllllll',22,14,7,1,14,1),(3,3,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á$5ŸvÀx','mogamoga',12,14,7,2,14,2),(4,4,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á	z%Àx','dasdjklv',12,14,7,4,14,3),(5,5,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0ásY@x','moroclash moroclash moroclash',21,14,7,0,12,1),(6,6,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á+OìÀx','moroclash moroclash moroclash',21,14,7,0,12,1),(7,7,'¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á+s¨@x','moroclash moroclash moroclash',21,14,7,0,12,1);
 /*!40000 ALTER TABLE `Offer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -667,6 +667,7 @@ CREATE TABLE `Task` (
   `state` int(11) DEFAULT NULL,
   `task` varchar(255) DEFAULT NULL,
   `timeTaken` int(11) DEFAULT NULL,
+  `TaskPathinServer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_s5a3ogu6vw5q1ned77x7n8b7e` (`employer`),
   CONSTRAINT `FK_s5a3ogu6vw5q1ned77x7n8b7e` FOREIGN KEY (`employer`) REFERENCES `Employer` (`ConsumerAccount`)
@@ -679,7 +680,7 @@ CREATE TABLE `Task` (
 
 LOCK TABLES `Task` WRITE;
 /*!40000 ALTER TABLE `Task` DISABLE KEYS */;
-INSERT INTO `Task` VALUES (1,'dsadas','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\"+\"ÄÀx',1,0,'dasdasd',12),(2,'dsadas','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\']r\0x',1,0,'dasd',12),(3,'dasdasd','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á*ù–@x',8,4,'Dasdas',12);
+INSERT INTO `Task` VALUES (1,'dsadas','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\"+\"ÄÀx',1,7,'mmmmmmmmmmmmmmmmmmmmmm',12,'Tasks/1'),(2,'dsadas','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á\']r\0x',1,0,'dasd',12,NULL),(3,'dasdasd','¬í\0sr\0\rjava.time.Ser•]„º\"H²\0\0xpw\0\0á*ù–@x',8,4,'Dasdas',12,NULL);
 /*!40000 ALTER TABLE `Task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -774,4 +775,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-07  5:11:38
+-- Dump completed on 2017-05-13  0:19:25
