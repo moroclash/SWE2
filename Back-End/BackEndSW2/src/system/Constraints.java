@@ -7,69 +7,59 @@ package system;
  */
 public class Constraints {
 
-	/**
-	 *
-	 */
-	private int fr_timeoutPenalty;
+    /**
+     *
+     */
+    private int fr_timeoutPenalty;
 
-	
-	/**
-	 *
-	 */
-	private int fr_cancelingTaskPenalty;
+    /**
+     *
+     */
+    private int fr_cancelingTaskPenalty;
 
-	/**
-	 *
-	 */
-	private int fr_overtimePenalty;
+    /**
+     *
+     */
+    private int fr_overtimePenalty;
 
-	/**
-	 *
-	 */
-	private int em_rejectFinishedTaskPenalty;
+    /**
+     *
+     */
+    private int em_rejectFinishedTaskPenalty;
 
-	/**
-	 *
-	 */
-	private int em_cancelRunningTaskPenalty;
+    /**
+     *
+     */
+    private int em_cancelRunningTaskPenalty;
 
-	/**
-	 *
-	 */
-	private int em_cancelRunningTaskBudgetPenalty;
+    private int em_cancelRunningTaskBudgetPenalty;
 
+    /**
+     *
+     */
+    private int em_rejectFinishedTaskBudgetPenalty;
 
-	/**
-	 *
-	 */
-	private int em_rejectFinishedTaskBudgetPenalty;
+    private int ourProfit;
 
-	/**
-	 *
-	 */
-	private int ourProfit;
+    private static Constraints constrain;
 
-	/**
-	 *
-	 */
-	private static Constraints constrain;
+    private void Constraints() {
+        // TODO implement here
+    }
 
-	/**
-	 *
-	 */
-	private void Constraints() {
-		// TODO implement here
-	}
-	
-	private int id;
+    private int id;
 
-	/**
-	 * @return
-	 */
-	public static Constraints GetInstance() {
-		// TODO implement here
-		return null;
-	}
+    /**
+     * @return
+     */
+    public static Constraints GetInstance() {
+
+            if (constrain == null) {
+                constrain = new Constraints();
+        }
+        return constrain;
+    }
+
 
 	public int getFr_timeoutPenalty() {
 		return fr_timeoutPenalty;

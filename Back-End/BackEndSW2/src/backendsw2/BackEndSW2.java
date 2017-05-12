@@ -7,8 +7,10 @@ package backendsw2;
 
 import freelaning.AccNotification;
 import freelaning.Account;
+import freelaning.AccountFactory;
 import freelaning.AdminAccount;
 import freelaning.Complaint;
+import freelaning.ConsumerAccount;
 import freelaning.Counter;
 import freelaning.Employer;
 import freelaning.EmployerProfile;
@@ -17,7 +19,6 @@ import freelaning.Feedback;
 import freelaning.Freelancer;
 import freelaning.FreelancerProfile;
 import freelaning.Offer;
-import freelaning.OverTimeRequest;
 import freelaning.Profile;
 import freelaning.Rate;
 import freelaning.Skill;
@@ -31,12 +32,11 @@ import java.util.List;
 import org.hibernate.Query;
 
 import java.util.Set;
-import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 
-
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Expression;
+import root.Root;
 import system.Constraints;
 import system.Iterator;
 import system.OurSystem;
@@ -51,25 +51,43 @@ import system.Validation;
  */
 public class BackEndSW2 {
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
 
-	
-		
+	/// please, Keep the main clean.
 
-/**
- * @param args the command line arguments
- */
- public static void main(String[] args) {
-		omar();
 
-	} // end main
 
-	
-	public static  void boda()
-        {
-          Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		Employer emp = new Employer();
-                emp.setId(2);
-               System.out.println( emp.showAllFreelancers().toString());
+
+
+    } // end main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void boda() {
+        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        Employer emp = new Employer();
+//        emp.setId(2);
+        System.out.println(emp.showAllFreelancers().toString());
 //               Task task = new Task();
 //               task.setEmployer(emp);
 //               task.setCategory("zdxf");
@@ -122,17 +140,56 @@ public class BackEndSW2 {
 	}
 	
 	public static void taha() {
+	Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+	se.beginTransaction();
+        Offer offer = (Offer) se.get(Offer.class, 2);
+        //  emp.acceptFinishedTask(offer);
+        //System.out.println(offer.getId());
+        // emp.rejectFinishedTask(offer);
+        Feedback f = new Feedback();
+        f.setDate(LocalDateTime.MAX);
+        f.setDescription("this is the test ");
+        f.setOffer(offer);
+        f.setRateValue(3);
+        //emp.makeFeedback(f ,offer);
+        // emp.rejectOffer(offer);
+        //emp.acceptFinishedTask(offer);
 
 
-	/*
+
+	    /*
+	    	Account newaccount =  new Account();
+
+	newaccount.setAccountState(1);
+	newaccount.setFirstName("Z3bola");
+	newaccount.setLastName("GON");
+	newaccount.setPassword("PP");
+	newaccount.setPhone("01148462144:^^:");
+	newaccount.setUserName("USERNAME");
+
+	newaccount.saveNewComplaint();
+	    */
+
+
+	    /*
+	Complaint x = new Complaint();
+	x.setId(3);
+	x.setMessage("NEWMESSAGE 3");
+	x.saveNewComplaint();
+	    */
+
+	/* the second constructor
+	Complaint com = new Complaint(1);
+        System.out.println("main > " + com.getMessage());
+	*/
+
+        /*
 	OurSystem sys = OurSystem.getInstance();
 	Freelancer free =  (Freelancer) sys.getAccount("asd", 0);
 	System.out.println("main >> " + free.getBalance());
 	System.out.println("main >> " + free.getProfile().getAverageHourCost());
-	*/
-
-		
-	/* @TahaMagdy: for insert 
+         */
+ /* @TahaMagdy: for insert 
 	EmployerProfile empPro = new EmployerProfile();
 	empPro.setId(3);
 	empPro.setNumberOfTasks(3);
@@ -165,8 +222,8 @@ public class BackEndSW2 {
 		session.getTransaction().commit();
 		
 		session.close();
-	*/
-		/*
+         */
+ /*
 		 * @TahaMagdy: Complaint Class testting...
 		Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 		session.getTransaction().begin();
@@ -177,22 +234,18 @@ public class BackEndSW2 {
 			System.out.println("It is not seen" );
 		}
 		session.close();
-		 */
+         */
 
-		/* @TahaMagdy: getTask testing
+ /* @TahaMagdy: getTask testing
  		OurSystem sys = OurSystem.getInstance();
  		Task task = sys.getTask(1);
  		System.out.print( "main,, Fetched category >> " +task.getCategory() );
- 		*/
- 		
- 		/* @TahaMagdy: getOffer testing
+         */
+ /* @TahaMagdy: getOffer testing
  		OurSystem sys = OurSystem.getInstance();
  		Offer offer = sys.getOffer(2);
  		System.out.println("offer description " + offer.getDescription());
-		*/
-
-
-		
+         */
  /*
 		 * @TahaMagdy: testing AccountFactory
 		 * http 200 -> DONE
@@ -200,7 +253,7 @@ public class BackEndSW2 {
 		Freelancer free = (Freelancer) facto.getAccount("Freelancer");
 		free.setBalance(1234);
 		System.out.println(free.getBalance());
-		 */
+         */
  /*
 		 * @TahaMagdy: Adding a dummy Account for testing
 		// Making a dummy account
@@ -214,7 +267,73 @@ public class BackEndSW2 {
 		session.save(dummyAccount);
 		session.getTransaction().commit();
 		session.close();
-		 */
-	} // end taha()
+         */
+    } // end taha()
+    
+    
+    /**
+     TEST Yaser METHODS  3aaaaaaaaaaaaaaaaaaaaa
+     **/
+/*
+    public static void yaser() {
+        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        se.getTransaction().begin();
+        Root s = new Root();
+        s.setId(1);
+        s.setPassword("kod");
+        AdminAccount admin = new AdminAccount();
+        admin.setAccountState(0);
+        admin.setDate(LocalDateTime.MAX);
+        admin.setFirstName("yaser");
+        admin.setId(1);
+        admin.setLastName("shaban");
+        admin.setPassword("123456");
+        admin.setPhone("01143891426");
+        admin.setUserName("yasoo");
 
+        s.createAdmin(admin);
+        ArrayList<AdminAccount> results;
+
+        results = s.getBlockedAdims();
+        for (AdminAccount b : results) {
+            System.out.println(b.getUserName());
+        }
+
+        Constraints c = new Constraints();
+        c.setOurProfit(2);
+        c.setEm_cancelRunningTaskBudgetPenalty(4);
+        c.setEm_cancelRunningTaskPenalty(5);
+        c.setEm_rejectFinishedTaskBudgetPenalty(3);
+        c.setEm_rejectFinishedTaskPenalty(6);
+        c.setFr_overtimePenalty(8);
+        c.setFr_cancelingTaskPenalty(44);
+        c.setFr_timeoutPenalty(11);
+        c.setId(1);
+        s.specifyPenalties(c);
+        s.logout();
+        s.setPassword("0000");
+        System.out.println("" + s.getId());
+        System.out.println("" + s.getPassword());
+        s.updateProfile();
+        List<Object[]> re;
+
+        re = s.getLog();
+        for (Object[] row : re) {
+
+            System.out.println("" + row[0] + row[1]);
+        }
+        Statistics stat =  system.Statistics.getInstance();
+        stat.setId(1);
+        stat.setNumberOfAcceptedTasks(20);
+        stat.setNumberOfAdmins(30);
+        stat.setNumberOfAllTasks(40);
+        stat.setNumberOfBlockedPeople(50);
+        stat.setNumberOfComplaints(60);
+        stat.setNumberOfComplaints(70);
+        stat.updateStatistics();
+        
+        se.close();
+
+    }
+ */
 } // end class

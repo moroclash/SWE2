@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import system.Constraints;
 import system.LogManager;
+import system.Statistics;
 
 // @TahaMagdy: DONE
 // @Note: Any boolean function returns false 
@@ -33,6 +35,7 @@ public class Employer extends ConsumerAccount {
     }
     
     //tested
+    
     public ArrayList<Offer> showAllOffer()
     {
         
@@ -40,11 +43,12 @@ public class Employer extends ConsumerAccount {
     Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
             se.getTransaction().begin();
-            String q = "FROM   Offer ";
+            String q = "FROM   Offer  ";
             Query hq  =se.createQuery(q);
             offers = (ArrayList<Offer>) hq.list();
             
         } catch (Exception e) {
+          
             System.out.println(e);   
         }
         finally
@@ -112,36 +116,59 @@ public class Employer extends ConsumerAccount {
      */
     //tested
     public void acceptOffer(Offer offer) {
+       
+        
+        
+        
         AccNotification not = new AccNotification();
         not.setFromAccount_id(this);
         not.setToAccount_id(offer.getOwner());
         not.setMassage("your task is accepted :D ");
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
+        offer.getOwner().addNotification(not);
+        
+         
         
         
-        
-        LogManager.Log("Employer  "+ this.getId() + " acceptPffer number : " + offer.getId());
+        LogManager.Log("Employer  "+ this.getId() + " acceptoffer number : " + offer.getId());
 //        offer.setState(3);
 
         //update state of the offer
         //begin session
         Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
+            se.beginTransaction();
+            
+            
+            
+             // put money to system
+            Statistics s = (Statistics) se.get(Statistics.class, 1) ;
+            double totalMoney =  s.getTotalMoney()+ (offer.getHourCost()* offer.getNumberOfHours());
+            String q = "Update Statistics set totalMoney = :t where id = 1";
+            Query hq = se.createQuery(q);
+            hq.setParameter("t" ,totalMoney);
+            hq.executeUpdate();
+            
             
 //            System.out.println(offer.getId() + offer.getState());
-//            Offer off = (Offer) se.get(Offer.class, offer.getId());
+//           // Offer off = (Offer) se.get(Offer.class, offer.getId());
 //            se.beginTransaction();
-//            se.update(off);
+//            se.merge(offer);
 //            se.getTransaction().commit();
 
-                se.beginTransaction();
-                String q = "Update Offer set state = 3 where id = :ID";
-                Query hq = se.createQuery(q);
+              // update offer state  
+                q = "Update Offer set state = 3 where id = :ID";
+                hq = se.createQuery(q);
                 hq.setParameter("ID" ,offer.getId());
                 hq.executeUpdate();
                 
-                se.save(not);
+                //update task state 
+                Task t = offer.getTask();
+                t.setState(3);
+                se.merge(t);
+                
+   
                 se.getTransaction().commit();
 
         } catch (Exception e) {
@@ -159,19 +186,22 @@ public class Employer extends ConsumerAccount {
      */
     //tested
     public void rejectOffer(Offer offer) {
+        
+        //notify freellancer
         AccNotification not = new AccNotification();
         not.setFromAccount_id(this);
         not.setToAccount_id(offer.getOwner());
-        not.setMassage("your offer is rejected معلش :D ");
+        not.setMassage("your offer is rejected :D ");
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
+        offer.getOwner().addNotification(not);
         
-        
+        // add message to logs
       LogManager.Log("Employer  "+ this.getId() + "reject offer num :" + offer.getId());
-//        offer.setState(1);
+
 
         // start new session
-        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+      Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
                 se.beginTransaction();
                 String q = "Update Offer set state = 1 where id = :ID";
@@ -179,7 +209,7 @@ public class Employer extends ConsumerAccount {
                 hq.setParameter("ID" ,offer.getId());
                 hq.executeUpdate();
                 
-                se.save(not);
+
                 se.getTransaction().commit();
 
         } catch (Exception e) {
@@ -251,31 +281,25 @@ public class Employer extends ConsumerAccount {
     
     //tested 
     public Invoice acceptFinishedTask(Offer offer) {
+        // notify freelancer
         AccNotification not = new AccNotification();
         not.setFromAccount_id(this);
         not.setToAccount_id(offer.getOwner());
         not.setMassage("your task is accepted  :D ");
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
-        
+        offer.getOwner().addNotification(not);
+         
         
         
         LogManager.Log("Employer  "+ this.getId() + "accept task num : " + offer.getTask().getId());
 //        offer.setState(7);
-        Invoice invoice = new Invoice();
-        invoice.setDate(LocalDateTime.now());
-        invoice.setOffer(offer);
-        invoice.setState(1);
-        //invoice.setPrice();
-//      the invoise paid         
-        
-        
+      //  Invoice invoice = new Invoice();
         
         Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try{
-          se.getTransaction().begin();
-         invoice.pay(offer, this);
-          String q = "UPDATE Offer set state = 7 where  id = :ID";
+            se.getTransaction().begin();   
+            String q = "UPDATE Offer set state = 7 where  id = :ID";
             Query hq = se.createQuery(q);
             hq.setParameter("ID", offer.getId());
             hq.executeUpdate();
@@ -287,7 +311,7 @@ public class Employer extends ConsumerAccount {
             hq.executeUpdate();
             
             
-            se.save(not);
+          
             
             se.getTransaction().commit();
         }
@@ -299,7 +323,8 @@ public class Employer extends ConsumerAccount {
         finally{
             se.close();
         }
-       
+        Invoice invoice = new Invoice();
+       invoice.pay(offer, this);
         return invoice;
     }// end of acceptFinishedTask
 
@@ -311,45 +336,86 @@ public class Employer extends ConsumerAccount {
      */
     //tested
     public boolean rejectFinishedTask(Offer offer) {
+       Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        
         
         AccNotification not = new AccNotification();
+        //notify freelancer
         not.setFromAccount_id(this);
         not.setToAccount_id(offer.getOwner());
         not.setMassage("your task is rejected :D ");
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
+        offer.getOwner().addNotification(not);
+        
+       
         
         
+      //get Rate Of employeer to apply penelty
+       Rate rate = this.getProfile().getRate();
+      //apply penelty
+       Constraints constraints  = (Constraints) se.get(Constraints.class  ,1);
+        int newRate = rate.getTheRate()- constraints.getEm_rejectFinishedTaskPenalty();
         
-        LogManager.Log("Employer  "+ this.getId() + " reject task");
-        // change state of the offer
-   //     offer.setState(8);
+        
+        // notify employer
+        not.setFromAccount_id(offer.getOwner());
+        not.setToAccount_id(this);
+        not.setMassage(" your rate is cosumed  to :D "+ newRate);
+        not.setDate(LocalDateTime.MAX);
+        not.setState(true);
+        this.addNotification(not);
 
+        LogManager.Log("Employer  "+ this.getId() + " reject task");
+        
+        // get mony 
+         double mony = offer.getHourCost() * offer.getNumberOfHours() * 0.5 ;
         //start new session
-        Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
-             se.getTransaction().begin();
-           
+             se.beginTransaction();
+           //change offer state
             String q = "UPDATE Offer set state = 8 where  id = :ID";
             Query hq = se.createQuery(q);
             hq.setParameter("ID", offer.getId());
             hq.executeUpdate();
             
+         // chenge task state
             System.out.println(offer.getTask().getId());
             q = "Update Task set state = 6  where id = :taskId" ;
             hq = se.createQuery(q);
             hq.setParameter("taskId", offer.getTask().getId());
             hq.executeUpdate();
             
+            //chenge rate
+            q = "Update Rate set theRate = :rate  where id = :rateId" ;
+            hq = se.createQuery(q);
+            hq.setParameter("rate", newRate);
+            hq.setParameter("rateId", rate.getId());
+            hq.executeUpdate();
+            
+            //add mony to freelancer 
+            Freelancer fr = (Freelancer) se.get(Freelancer.class  , offer.getOwner().getId());
+            //   System.out.println(fr.getBalance());
+            fr.setBalance(fr.getBalance()+ mony * 0.4);
+            //System.out.println(fr.getBalance());
+            se.merge(fr);
             
             
-            se.save(not);
+            
+            // add money to system 
+            Statistics s = (Statistics) se.get(Statistics.class, 1);
+            s.setTotalMoney(s.getTotalMoney()+ mony*0.4);
+            s.setNumberOfAcceptedTasks(s.getNumberOfAcceptedTasks()+1);
+            se.merge(s);
+            
+            
+           
             
             
             se.getTransaction().commit();
         } catch (Exception e) {
             se.getTransaction().rollback();
-            System.out.println("freelaning.Employer.rejectFinishedTask()");
+            
         } finally {
             se.close();
         }
@@ -396,7 +462,7 @@ public class Employer extends ConsumerAccount {
     // not completed yet
     public boolean register() {
         
-
+  
         return true;
     }
 
