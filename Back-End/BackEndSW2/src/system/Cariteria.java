@@ -5,7 +5,9 @@
  */
 package system;
 
+import freelaning.Skill;
 import freelaning.Task;
+import java.util.HashSet;
 import java.util.List;
 
 /**

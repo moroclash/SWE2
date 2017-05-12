@@ -38,8 +38,10 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import system.Constraints;
+import system.Iterator;
 import system.OurSystem;
 import system.Statistics;
+import system.TechnologyFilterForTask;
 import system.Validation;
 
 /**
@@ -88,13 +90,55 @@ public class BackEndSW2 {
 	
 	//admin id : 6   freelancer : 7   task : 1    Employer : 8 rate 70 task:3 offer:4
 	public static void omar() {
-//		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-//		se.getTransaction().begin();
-//		
-//		System.out.println(tt);
-//		
-		system.Validation v = Validation.getInistace();
-		System.out.println(v.checkPath("/dasd/dsadasd/dasdasd"));
+		Task t1 = new Task();
+		Task t2 = new Task();
+		Task t3 = new Task();
+		
+		t1.setTask("t1");
+		t2.setTask("t2");
+		t3.setTask("t3");
+		
+		HashSet<Skill> s1 = new HashSet<>();
+		HashSet<Skill> s2 = new HashSet<>();
+		HashSet<Skill> s3 = new HashSet<>();
+		
+		s1.add(new Skill("c++"));
+		s1.add(new Skill("java"));
+		s1.add(new Skill("r"));
+		
+		s2.add(new Skill("c++"));
+		s2.add(new Skill("c#"));
+		s2.add(new Skill("f#"));
+		
+		s3.add(new Skill("scala"));
+		s3.add(new Skill("perl"));
+		s3.add(new Skill("r"));
+		
+		
+		t1.setTechnologies(s1);
+		t2.setTechnologies(s2);
+		t3.setTechnologies(s3);
+		
+		
+		HashSet<Skill> fs = new HashSet<>();
+		fs.add(new Skill("c++"));
+		fs.add(new Skill("r"));
+		
+		system.TechnologyFilterForTask t = new TechnologyFilterForTask(fs);
+		
+		ArrayList<Task> ts = new ArrayList<>();
+		ts.add(t1);
+		ts.add(t2);
+		ts.add(t3);
+		
+		Iterator it = t.GetFilter(ts);
+		
+		while(it.hasNext())
+		{
+			Task l= (Task) it.next();
+			System.out.println(l.getTask());
+			
+		}
 	}
 	
 	public static void taha() {

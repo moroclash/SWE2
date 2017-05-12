@@ -22,6 +22,7 @@ public class Validation {
 	public synchronized static Validation getInistace() {
 		if(!flage)
 		{
+			flage =true;
 			return new Validation();
 		}
 		else

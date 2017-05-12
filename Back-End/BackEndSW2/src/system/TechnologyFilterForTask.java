@@ -16,15 +16,9 @@ import java.util.Set;
  *
  * @author moroclash
  */
-public class StateTaskFilter implements Cariteria{
-
-	private int state;
+public class TechnologyFilterForTask implements Cariteria{    
+	private HashSet<Skill> technologies; 	
 	
-	public void stateTasksFilter(int state)
-	{
-		this.state=state;
-	}
-
 	/**
 	 *
 	 * private class that use to implement iterator to can display
@@ -86,22 +80,34 @@ public class StateTaskFilter implements Cariteria{
 		}
 	}
 
-	/**
-	 * not tested
-	 * @moroclash
-	 * 
-	 * @param tasks : this tasks that will filtered
-	 * @return  : return iterator that have tasks after filtered
-	 */
-	@Override
-	public Iterator GetFilter(List<Task> tasks) {
-		HashSet<Task> tas = new HashSet<>();
-		tasks.forEach(teq->{
-			if(teq.getState()==this.state)
-				tas.add(teq);
-		});
-		return new BeIterator(new ArrayList(tasks));
+	public  TechnologyFilterForTask (HashSet<Skill> technologies) {
+		this.technologies = technologies;
 	}
 	
 	
+	
+	/**
+	 * Done tested
+	 * @moroclash
+	 * 
+	 * @param tasks : this is a list of task that you want to filter
+	 * @param technologies : this is the Skill that you want return Tasks that have this skill;
+	 * @return return iterator that have tasks after filter them
+	 */
+	
+	@Override
+	public Iterator GetFilter(List<Task> tasks ) {
+		HashSet<Task> tas = new HashSet<>();
+		technologies.forEach(teq->{
+			tasks.forEach(task->{
+				task.getTechnologies().forEach(te->{
+					if(te.getName().compareTo(teq.getName())==0)
+					{
+						tas.add(task);
+					}
+				});
+			});
+		});
+		return new BeIterator(new ArrayList(tas));
+	}
 }
