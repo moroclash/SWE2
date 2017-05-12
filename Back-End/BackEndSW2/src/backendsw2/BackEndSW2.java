@@ -40,6 +40,7 @@ import org.hibernate.criterion.Restrictions;
 import system.Constraints;
 import system.Iterator;
 import system.OurSystem;
+import system.StateTaskFilter;
 import system.Statistics;
 import system.TechnologyFilterForTask;
 import system.Validation;
@@ -98,33 +99,12 @@ public class BackEndSW2 {
 		t2.setTask("t2");
 		t3.setTask("t3");
 		
-		HashSet<Skill> s1 = new HashSet<>();
-		HashSet<Skill> s2 = new HashSet<>();
-		HashSet<Skill> s3 = new HashSet<>();
+		t1.setState(0);
+		t2.setState(0);
+		t3.setState(2);
 		
-		s1.add(new Skill("c++"));
-		s1.add(new Skill("java"));
-		s1.add(new Skill("r"));
+		system.StateTaskFilter t = new StateTaskFilter(0);
 		
-		s2.add(new Skill("c++"));
-		s2.add(new Skill("c#"));
-		s2.add(new Skill("f#"));
-		
-		s3.add(new Skill("scala"));
-		s3.add(new Skill("perl"));
-		s3.add(new Skill("r"));
-		
-		
-		t1.setTechnologies(s1);
-		t2.setTechnologies(s2);
-		t3.setTechnologies(s3);
-		
-		
-		HashSet<Skill> fs = new HashSet<>();
-		fs.add(new Skill("c++"));
-		fs.add(new Skill("r"));
-		
-		system.TechnologyFilterForTask t = new TechnologyFilterForTask(fs);
 		
 		ArrayList<Task> ts = new ArrayList<>();
 		ts.add(t1);

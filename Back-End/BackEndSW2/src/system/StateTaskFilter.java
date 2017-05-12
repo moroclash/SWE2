@@ -20,7 +20,7 @@ public class StateTaskFilter implements Cariteria{
 
 	private int state;
 	
-	public void stateTasksFilter(int state)
+	public StateTaskFilter(int state)
 	{
 		this.state=state;
 	}
@@ -87,7 +87,7 @@ public class StateTaskFilter implements Cariteria{
 	}
 
 	/**
-	 * not tested
+	 * Done tested
 	 * @moroclash
 	 * 
 	 * @param tasks : this tasks that will filtered
@@ -100,7 +100,7 @@ public class StateTaskFilter implements Cariteria{
 			if(teq.getState()==this.state)
 				tas.add(teq);
 		});
-		return new BeIterator(new ArrayList(tasks));
+		return new BeIterator(new ArrayList(tas));
 	}
 	
 	
