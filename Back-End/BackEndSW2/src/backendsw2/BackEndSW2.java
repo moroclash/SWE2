@@ -119,6 +119,15 @@ public class BackEndSW2 {
 	    /*
 	    	Account y = new Account(3);
 	System.out.println("main >> " + y.getFirstName() );
+	y.setFirstName("UpdateZ3bolla");
+	y.update();
+	    System.out.println("updated main >> "+ y.getFirstName());
+
+	    */
+
+	    /*
+	    	Account y = new Account(3);
+	System.out.println("main >> " + y.getFirstName() );
 
 	    */
 
