@@ -40,6 +40,7 @@ import org.hibernate.criterion.Restrictions;
 import system.Constraints;
 import system.OurSystem;
 import system.Statistics;
+import system.Validation;
 
 /**
  *
@@ -87,24 +88,13 @@ public class BackEndSW2 {
 	
 	//admin id : 6   freelancer : 7   task : 1    Employer : 8 rate 70 task:3 offer:4
 	public static void omar() {
-		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-		se.getTransaction().begin();
-		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-//		Offer of= (Offer) se.get(Offer.class, 4);
-//		Statistics stat = (Statistics) se.get(Statistics.class, 1);
-//		boolean b = free.cancelOffer(of);
-//		System.out.println("freeLncer rate :" + free.getProfile().getRate().getTheRate());
-//		System.out.println("task state:" + of.getTask().getState());
-//		System.out.println("total mony :" + stat.getTotalMoney());
+//		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+//		se.getTransaction().begin();
 //		
-//		System.out.println("offer state : " + of.getState());
-//		System.out.println(b);
-		Task t = (Task) se.get(Task.class, 1);
-		File f = new File("still.txt");
-		se.close();
-		boolean tt = t.uploadTask(f);
-		System.out.println(tt);
-		
+//		System.out.println(tt);
+//		
+		system.Validation v = Validation.getInistace();
+		System.out.println(v.checkPath("/dasd/dsadasd/dasdasd"));
 	}
 	
 	public static void taha() {
