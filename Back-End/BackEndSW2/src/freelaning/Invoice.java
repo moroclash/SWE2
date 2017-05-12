@@ -88,49 +88,43 @@ public class Invoice {
 	 * @return
 	 */
        
-    public boolean pay(Offer offer , Employer emp  ) {
+  public boolean pay(Offer offer , Employer emp  ) {
 	
         // set invoise info
         this.id=3;
         this.date= LocalDateTime.MAX;
         this.price = (double)offer.getNumberOfHours() * offer.getHourCost() ;
-        this.state = 0;
+        this.state = 1;
         
         
         
-        
-          Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+        // start session
+          Session se  ;  boolean flag = true ;
+         se = databaseManager.SessionsManager.getSessionFactory().openSession();     
          try{
               
                 se.getTransaction().begin();
                 this.offer = (Offer) se.get(Offer.class, offer.getId());
                
-           // add mony to freeLancer
+          // add mony to freeLancer 
                 Freelancer f = (Freelancer) se.get(Freelancer.class, offer.getOwner().getId());
-                f.setFirstName("d");
+                f.setFirstName("dggg");
                 double freelancerMony = ( offer.getHourCost()*offer.getNumberOfHours()) * 0.9 + f.getBalance()  ;
-                //System.out.println("kkkk");
+                
                 f.setId(3);
                 f.setBalance(freelancerMony);
-                //se.merge(f);
-                //se.save(f);
-//               String q = "Update Freelancer set balance = :b where id =:i";
-//               Query hq = se.createQuery(q);
-//               hq.setParameter("b" ,freelancerMony);
-//                hq.setParameter("i", offer.getOwner().getId());
-//               hq.executeUpdate();
+            
+               
+
            
-           // add target to the system
+           // add target "الربح" to the system
                 Statistics s = (Statistics) se.get(Statistics.class ,1);
-                double systemTarget = s.getTotalMoney() - (offer.getHourCost()*offer.getNumberOfHours()) * 0.9;
-                String  q = "Update Statistics set totalMoney = :b where id = 1";
-                Query hq = se.createQuery(q);
-                hq.setParameter("b" ,systemTarget);
-                hq.executeUpdate();
-              //  System.out.println("sssss>>"+ systemTarget);
+                // نخصم فلوس الاوفر من التوتال ماني
+                s.setTotalMoney(s.getTotalMoney()- (offer.getHourCost()*offer.getNumberOfHours()));
+                // نحط الربح في الourmony
+                s.setOurMoney((offer.getHourCost()*offer.getNumberOfHours()) * 0.1);
+                
            
-           
-         
               // notify freelancer 
                AccNotification not = new AccNotification();
                not.setFromAccount_id(emp);
@@ -142,19 +136,30 @@ public class Invoice {
         
            // save invoice in database
            
-           se.save(this);
+             se.save(this);
            
+             
+                if (flag) {
+                 se.update(f);
+                 se.update(s);
+             } else {
+                 se.merge(f);
+                 se.merge(s);
+             }
            // save chenges
            se.getTransaction().commit();
              
          }
          catch(Exception e )
          {
-           se.getTransaction().rollback();
-             System.out.println("freelaning.Invoice.pay()");
-         } finally{
-            
-           se.close();
+             System.out.println(e);
+             se.getTransaction().rollback();
+             
+             if (flag) {
+                 {System.out.println("ddddddd");
+                 se.close();
+                 }
+             }
          }
          
 
