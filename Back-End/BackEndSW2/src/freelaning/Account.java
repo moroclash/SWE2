@@ -2,6 +2,7 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.hibernate.Session;
 
 /**
  *
@@ -53,6 +54,50 @@ public class Account implements SystemAccess {
 	 *
 	 */
 	private LocalDateTime date;
+
+
+
+
+
+public  void saveNewComplaint() {
+
+	// Setting a Sessio
+	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
+	session.getTransaction().begin();
+
+	
+	try {
+		// Making a new Account
+		Account newaccount = new Account();
+
+		// Taking the data into the new account
+		// Issues;
+		// 1* Inserting the ID UMAR
+		// 2* Need to hash the password
+		// 3* Account State -> Umar I need you to update the database.
+		newaccount.setAccountState(this.accountState);
+		newaccount.setDate(LocalDateTime.MAX);
+		newaccount.setFirstName(this.firstName);
+		newaccount.setLastName(this.lastName);
+		newaccount.setPassword(this.password);
+		newaccount.setPhone(this.phone);
+		newaccount.setUserName(this.userName);
+
+		
+
+
+		// Updatting the database
+		session.save(newaccount);
+		session.getTransaction().commit();
+		
+	} 
+	catch (Exception e) {
+		session.getTransaction().rollback();
+	} 
+	finally {
+		session.close();
+	}
+} // end saveNewObject()
 	
 	
 	public String getFirstName() {
@@ -166,4 +211,4 @@ public class Account implements SystemAccess {
 	}
 
 	
-}
+} // end Account
