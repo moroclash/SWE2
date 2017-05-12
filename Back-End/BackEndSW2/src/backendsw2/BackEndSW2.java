@@ -22,6 +22,7 @@ import freelaning.Profile;
 import freelaning.Rate;
 import freelaning.Skill;
 import freelaning.Task;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -99,10 +100,11 @@ public class BackEndSW2 {
 //		System.out.println("offer state : " + of.getState());
 //		System.out.println(b);
 		Task t = (Task) se.get(Task.class, 1);
-		t.setTask("mmmmmmmmmmmmmmmmmmmmmm");
-		boolean tt = t.editTask();
-		System.out.println(tt);
+		File f = new File("still.txt");
 		se.close();
+		boolean tt = t.uploadTask(f);
+		System.out.println(tt);
+		
 	}
 	
 	public static void taha() {

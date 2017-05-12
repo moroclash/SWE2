@@ -160,13 +160,8 @@ public class Task {
 		this.technologies = technologies;
 	}
 
-	private static void copyFileUsingStream(File source, File dest) throws IOException {
-		
-
-	}
-
 	/**
-	 * not tested
+	 * Done tested
 	 * @@moroclash
 	 * this function use to upload task file on Server
 	 *
@@ -181,17 +176,15 @@ public class Task {
 		// use to check if close session or not
 		boolean flage = false, end = false;
 		try {
-			//if exist session 
-			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-		} catch (Exception exp) {
 			// if not exist session
 			se = databaseManager.SessionsManager.getSessionFactory().openSession();
 			flage = true;
+		} catch (Exception exp) {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
 		}
 		se.getTransaction().begin();
 		try {
-			OutputStream oo = new FileOutputStream(TaskPathinServer);
-			oo.close();
 			if (flage) {
 				se.update(this);
 			} else {
@@ -236,11 +229,10 @@ public class Task {
 					}
 				}
 			};
-
 			Thread t = new Thread(runa);
 			t.run();
-			se.getTransaction().commit();
 		} catch (Exception exp) {
+			System.out.println(exp.fillInStackTrace());
 			se.getTransaction().rollback();
 			this.TaskPathinServer = "";
 			this.state = oldState;
