@@ -330,12 +330,13 @@ public class Task {
 		// use to check if close session or not
 		boolean flage = false, end = false;
 		try {
-			//if exist session 
-			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
-		} catch (Exception exp) {
 			// if not exist session
 			se = databaseManager.SessionsManager.getSessionFactory().openSession();
 			flage = true;
+			
+		} catch (Exception exp) {
+			//if exist session 
+			se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
 		}
 		se.getTransaction().begin();
 		try {
@@ -353,7 +354,10 @@ public class Task {
 			//create log
 			LogManager.Log(offer.getOwner().getId() + "  make Offer to Task : " + this.id);
 			se.getTransaction().commit();
+			end = true;
 		} catch (Exception exp) {
+			System.out.println(exp.getMessage());
+			System.out.println(exp.fillInStackTrace());
 			se.getTransaction().rollback();
 			end = false;
 		} finally {

@@ -89,16 +89,28 @@ public class BackEndSW2 {
 		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
 		se.getTransaction().begin();
 		Freelancer free = (Freelancer) se.get(Freelancer.class, 7);
-		Offer of= (Offer) se.get(Offer.class, 4);
-		Statistics stat = (Statistics) se.get(Statistics.class, 1);
-		boolean b = free.cancelOffer(of);
-		System.out.println("freeLncer rate :" + free.getProfile().getRate().getTheRate());
-		System.out.println("task state:" + of.getTask().getState());
-		System.out.println("total mony :" + stat.getTotalMoney());
-		
-		System.out.println("offer state : " + of.getState());
-		System.out.println(b);
-
+//		Offer of= (Offer) se.get(Offer.class, 4);
+//		Statistics stat = (Statistics) se.get(Statistics.class, 1);
+//		boolean b = free.cancelOffer(of);
+//		System.out.println("freeLncer rate :" + free.getProfile().getRate().getTheRate());
+//		System.out.println("task state:" + of.getTask().getState());
+//		System.out.println("total mony :" + stat.getTotalMoney());
+//		
+//		System.out.println("offer state : " + of.getState());
+//		System.out.println(b);
+		Task t = (Task) se.get(Task.class, 1);
+		Offer of = new Offer();
+		of.setCounter(new Counter());
+		of.setDate(LocalDateTime.now());
+		of.setDescription("moroclash moroclash moroclash");
+		of.setHourCost(21);
+		of.setNumberOfHours(14);
+		of.setOwner(free);
+		of.setState(0);
+		of.setTask(t);
+		of.setTimeNeeded(12);
+		boolean tt = t.addOffer(of);
+		System.out.println(tt);
 		se.close();
 	}
 	
