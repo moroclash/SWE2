@@ -40,6 +40,7 @@ public Account( int _id ) {
 
 	} 
 	catch (Exception e) {
+		System.out.println(">>>> " + e);
 		session.getTransaction().rollback();
 	} 
 	finally {

@@ -238,6 +238,7 @@ public void update() {
 		
 	} 
 	catch (Exception e) {
+		System.out.println(">>>> " + e);
 		session.getTransaction().rollback();
 	} 
 	finally {
