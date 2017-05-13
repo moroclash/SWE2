@@ -269,6 +269,10 @@ public class Employer extends ConsumerAccount {
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
         overTime.getOffer().getOwner().addNotification(not);
+       
+        // add time to to offer 
+        Offer offer = overTime.getOffer();
+        offer.setTimeNeeded(offer.getTimeNeeded() + overTime.getHoursNeeded());
         
         
         boolean flag = false , end = false ; 
@@ -276,6 +280,7 @@ public class Employer extends ConsumerAccount {
         Session se ;
         // chenge over time state
         overTime.setState(1);// shoild be edit to be true and false 
+        
         
         // check if there is a session 
         try{
@@ -294,14 +299,14 @@ public class Employer extends ConsumerAccount {
             if(flag)
             {
              se.update(overTime);
-           
+             se.update(offer);
             
                 System.err.println("session mesh");
             }
             else
             {
              se.merge(overTime);
-            
+             se.merge(offer);
            
             }
             
