@@ -8,11 +8,16 @@ import freelaning.Account;
 import freelaning.AdminAccount;
 import freelaning.Employer;
 import freelaning.Offer;
+import freelaning.Skill;
 import freelaning.Task;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 
 
 
@@ -21,13 +26,7 @@ import org.hibernate.Session;
 //        (Change it if you're implementing it)il.*;
 
 
-////////////////////////////////////////////////////////////////////////////////
-									      //
-			///////////////////////				      //
-			// Singletone Pattern //                              //
-			///////////////////////                               //
-									      //
-////////////////////////////////////////////////////////////////////////////////
+// Singletone Pattern
 
 
 /**
@@ -81,31 +80,22 @@ public class OurSystem {
      * @param id 
      * @return
      */
-public Task getTask(int _id) {
+public Task getTask(int id) {
 System.out.println("getTask is fired from OurSystem");
 
-	// Setting a Session
+	// Setting session
 	Session session = databaseManager.SessionsManager.getSessionFactory().openSession();
 	session.getTransaction().begin();
 
-
-	Task fetchedTask = new Task();
+	Task taskDB = new Task();
 
 	try {
-		// Fetching complaint
-		// Problem; 
-		// * CANNOT READ A TASK
-		//
-		fetchedTask = (Task) session.get(Task.class,_id);
-
-
-
-
-
-		session.getTransaction().commit();
+		// Fetching Task
+		taskDB = (Task) session.get(Task.class, id);
+		System.out.println("This is TaskID -> " + taskDB.getId());
+		System.out.println("This is TaskCaegory -> " + taskDB.getCategory() );
 	} 
 	catch (Exception e) {
-		System.out.println(">>>> " + e);
 		session.getTransaction().rollback();
 	} 
 	finally {
@@ -113,7 +103,7 @@ System.out.println("getTask is fired from OurSystem");
 	}
 
 
-        return fetchedTask;
+        return taskDB;
     } // end getTask()
 
 
@@ -355,7 +345,32 @@ private int get_ID_FromUsername ( String username ){
      */
     public boolean notifyAll(AccNotification notification) {
         // TODO implement here
-        return false;
+        boolean end = true ; 
+        ArrayList<ConsumerAccount> users = new ArrayList<>();
+        Session se ;
+        try{
+         se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          
+        }
+        try{
+          users = (ArrayList<ConsumerAccount>) se.createCriteria(ConsumerAccount.class).list();
+        }
+        catch(Exception e)
+        {
+            end = false;
+            System.err.println(e);
+        }
+        
+        for(ConsumerAccount ac : users)
+        {
+            notification.setToAccount_id(ac);
+        }
+        
+        return end;
     }
 
     /**
@@ -382,81 +397,211 @@ private int get_ID_FromUsername ( String username ){
      */
     public ArrayList<Task> taskFilter(String category) {
         // TODO implement here
+        
         return null;
     }
 
-    /**
-     * @param category 
-     * @return
-     */
-    public boolean addCategory(String category) {
-        // TODO implement here
-        return false;
-    }
+  
 
     /**
-     * @param category 
+     * @param skill
+     * 
      * @return
      */
-    public boolean deleteCategory(String category) {
-        // TODO implement here
-        return false;
-    }
+    public boolean addTechnology(Skill skill) {
+         Session se ;  boolean flag = false , end = true;
+        try{
+            se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          flag = true ; 
+        }
+        try{
+            se.getTransaction().begin();
+            
+            se.save(skill);
+            
+            se.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            se.getTransaction().rollback();
+        }
+        finally{
+            if(flag)
+                se.close();
+        }
+        
+        return end ;
+    }// end of add technologe 
 
     /**
-     * @param technology 
+     * @param skill
      * @return
      */
-    public boolean addTechnology(String technology) {
-        // TODO implement here
-        return false;
-    }
+    public boolean updateTechnology(Skill skill) {
+        Session se ;  boolean flag = false , end = true;
+        try{
+            se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          flag = true ; 
+        }
+        try{
+            
+            se.getTransaction().begin();
+            
+           if(flag)
+           {
+               se.update(skill);
+           }
+           else
+           {
+               se.merge(skill);
+           }
+            
+            se.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            se.getTransaction().rollback();
+        }
+        finally{
+            if(flag)
+                se.close();
+        }
+        
+        return end ;
+    }// end of update tech
 
     /**
-     * @param technology 
+     * @param skill
      * @return
      */
-    public boolean deleteTechnology(String technology) {
-        // TODO implement here
-        return false;
-    }
+    public boolean deleteTechnology(Skill skill) {
+        
+         Session se ;  boolean flag = false , end = true;
+        try{
+            se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          flag = true ; 
+        }
+        try{
+            se.getTransaction().begin();
+            
+            se.delete(skill);
+            
+            se.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            se.getTransaction().rollback();
+        }
+        finally{
+            if(flag)
+                se.close();
+        }
+        
+        return end ;
+        
+        
+    }// end of delete tech
 
-    /**
-     * @param oldTech 
-     * @param newTech 
-     * @return
-     */
-    public boolean updateTechnology(String oldTech, String newTech) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param oldCate 
-     * @param newCatech 
-     * @return
-     */
-    public boolean updateCategory(String oldCate, String newCatech) {
-        // TODO implement here
-        return false;
-    }
-
+   
     /**
      * @return
      */
     public ArrayList<Complaint> getSeenComplaints() {
-        // TODO implement here
-        return null;
+       return this.getComplaints(0);
+        
+    }
+    
+   public ArrayList<Complaint> getUneenComplaints() {
+       return this.getComplaints(1);
+        
+    }
+    
+    
+    public ArrayList<Complaint> getComplaints(int state) {
+        
+        ArrayList<Complaint> complaints = new ArrayList<>();
+        Session se ;  boolean flag = false;
+        try{
+            se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          flag = true ; 
+        }
+        try{
+           se.getTransaction().begin();
+            
+            
+            
+          Criteria cr =  se.createCriteria(Complaint.class);
+          cr.add(Restrictions.eq("seenState",state ));
+          complaints = (ArrayList<Complaint>) cr.list();
+          
+          
+            
+        }
+        catch(Exception e ){
+            System.out.println(e);    
+        } finally{
+            if(flag)
+                se.close();
+        }
+        return complaints;
     }
 
     /**
      * @param userName 
      * @param passwd 
      * @return
+     * return object "account object " 
      */
     public Object getAccess(String userName, String passwd) {
-        // TODO implement here
-        return false;
+        
+        Session se ;  boolean flag = false;
+        Account object = new Account();
+        try{
+            se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          flag = true ; 
+        }
+        try{
+           se.getTransaction().begin();
+            
+            
+           // add  criteria to select user
+          Criteria cr =  se.createCriteria(Account.class);
+          Criterion name = Restrictions.eq("userName", userName);
+          Criterion pass = Restrictions.eq("password", passwd);
+          LogicalExpression andr = Restrictions.and(name , pass);
+          cr.add(andr);
+          object =  (Account) cr;
+          
+          
+            
+        }
+        catch(Exception e ){
+            
+        } finally{
+            if(flag)
+                se.close();
+        }
+        return object;
     }
 
     

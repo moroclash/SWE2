@@ -36,16 +36,18 @@ public class Employer extends ConsumerAccount {
     
     //tested
     
-    public ArrayList<Offer> showAllOffer()
+    public ArrayList<Task> showAllTasks()
     {
         
-          ArrayList<Offer> offers =new ArrayList<>();
+    ArrayList<Task> tasks =new ArrayList<>();
     Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         try {
+            
             se.getTransaction().begin();
-            String q = "FROM   Offer  ";
+            String q = "FROM   Task  where employer = :id   ";
             Query hq  =se.createQuery(q);
-            offers = (ArrayList<Offer>) hq.list();
+            hq.setParameter("id", this);
+            tasks = (ArrayList<Task>) hq.list();
             
         } catch (Exception e) {
           
@@ -56,31 +58,10 @@ public class Employer extends ConsumerAccount {
           se.close();
         }
         
-        return offers ; 
+        return tasks ; 
     }
     
-    //rested
-    public ArrayList<Freelancer> showAllFreelancers()
-    {   
-         LogManager.Log("Employer  "+ this.getId() + " showAllFreelancers");
-         ArrayList<Freelancer> freelancers=new ArrayList<>();
-    Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
-        try {
-            se.getTransaction().begin();
-            String q = "FROM  Freelancer ";
-            Query hq  =se.createQuery(q);
-            freelancers =  (ArrayList<Freelancer>) hq.list();
-            
-        } catch (Exception e) {
-            System.out.println(e);   
-        }
-        finally
-        {
-          se.close();
-        }
-        
-        return freelancers ; 
-    }
+  
     
     
    
@@ -92,7 +73,7 @@ public class Employer extends ConsumerAccount {
      * 
      */
     //tested
-    public void createTask(Task task) {
+    public void createTask(Task task  ) {
         LogManager.Log("Employer  "+ this.getId() + "create a task");
        boolean flag = false ; 
         // create session
@@ -108,13 +89,21 @@ public class Employer extends ConsumerAccount {
         try {
             // begin se 
             se.beginTransaction();
-            
+           
             // save task object 
             se.save(task);
             
-            
-            
+//            String q = "insert into  task_technologies (:task_id , :Skill_id ) ;" ;
+//            for(Skill s  : skills)
+//            {
+//              Query hq = se.createSQLQuery(q);
+//              hq.setParameter("task_id", 1);
+//              hq.setParameter("Skill_id", 1);
+//              hq.executeUpdate();
+//            }
+//            
             se.getTransaction().commit();
+            
 
         } catch (Exception e) {
             se.getTransaction().rollback();
@@ -123,9 +112,12 @@ public class Employer extends ConsumerAccount {
             if(flag)
             se.close();
         }
+      
 
     }//end of function
 
+    
+    
     /**
      * @param offer
      */
@@ -269,11 +261,26 @@ public class Employer extends ConsumerAccount {
     //  not tested yet , there is  lake of of info 
     public void acceptOverTime(OverTimeRequest overTime) {
         
+        //notfy freelancer 
+        AccNotification not = new AccNotification();
+        not.setFromAccount_id(this);
+        not.setToAccount_id(overTime.getOffer().getOwner());
+        not.setMassage("your overtime is accepted  " );
+        not.setDate(LocalDateTime.MAX);
+        not.setState(true);
+        overTime.getOffer().getOwner().addNotification(not);
+       
+        // add time to to offer 
+        Offer offer = overTime.getOffer();
+        offer.setTimeNeeded(offer.getTimeNeeded() + overTime.getHoursNeeded());
+        
+        
         boolean flag = false , end = false ; 
         
         Session se ;
         // chenge over time state
         overTime.setState(1);// shoild be edit to be true and false 
+        
         
         // check if there is a session 
         try{
@@ -292,14 +299,14 @@ public class Employer extends ConsumerAccount {
             if(flag)
             {
              se.update(overTime);
-           
+             se.update(offer);
             
                 System.err.println("session mesh");
             }
             else
             {
              se.merge(overTime);
-            
+             se.merge(offer);
            
             }
             
@@ -540,6 +547,13 @@ public class Employer extends ConsumerAccount {
             s.setOurMoney( mony * 0.1);
             se.merge(s);
             
+            // notify freelancer with mony added
+            not.setFromAccount_id(this);
+            not.setToAccount_id(offer.getOwner());
+            not.setMassage( "your task s rejected " +mony *0.4 +"  added your balance :D "+ newRate);
+            not.setDate(LocalDateTime.MAX);
+            not.setState(true);
+            offer.getOwner().addNotification(not);
         
             
             se.getTransaction().commit();
@@ -561,15 +575,17 @@ public class Employer extends ConsumerAccount {
      * @param offer
      */
     //tested 
-    public void makeFeedback(Feedback feedback , Offer offer ) {
+    public void makeFeedback(Feedback feedback , Offer offer   ) {
         AccNotification not = new AccNotification();
         not.setFromAccount_id(this);
         not.setToAccount_id(offer.getOwner());
         not.setMassage( this.getUserName() +" reted you  :D ");
         not.setDate(LocalDateTime.MAX);
         not.setState(true);
+        offer.getOwner().addNotification(not);
         
         
+        System.out.println(offer.getOwner().getId());
         LogManager.Log("Employer  "+ this.getId() + " made feedback");
         // fill feedback object 
         
@@ -588,13 +604,25 @@ public class Employer extends ConsumerAccount {
         
         try {
             se.beginTransaction();
-           
-          
+             // update freelabcer rate 
+             Freelancer fr = feedback.getOffer().getOwner();
+             fr.getProfile().getRate().setTheRate(fr.getProfile().getRate().getTheRate() + feedback.getRateValue());
+             if(flag){
+              se.update(fr.getProfile().getRate());
+             }
+             else{
+             se.merge(fr.getProfile().getRate());
+             }
+                 
+                 
+                 
+                 
             se.save(feedback);
             
             se.getTransaction().commit();
 
         } catch (Exception e) {
+            
             se.getTransaction().rollback();
         } finally {
             if(flag)
@@ -623,25 +651,37 @@ public class Employer extends ConsumerAccount {
               se.getTransaction().begin();
               
                  Constraints con = (Constraints) se.get(Constraints.class,1);
-                 Rate r = this.profile.getRate();
+                 Rate r = this.getProfile().getRate();
               if(offer.getState() == 0 )
               {
+                  System.out.println(">>>>>>>> fdf ");
                  offer.setState(2);
-             }
+              }
               else{
+                  System.out.println("><?<<?<><" +r.getTheRate());
                   //
                   offer.setState(2);
                   //
-                  r.setTheRate(r.getTheRate() -con.getFr_cancelingTaskPenalty());
-              
+                  r.setTheRate(r.getTheRate() -con.getEm_cancelRunningTaskPenalty());
+                   System.out.println("><?<<ererererre?<><" +r.getTheRate());
+                  // notify Employer 
+                  AccNotification not = new AccNotification();
+                  not.setDate(LocalDateTime.MAX);
+                  not.setFromAccount_id(this);
+                  not.setToAccount_id(this);
+                  not.setMassage("your rate is consumed");
+                  this.addNotification(not);
               }
+              
+              
+              
               if(flag)
               {
-              // se.update(r);
+               se.update(r);
                se.update(offer);
               }
               else{
-               //se.merge(r);
+               se.merge(r);
                se.merge(offer);
               }
               se.getTransaction().commit();
@@ -663,7 +703,7 @@ public class Employer extends ConsumerAccount {
      boolean flag = false ; 
         Session se;
         try{
-        se   = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();  
+        se   = databaseManager.SessionsManager.getSessionFactory().openSession();  
         }
         catch(Exception e )
         {
@@ -674,26 +714,41 @@ public class Employer extends ConsumerAccount {
             se.getTransaction().begin();
             // ده لو التاسك  لسه متعينش لفريلانسر او مجالوش اوفر اساسا 
             if (task.getState() == 0 || task.getState() == 1) {
+                System.out.println("here oasm ");
                 task.setState(2);
             }// في حالة ان التاسك ده اتعين لفريلانسر 
             else if (task.getState() == 3) {
                 //  edit the rate of the employer 
                 Rate rate = this.getProfile().getRate();
+                System.err.println("aksjdj asdj kjjj jj");
                 Constraints constraints = (Constraints) se.get(Constraints.class, 1);
                 rate.setTheRate(rate.getTheRate()  - constraints.getEm_cancelRunningTaskPenalty());
                 this.getProfile().setRate(rate);
 
                 // chenge task state 
                 task.setState(4);
+                
+                //notify employer 
+                 
+                AccNotification not = new AccNotification();
+                not.setFromAccount_id(this);
+                not.setToAccount_id(this);
+                not.setMassage("your rate is consumed");
+                not.setDate(LocalDateTime.MAX);
+                not.setState(true);
+                this.addNotification(not);
+                
 
             }
             
             if(flag)
             {
+                System.err.println("ddddksdjfkj");
                 se.update(task);
                 se.update(this.profile.getRate());
             }
             else{
+                System.out.println("222");
                 se.merge(task) ;
                 se.merge(this.profile.getRate());
             }
@@ -704,7 +759,7 @@ public class Employer extends ConsumerAccount {
         }
         catch(Exception e)
         {
-         System.out.println("freelaning.Employer.cancelTask()");
+         System.out.println(e);
          se.getTransaction().rollback();
         }
         finally{
@@ -714,9 +769,5 @@ public class Employer extends ConsumerAccount {
      
  }
 
-    @Override
-    public boolean register() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
 }
