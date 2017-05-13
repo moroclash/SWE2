@@ -646,25 +646,37 @@ public class Employer extends ConsumerAccount {
               se.getTransaction().begin();
               
                  Constraints con = (Constraints) se.get(Constraints.class,1);
-                 Rate r = this.profile.getRate();
+                 Rate r = this.getProfile().getRate();
               if(offer.getState() == 0 )
               {
+                  System.out.println(">>>>>>>> fdf ");
                  offer.setState(2);
-             }
+              }
               else{
+                  System.out.println("><?<<?<><" +r.getTheRate());
                   //
                   offer.setState(2);
                   //
-                  r.setTheRate(r.getTheRate() -con.getFr_cancelingTaskPenalty());
-              
+                  r.setTheRate(r.getTheRate() -con.getEm_cancelRunningTaskPenalty());
+                   System.out.println("><?<<ererererre?<><" +r.getTheRate());
+                  // notify Employer 
+                  AccNotification not = new AccNotification();
+                  not.setDate(LocalDateTime.MAX);
+                  not.setFromAccount_id(this);
+                  not.setToAccount_id(this);
+                  not.setMassage("your rate is consumed");
+                  this.addNotification(not);
               }
+              
+              
+              
               if(flag)
               {
-              // se.update(r);
+               se.update(r);
                se.update(offer);
               }
               else{
-               //se.merge(r);
+               se.merge(r);
                se.merge(offer);
               }
               se.getTransaction().commit();
