@@ -345,7 +345,32 @@ private int get_ID_FromUsername ( String username ){
      */
     public boolean notifyAll(AccNotification notification) {
         // TODO implement here
-        return false;
+        boolean end = true ; 
+        ArrayList<ConsumerAccount> users = new ArrayList<>();
+        Session se ;
+        try{
+         se = databaseManager.SessionsManager.getSessionFactory().getCurrentSession();
+        }
+        catch(Exception e )
+        {
+          se = databaseManager.SessionsManager.getSessionFactory().openSession();
+          
+        }
+        try{
+          users = (ArrayList<ConsumerAccount>) se.createCriteria(ConsumerAccount.class).list();
+        }
+        catch(Exception e)
+        {
+            end = false;
+            System.err.println(e);
+        }
+        
+        for(ConsumerAccount ac : users)
+        {
+            notification.setToAccount_id(ac);
+        }
+        
+        return end;
     }
 
     /**
