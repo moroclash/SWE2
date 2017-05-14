@@ -22,7 +22,7 @@
         <property name="phone" type="string"/>
         
         <!--consumerAccount Mapping--> 
-        <joined-subclass name="freelaning.ConsumerAccount">
+        <joined-subclass name="freelaning.ConsumerAccount" >
             <key column="Account_id"/>
             <property name="birthDate" type="string"/>
             <property name="country" type="string"/>
@@ -31,7 +31,7 @@
             <!--his notifications-->
             <set name="notifications" cascade="save-update , delete">
                 <key column="ToAccount_id"/>
-                <one-to-many class="freelaning.AccNotification"/>
+                <one-to-many class="freelaning.AccNotification" />
             </set>
             <!--end of his notification-->
             
@@ -240,7 +240,7 @@
     
     
     <!--Mapping for Complain Class-->
-    <class name="freelaning.Complaint" table="complaints">
+    <class name="freelaning.Complaint" table="complaints" >
         <id name="id">
             <generator class="increment"/>
         </id>

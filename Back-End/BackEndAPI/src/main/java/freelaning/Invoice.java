@@ -108,10 +108,9 @@ public class Invoice {
                
           // add mony to freeLancer 
                 Freelancer f = (Freelancer) se.get(Freelancer.class, offer.getOwner().getId());
-                f.setFirstName("dggg");
                 double freelancerMony = ( offer.getHourCost()*offer.getNumberOfHours()) * 0.9 + f.getBalance()  ;
                 
-                f.setId(3);
+                
                 f.setBalance(freelancerMony);
             
                

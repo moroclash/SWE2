@@ -55,14 +55,38 @@ public class BackEndSW2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+	/// please, Keep the main clean.
+
+
+
+
+
     } // end main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static void boda() {
         Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
         Employer emp = new Employer();
 //        emp.setId(2);
-        System.out.println(emp.showAllFreelancers().toString());
 //               Task task = new Task();
 //               task.setEmployer(emp);
 //               task.setCategory("zdxf");
@@ -98,7 +122,8 @@ public class BackEndSW2 {
 		
 		system.StateTaskFilter t = new StateTaskFilter(0);
 		
-		ArrayList<Task> ts = new ArrayList<Task>();
+		
+		ArrayList<Task> ts = new ArrayList<>();
 		ts.add(t1);
 		ts.add(t2);
 		ts.add(t3);

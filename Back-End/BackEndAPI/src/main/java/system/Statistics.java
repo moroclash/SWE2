@@ -10,7 +10,7 @@ import org.hibernate.Session;
 /**
  *
  */
-public class Statistics {
+public class Statistics implements GetStatistics {
 
     /**
      *
@@ -109,6 +109,7 @@ public class Statistics {
     } // End of Function 
 
 
+    @Override
     public double getTotalMoney() {
         return totalMoney;
     }
@@ -117,6 +118,7 @@ public class Statistics {
         this.totalMoney = totalMoney;
     }
 
+    @Override
     public double getOurMoney() {
         return ourMoney;
     }
@@ -125,6 +127,7 @@ public class Statistics {
         this.ourMoney = ourMoney;
     }
 
+    @Override
     public int getNumberOfEmployers() {
         return numberOfEmployers;
     }
@@ -133,6 +136,7 @@ public class Statistics {
         this.numberOfEmployers = numberOfEmployers;
     }
 
+    @Override
     public int getNumberOfFreelancers() {
         return numberOfFreelancers;
     }
@@ -141,6 +145,7 @@ public class Statistics {
         this.numberOfFreelancers = numberOfFreelancers;
     }
 
+    @Override
     public int getNumberOfAllTasks() {
         return numberOfAllTasks;
     }
@@ -149,6 +154,7 @@ public class Statistics {
         this.numberOfAllTasks = numberOfAllTasks;
     }
 
+    @Override
     public int getNumberOfAcceptedTasks() {
         return numberOfAcceptedTasks;
     }
@@ -157,6 +163,7 @@ public class Statistics {
         this.numberOfAcceptedTasks = numberOfAcceptedTasks;
     }
 
+    @Override
     public int getNumberOfRejectedTasks() {
         return numberOfRejectedTasks;
     }
@@ -165,6 +172,7 @@ public class Statistics {
         this.numberOfRejectedTasks = numberOfRejectedTasks;
     }
 
+    @Override
     public int getNumberOfComplaints() {
         return numberOfComplaints;
     }
@@ -173,6 +181,7 @@ public class Statistics {
         this.numberOfComplaints = numberOfComplaints;
     }
 
+    @Override
     public int getNumberOfAdmins() {
         return numberOfAdmins;
     }
@@ -181,6 +190,7 @@ public class Statistics {
         this.numberOfAdmins = numberOfAdmins;
     }
 
+    @Override
     public int getNumberOfBlockedPeople() {
         return numberOfBlockedPeople;
     }
