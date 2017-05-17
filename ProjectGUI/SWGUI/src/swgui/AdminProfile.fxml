@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="1050.0" style="-fx-background-color: #A7C9AE;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminProfileController">
+   <children>
+      <Button layoutX="177.0" layoutY="85.0" mnemonicParsing="false" onAction="#showUnSeenComplaints" prefHeight="71.0" prefWidth="160.0" text="show un seen complaint" />
+      <Button layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#showSeenComplaints" prefHeight="71.0" prefWidth="170.0" text="show seen complaint" />
+      <Button layoutX="805.0" layoutY="85.0" mnemonicParsing="false" onAction="#GetStatistics" prefHeight="71.0" prefWidth="231.0" text="git stastics" />
+      <Button layoutX="653.0" layoutY="85.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="71.0" prefWidth="160.0" text="edit profile information" />
+      <Button layoutX="337.0" layoutY="85.0" mnemonicParsing="false" onAction="#getLogs" prefHeight="71.0" prefWidth="160.0" text="show logs" />
+      <Button layoutX="497.0" layoutY="85.0" mnemonicParsing="false" onAction="#showAllAccount" prefHeight="71.0" prefWidth="160.0" text="show all account" />
+   </children>
+</AnchorPane>
