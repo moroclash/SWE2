@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
 import java.util.Set;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
@@ -47,6 +49,7 @@ public abstract class ConsumerAccount extends Account {
 	/**
 	 *
 	 */
+	@JsonIgnore
 	private Set<AccNotification> notifications;
 
 	public String getBirthDate() {
@@ -72,11 +75,12 @@ public abstract class ConsumerAccount extends Account {
 	public void setVisaNumber(String visaNumber) {
 		this.visaNumber = visaNumber;
 	}
-
+	
+	@JsonIgnore
 	public Set<AccNotification> getNotifications() {
 		return notifications;
 	}
-
+	@JsonIgnore
 	public void setNotifications(Set<AccNotification> notifications) {
 		this.notifications = notifications;
 	}
@@ -192,7 +196,7 @@ public abstract class ConsumerAccount extends Account {
 	 * @return BeIterator object that have Empty List of Offers if exist
 	 * exiption
 	 */
-	public system.Iterator getOfferHistoryIterator() {
+	public system.Iterator geetOfferHistoryIterator() {
 		BeIterator iter = new BeIterator(new ArrayList<Offer>());
 		Session se;
 		//to check if get current session or open new session 
@@ -238,7 +242,7 @@ public abstract class ConsumerAccount extends Account {
 	 * DB
 	 * @return : BeItrrator object that have empty list if exist exiptions
 	 */
-	public system.Iterator getComplainsIterator() {
+	public system.Iterator geetComplainsIterator() {
 		BeIterator Biter = new BeIterator(new ArrayList<Complaint>());
 		Session se;
 		//to check if get current session or open new session 

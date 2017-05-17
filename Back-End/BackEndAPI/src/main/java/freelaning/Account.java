@@ -2,6 +2,7 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.Session;
 
 /**

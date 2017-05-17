@@ -49,7 +49,7 @@
                 
                 
                 <!--freelancer profile-->
-                <many-to-one name="profile" class="freelaning.FreelancerProfile" cascade="save-update,delete" not-null="true" unique="true"/>
+                <many-to-one name="profile"   class="freelaning.FreelancerProfile" cascade="save-update,delete" not-null="true" unique="true"/>
                 <!--end of freelancer profile-->
                 
                 <!--freelanseer  skills-->

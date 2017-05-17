@@ -6,6 +6,7 @@
 package freelaning;
 
 import java.time.LocalDateTime;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 /**
@@ -32,11 +33,9 @@ public class AccNotification {
 	public void setFromAccount_id(Account FromAccount_id) {
 		this.FromAccount_id = FromAccount_id;
 	}
-
 	public Account getFromAccount_id() {
 		return FromAccount_id;
 	}
-
 	public void setToAccount_id(ConsumerAccount ToAccount_id) {
 		this.ToAccount_id = ToAccount_id;
 	}

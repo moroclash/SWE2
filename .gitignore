@@ -8,3 +8,6 @@ OO Analysis/auto
 /Back-End/BackEndSW2/nbproject/*
 
 /Back-End/BackEndAPI/target/
+/Back-End/SWGUI/build/
+/Back-End/SWGUI/dist/
+/Back-End/SWGUI/nbproject/private/

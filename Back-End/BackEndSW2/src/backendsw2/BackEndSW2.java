@@ -32,10 +32,14 @@ import java.util.List;
 import org.hibernate.Query;
 
 import java.util.Set;
+import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 import root.Root;
 import system.Constraints;
 import system.Iterator;
@@ -55,18 +59,71 @@ public class BackEndSW2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+OurSystem aa = OurSystem.getInstance();
+	    
 
-	/// please, Keep the main clean.
-
-
-
+	Employer f = (Employer) aa.getAccess("moroclash", "moroclash");
+	    System.out.println(f.getUserName());
 
 
     } // end main
 
 
 
+/**
+	 * @param userName
+	 * @param passwd
+	 * @return return object "account object "
+	 */
+	public static Object login(String userName, String passwd) {
 
+			boolean flag = false;
+		Account object = new Account();
+		Session se = databaseManager.SessionsManager.getSessionFactory().openSession();
+		flag = true;
+		AdminAccount ad = null;
+		Employer em = null;
+		Freelancer f = null;
+		se.getTransaction().begin();
+
+		// add  criteria to select user
+		Criteria cr = se.createCriteria(Account.class);
+		Criterion name = Restrictions.eq("userName", userName);
+		Criterion pass = Restrictions.eq("password", passwd);
+		LogicalExpression andr = Restrictions.and(name, pass);
+		cr.add(andr);
+		object = (Account) cr.list().get(0);
+
+		try {
+			ad = (AdminAccount) se.get(AdminAccount.class, object.getId());
+		} catch (Exception e) {
+			try {
+				em = (Employer) se.get(Employer.class, object.getId());
+			} catch (Exception ex) {
+				try {
+					f = (Freelancer) se.get(Freelancer.class, object.getId());
+				} catch (Exception ee) {
+					f = null;
+				} finally {
+					if (flag) {
+						se.close();
+					}
+					return f;
+				}
+			} finally {
+				if (flag) {
+					se.close();
+				}
+				return em;
+			}
+		} finally {
+			if (flag) {
+				se.close();
+			}
+			return ad;
+		}
+
+	}
 
 
 

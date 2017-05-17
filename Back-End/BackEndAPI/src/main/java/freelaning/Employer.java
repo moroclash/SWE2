@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import system.Constraints;
@@ -23,7 +24,7 @@ public class Employer extends ConsumerAccount {
      */
     public Employer() {
     }
-
+    
     private EmployerProfile profile;
 
     public EmployerProfile getProfile() {
